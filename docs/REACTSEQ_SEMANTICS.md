@@ -27,9 +27,25 @@ Parsing resolves this chain before constructing `ReactionIRV1`. Traversal refere
 
 ## Source-verified categories and safe normalization
 
-The adapter has typed normalization hooks for bond break/order change, bond formation, tetrahedral change/clear, formal-charge/explicit-H changes, E/Z changes, and leaving-group attachment/completion. A grammar production is enabled only when covered by an upstream-derived golden fixture. Unknown tokens and conflicting edits produce structured parse errors with source ranges.
+The adapter implements the symbols observed in pinned `e_smiles.py`, rather than deriving a grammar from the paper alone:
 
-Tail completion retains the fragment structure, the fragment atom used for each connection, all synthon attachment maps, null completion, charge-only completion, and multi-attachment identity. New fragment atoms receive deterministic fresh maps after the current maximum.
+| Public symbol | Pinned upstream meaning | ReactionIR stage |
+|---|---|---|
+| `!`, `_`, `;`, `^` | bond target order 0, 1, 2, 3 | break/change core edit |
+| `&`, `{`, `}` | clear, set E, set Z | bond-stereo edit |
+| `;&`, `;{`, `;}` | change to double plus clear/E/Z | separate core and stereo edits |
+| bracket prefix `~` | product-atom–hydrogen bond removal / direct attachment capacity | explicit-H edit when present plus ordered completion point |
+| bracket prefix `r`, `s`, `?` | precursor R, S, or cleared tetrahedral state | tetrahedral stereo edit |
+| bracket prefix `α`, `β`, `γ` | target formal charge +1, 0, -1 | atom-state edit |
+| bracket prefix `δ` on exactly two atoms | form one single bond between product atoms | add-bond core edit |
+
+The upstream encoder combines bracket symbols in the order hydrogen, tetrahedral, then charge/add-bond. SynthAudit decodes combined cases without collapsing their execution stages. Unknown, no-op, conflicting, or ambiguously paired tokens raise structured errors with half-open source ranges.
+
+The tail is aligned to the sorted, unique ReactSeq traversal indexes whose bond order decreased, plus `~` direct-attachment sites. Each `<...>` record belongs to one entry in that order. Within a leaving-group SMILES, atom-map annotation `:1` marks the leaving-group attachment atom; it is **not** a product traversal index or stable atom map. `-1`, `1`, and `2` are charge-only completion deltas. Empty records are null completions. A terminal `*` repeats and reunifies one leaving group across tail positions. One annotated fragment atom may connect to several points, while a group with a matching number of annotated atoms is paired in source order. Other arities are rejected as ambiguous.
+
+All leaving-group atoms receive fresh sequential stable maps after the product maximum. Null completion is materialized as explicit hydrogen only when an integral lost bond-order capacity determines the count; this inference is emitted as a warning. The pinned upstream valence path is used for non-single attachment bonds and is likewise disclosed.
+
+The committed golden set uses lines 1–3 of upstream `demo_tgt.txt` and `demo_output_smiles.txt` at the pinned commit. Product atom maps were added locally by deterministic RDKit traversal order and are labelled as such. The three-fixture result is a regression check, not a population-level ReactSeq benchmark.
 
 ## Semantic equality
 
@@ -43,11 +59,13 @@ The upstream converter is LGPL-2.1 and documents a legacy Python 3.7/RDKit 2019.
 
 `ReactSeqModelProvider` may return ranked candidates, prompts, token/header/tail/total log probabilities, optional MEO embeddings, and model/checkpoint provenance. Core code works without it. The checked repository contains embedding extraction scripts but no committed trained checkpoint; until an external checkpoint is checksum-pinned and reproduced, embedding/probability fields remain unavailable.
 
-## Unsupported until upstream-conformant fixtures exist
+## Unsupported or intentionally conservative
 
 - undocumented delimiter nesting or escaping;
 - unresolvable traversal indexes;
-- ambiguous symmetric attachment identities;
-- cyclic stereo operations without enough neighbour identity;
+- ambiguous symmetric traversal-to-map identities;
+- cyclic or pseudo-asymmetric absolute stereo operations without enough neighbour identity;
+- multi-attachment fragment arities that cannot be paired uniquely;
+- official compatibility labels for locally authored safe-subset strings;
 - any attempt to infer an atom map from a token position;
 - a claim that a locally accepted safe-subset string is official-converter compatible.

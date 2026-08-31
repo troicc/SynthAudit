@@ -1,0 +1,55 @@
+[
+  {
+    "fixture_version": "synthaudit.reactseq-golden/1",
+    "fixture_id": "reactseq-demo-beam-1-direct-h",
+    "reactseq": "COC1=CC(C(=O)OC2=C(Br)C=C(Br)C=C2OC)=CC=C1O>>>COC1=CC(C(=O)OC2=C(Br)C=C(Br)C=C2OC)=CC=C1[~OH]<[CH3:1]>",
+    "mapped_product_smiles": "[CH3:1][O:2][C:3]1=[CH:4][C:5]([C:6](=[O:7])[O:8][C:9]2=[C:10]([Br:11])[CH:12]=[C:13]([Br:14])[CH:15]=[C:16]2[O:17][CH3:18])=[CH:19][CH:20]=[C:21]1[OH:22]",
+    "expected_precursors": [
+      "COc1ccc(C(=O)Oc2c(Br)cc(Br)cc2OC)cc1OC"
+    ],
+    "expected_core_signatures": [],
+    "expected_attachment_maps": [22],
+    "expected_leaving_groups": ["[CH3:1]"],
+    "expected_ring_count_change": 0,
+    "source_repository": "https://github.com/jiachengxiong/ReactSeq",
+    "source_commit": "9838a3058e32e1c0ee04b2bab0448104dc293384",
+    "source_path": "demo_tgt.txt + demo_output_smiles.txt",
+    "source_line": 1
+  },
+  {
+    "fixture_version": "synthaudit.reactseq-golden/1",
+    "fixture_id": "reactseq-demo-beam-2-acyl-chloride",
+    "reactseq": "COC1=CC(C(=O)OC2=C(Br)C=C(Br)C=C2OC)=CC=C1O>>>COC1=CC(C(=O)!OC2=C(Br)C=C(Br)C=C2OC)=CC=C1O<[Cl:1]><>",
+    "mapped_product_smiles": "[CH3:1][O:2][C:3]1=[CH:4][C:5]([C:6](=[O:7])[O:8][C:9]2=[C:10]([Br:11])[CH:12]=[C:13]([Br:14])[CH:15]=[C:16]2[O:17][CH3:18])=[CH:19][CH:20]=[C:21]1[OH:22]",
+    "expected_precursors": [
+      "COc1cc(Br)cc(Br)c1O",
+      "COc1cc(C(=O)Cl)ccc1O"
+    ],
+    "expected_core_signatures": ["break:6-8"],
+    "expected_attachment_maps": [6, 8],
+    "expected_leaving_groups": ["[Cl:1]"],
+    "expected_ring_count_change": 0,
+    "source_repository": "https://github.com/jiachengxiong/ReactSeq",
+    "source_commit": "9838a3058e32e1c0ee04b2bab0448104dc293384",
+    "source_path": "demo_tgt.txt + demo_output_smiles.txt",
+    "source_line": 2
+  },
+  {
+    "fixture_version": "synthaudit.reactseq-golden/1",
+    "fixture_id": "reactseq-demo-beam-3-carboxylic-acid",
+    "reactseq": "COC1=CC(C(=O)OC2=C(Br)C=C(Br)C=C2OC)=CC=C1O>>>COC1=CC(C(=O)!OC2=C(Br)C=C(Br)C=C2OC)=CC=C1O<[OH:1]><>",
+    "mapped_product_smiles": "[CH3:1][O:2][C:3]1=[CH:4][C:5]([C:6](=[O:7])[O:8][C:9]2=[C:10]([Br:11])[CH:12]=[C:13]([Br:14])[CH:15]=[C:16]2[O:17][CH3:18])=[CH:19][CH:20]=[C:21]1[OH:22]",
+    "expected_precursors": [
+      "COc1cc(Br)cc(Br)c1O",
+      "COc1cc(C(=O)O)ccc1O"
+    ],
+    "expected_core_signatures": ["break:6-8"],
+    "expected_attachment_maps": [6, 8],
+    "expected_leaving_groups": ["[OH:1]"],
+    "expected_ring_count_change": 0,
+    "source_repository": "https://github.com/jiachengxiong/ReactSeq",
+    "source_commit": "9838a3058e32e1c0ee04b2bab0448104dc293384",
+    "source_path": "demo_tgt.txt + demo_output_smiles.txt",
+    "source_line": 3
+  }
+]

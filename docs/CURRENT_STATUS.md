@@ -86,3 +86,27 @@ Verification:
 - `make smoke` passed.
 
 Next: Phase 4 ReactSeq traversal normalization, safe parser, official legacy bridge protocol, fixtures, and conformance runner.
+
+## Phase 4 — ReactSeq integration
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/04-reactseq-integration`
+
+Implemented a source-preserving ReactSeq tokenizer, `ReactSeqTraversalContext`, indexed/unique-isomorphism traversal resolution, safe header and tail parsers, canonical adapter, optional model-provider protocol, pinned official subprocess bridge, and measured conformance runner. Stable atom maps are resolved only after traversal-to-RDKit mapping. Symmetric non-indexed assignments are indeterminate.
+
+The parser covers all seven source-observed MEO families, combined atom edits, bond/E-Z markers, direct-H capacity, null and charge-only records, deterministic fresh fragment maps, one-to-many and distinct-atom multi-attachment groups, and half-open token ranges. A full transaction may carry a sanitation-failed diagnostic synthon into completion; the failed core result and RDKit message remain visible, and only a sanitized final graph can succeed.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed;
+- `make test`: 100 tests passed after Phase 4 additions; total coverage 90%, ReactSeq adapter package above the 85% adapter target;
+- `make reactseq-conformance-small`: 3/3 pinned upstream demo fixtures parsed, executed, and reconstructed exactly; this is explicitly fixture-scoped, not a general benchmark result;
+- randomized traversal tests normalize two equivalent strings to the same semantic hash;
+- malformed syntax, tail-count mismatch, ambiguous symmetry/add-bond pairing, bridge response failure, charge/null, order decrease, multi-attachment, cyclic stereo and aromatic/Kekulé paths are covered;
+- `make schemas` exports five ReactSeq adapter/bridge/conformance schemas;
+- `make smoke` passed.
+
+Upstream assumptions remain pinned to `ReactSeq@9838a3058e32e1c0ee04b2bab0448104dc293384`. The official legacy runtime and checkpoint were not reproduced, so no full official compatibility, MEO embedding, or model-probability claim is made.
+
+Next: Phase 5 mapped-reaction, SynthEx draft/fail-closed official, Synthelite route, and cross-representation adapters.

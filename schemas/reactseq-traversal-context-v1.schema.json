@@ -1,0 +1,131 @@
+{
+  "$defs": {
+    "ReactSeqAtomToken": {
+      "additionalProperties": false,
+      "properties": {
+        "reactseq_atom_index": {
+          "minimum": 1,
+          "title": "Reactseq Atom Index",
+          "type": "integer"
+        },
+        "source_range": {
+          "$ref": "#/$defs/SourceRange"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reactseq_atom_index",
+        "text",
+        "source_range"
+      ],
+      "title": "ReactSeqAtomToken",
+      "type": "object"
+    },
+    "SourceRange": {
+      "additionalProperties": false,
+      "description": "Half-open character range in the source representation.",
+      "properties": {
+        "end": {
+          "minimum": 0,
+          "title": "End",
+          "type": "integer"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "SourceRange",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Resolve traversal-local atom identities before constructing ReactionIR.",
+  "properties": {
+    "atom_token_spans": {
+      "items": {
+        "$ref": "#/$defs/ReactSeqAtomToken"
+      },
+      "title": "Atom Token Spans",
+      "type": "array"
+    },
+    "attachment_point_order": {
+      "default": [],
+      "items": {
+        "type": "integer"
+      },
+      "title": "Attachment Point Order",
+      "type": "array"
+    },
+    "explicit_bond_product_smiles": {
+      "title": "Explicit Bond Product Smiles",
+      "type": "string"
+    },
+    "header_token_spans": {
+      "items": {
+        "$ref": "#/$defs/SourceRange"
+      },
+      "title": "Header Token Spans",
+      "type": "array"
+    },
+    "mapping_method": {
+      "enum": [
+        "indexed_source",
+        "unique_graph_isomorphism"
+      ],
+      "title": "Mapping Method",
+      "type": "string"
+    },
+    "original_product_smiles": {
+      "title": "Original Product Smiles",
+      "type": "string"
+    },
+    "rdkit_index_to_atom_map": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Rdkit Index To Atom Map",
+      "type": "object"
+    },
+    "reactseq_atom_index_to_rdkit_index": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Reactseq Atom Index To Rdkit Index",
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "synthaudit.reactseq-traversal-context/1",
+      "default": "synthaudit.reactseq-traversal-context/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "tail_token_spans": {
+      "items": {
+        "$ref": "#/$defs/SourceRange"
+      },
+      "title": "Tail Token Spans",
+      "type": "array"
+    }
+  },
+  "required": [
+    "original_product_smiles",
+    "explicit_bond_product_smiles",
+    "atom_token_spans",
+    "reactseq_atom_index_to_rdkit_index",
+    "rdkit_index_to_atom_map",
+    "header_token_spans",
+    "tail_token_spans",
+    "mapping_method"
+  ],
+  "title": "ReactSeqTraversalContext",
+  "type": "object"
+}

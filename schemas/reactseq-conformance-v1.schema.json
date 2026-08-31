@@ -1,0 +1,258 @@
+{
+  "$defs": {
+    "ReactSeqConformanceCaseResult": {
+      "additionalProperties": false,
+      "properties": {
+        "atom_map_preservation": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Atom Map Preservation"
+        },
+        "attachment_point_accuracy": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Attachment Point Accuracy"
+        },
+        "charge_consistency": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Charge Consistency"
+        },
+        "exact_precursor_reconstruction": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Exact Precursor Reconstruction"
+        },
+        "execution_success": {
+          "title": "Execution Success",
+          "type": "boolean"
+        },
+        "failure_category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failure Category"
+        },
+        "fixture_id": {
+          "title": "Fixture Id",
+          "type": "string"
+        },
+        "leaving_group_exact_match": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Leaving Group Exact Match"
+        },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message"
+        },
+        "parse_success": {
+          "title": "Parse Success",
+          "type": "boolean"
+        },
+        "reaction_centre_precision": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reaction Centre Precision"
+        },
+        "reaction_centre_recall": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reaction Centre Recall"
+        },
+        "ring_change_consistency": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ring Change Consistency"
+        },
+        "stereo_preservation": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Stereo Preservation"
+        }
+      },
+      "required": [
+        "fixture_id",
+        "parse_success",
+        "execution_success",
+        "exact_precursor_reconstruction",
+        "leaving_group_exact_match",
+        "charge_consistency",
+        "atom_map_preservation",
+        "stereo_preservation",
+        "ring_change_consistency"
+      ],
+      "title": "ReactSeqConformanceCaseResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/ReactSeqConformanceCaseResult"
+      },
+      "title": "Cases",
+      "type": "array"
+    },
+    "exact_reconstruction_count": {
+      "minimum": 0,
+      "title": "Exact Reconstruction Count",
+      "type": "integer"
+    },
+    "exact_reconstruction_rate": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Exact Reconstruction Rate"
+    },
+    "execution_success_count": {
+      "minimum": 0,
+      "title": "Execution Success Count",
+      "type": "integer"
+    },
+    "execution_success_rate": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Execution Success Rate"
+    },
+    "fixture_count": {
+      "minimum": 0,
+      "title": "Fixture Count",
+      "type": "integer"
+    },
+    "interpretation": {
+      "title": "Interpretation",
+      "type": "string"
+    },
+    "parse_success_count": {
+      "minimum": 0,
+      "title": "Parse Success Count",
+      "type": "integer"
+    },
+    "parse_success_rate": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parse Success Rate"
+    },
+    "schema_version": {
+      "const": "synthaudit.reactseq-conformance/1",
+      "default": "synthaudit.reactseq-conformance/1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "fixture_count",
+    "parse_success_count",
+    "execution_success_count",
+    "exact_reconstruction_count",
+    "cases",
+    "interpretation"
+  ],
+  "title": "ReactSeqConformanceSummary",
+  "type": "object"
+}

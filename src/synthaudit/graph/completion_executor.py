@@ -41,6 +41,8 @@ class AttachmentCompletionExecutor:
         attachment_edits: Sequence[AttachmentEdit],
         atom_state_edits: Sequence[AtomStateEdit] = (),
         mode: SanitationMode | str = SanitationMode.STRICT,
+        *,
+        allow_invalid_input: bool = False,
     ) -> CompletionExecutionResult:
         sanitation_mode = SanitationMode(mode)
         input_structures = (synthons,) if isinstance(synthons, str) else tuple(synthons)
@@ -50,7 +52,11 @@ class AttachmentCompletionExecutor:
         except AtomMapError as exc:
             return self._input_failure(input_structures, exc)
         initial = sanitize_copy(parsed)
-        if not initial.success and sanitation_mode == SanitationMode.STRICT:
+        if (
+            not initial.success
+            and sanitation_mode == SanitationMode.STRICT
+            and not allow_invalid_input
+        ):
             return self._sanitation_failure(input_structures, parsed, initial.error_message)
 
         original = initial.molecule if initial.success else parsed
@@ -96,7 +102,7 @@ class AttachmentCompletionExecutor:
         candidate = working.GetMol()
         atom_map_index(candidate)
         outcome = sanitize_copy(candidate)
-        if not outcome.success or not initial.success:
+        if not outcome.success or (not initial.success and not allow_invalid_input):
             message = outcome.error_message or initial.error_message or "sanitation failed"
             return CompletionExecutionResult(
                 success=False,

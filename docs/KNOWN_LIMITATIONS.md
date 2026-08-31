@@ -2,7 +2,7 @@
 
 Updated: 2026-08-31.
 
-- The official ReactSeq converter requires a legacy isolated runtime. Reproduction on this Apple Silicon host has not yet been established, so safe-subset parser results are not labelled official conformance.
+- The official ReactSeq converter requires a legacy isolated runtime. Reproduction on this Apple Silicon host has not yet been established. Three committed golden cases are copied from pinned official repository demo input/output files, but the local adapter remains labelled a source-inspected safe subset rather than full official compatibility.
 - ReactSeq checkpoints are linked externally rather than committed at the pinned source revision. MEO embedding and token-probability support is unavailable until a checkpoint is checksum-pinned and inference is reproduced.
 - Official SynthEx ReactionJSON and RouteJSON specifications are absent at the checked commit. Only the visibly named `synthaudit.synthex-paper-draft/0.1` adapter can be implemented; official adapters fail closed.
 - Synthelite route exports are implementation artifacts rather than a stable cross-project schema and may change. Unknown data is preserved and unsupported cases are reported.
@@ -18,4 +18,6 @@ Updated: 2026-08-31.
 - IR schema validation intentionally checks representation shape, edit invariants, roles, IDs, and dependency references; SMILES parsing, atom-map uniqueness, valence, sanitation, and chemistry-aware no-op checks belong to the graph/audit stages and are not implied by successful Pydantic validation.
 - Introduced external fragments must already carry the exact next sequential atom maps in ReactionIR. Adapters allocate them; the executor rejects rather than renumbering an ambiguous IR payload.
 - Absolute tetrahedral assignment is conservative: duplicate canonical substituent ranks are marked indeterminate. Advanced pseudo-asymmetric and cyclic cases require dedicated audit evidence rather than forced configuration.
-- Core-stage synthons are currently required to pass RDKit sanitation. Some valid radical, metal, or aromatic-ring-opening representations may therefore require diagnostic handling or a future explicitly typed synthon-valence model.
+- A full transaction may carry an explicitly diagnostic, unsanitized synthon into completion when the sole core-stage failure is sanitation and completion later yields a sanitized graph. The nested core result remains failed and retains the RDKit error. Null ReactSeq completion uses integral lost bond-order capacity to materialize hydrogen with a warning; fractional aromatic, metal, radical, and unusual valence cases remain review items.
+- ReactSeq attachment bond order follows the pinned upstream valence rules because the tail string does not encode that bond order directly. The rule and warning are preserved; broader conformance requires more official fixtures.
+- The three-case ReactSeq demo fixture has 100% local parse/execution/exact-reconstruction only as a regression observation for those three cases. It is not reported as general ReactSeq accuracy, and it contains no stereo case.

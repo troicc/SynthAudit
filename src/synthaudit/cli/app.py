@@ -10,6 +10,7 @@ import typer
 from rich.console import Console
 
 from synthaudit import SCIENTIFIC_NOTICE, __version__
+from synthaudit.evaluation import run_reactseq_conformance
 
 app = typer.Typer(
     name="synthaudit",
@@ -53,6 +54,25 @@ def benchmark_run(
         typer.echo(json.dumps(payload, sort_keys=True))
     else:
         console.print(payload)
+
+
+@benchmark_app.command("reactseq-conformance")
+def reactseq_conformance(
+    fixture: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    json_output: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """Run measured conformance on an explicitly supplied offline fixture set."""
+    result = run_reactseq_conformance(fixture)
+    if json_output:
+        typer.echo(result.model_dump_json())
+    else:
+        console.print(result.model_dump(mode="json"))
+    if result.parse_success_count != result.fixture_count:
+        raise typer.Exit(code=2)
+    if result.execution_success_count != result.fixture_count:
+        raise typer.Exit(code=3)
+    if result.exact_reconstruction_count != result.fixture_count:
+        raise typer.Exit(code=4)
 
 
 def main() -> None:

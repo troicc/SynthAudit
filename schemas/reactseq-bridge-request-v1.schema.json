@@ -1,0 +1,47 @@
+{
+  "$defs": {
+    "JsonValue": {}
+  },
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "enum": [
+        "convert_reaction",
+        "reconstruct_precursors",
+        "inspect_runtime"
+      ],
+      "title": "Operation",
+      "type": "string"
+    },
+    "payload": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Payload",
+      "type": "object"
+    },
+    "protocol_version": {
+      "const": "synthaudit.reactseq-bridge/1",
+      "default": "synthaudit.reactseq-bridge/1",
+      "title": "Protocol Version",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "upstream_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "title": "Upstream Commit",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request_id",
+    "operation",
+    "upstream_commit"
+  ],
+  "title": "ReactSeqBridgeRequest",
+  "type": "object"
+}

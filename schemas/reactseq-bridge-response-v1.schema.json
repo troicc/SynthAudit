@@ -1,0 +1,64 @@
+{
+  "$defs": {
+    "JsonValue": {}
+  },
+  "additionalProperties": false,
+  "properties": {
+    "error": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error"
+    },
+    "protocol_version": {
+      "const": "synthaudit.reactseq-bridge/1",
+      "default": "synthaudit.reactseq-bridge/1",
+      "title": "Protocol Version",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "result": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Result",
+      "type": "object"
+    },
+    "runtime": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Runtime",
+      "type": "object"
+    },
+    "success": {
+      "title": "Success",
+      "type": "boolean"
+    },
+    "upstream_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "title": "Upstream Commit",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request_id",
+    "success",
+    "upstream_commit"
+  ],
+  "title": "ReactSeqBridgeResponse",
+  "type": "object"
+}

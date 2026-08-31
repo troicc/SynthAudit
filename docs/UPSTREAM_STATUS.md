@@ -1,6 +1,6 @@
 # Upstream status
 
-Checked: **2026-08-31**. HEAD values were resolved with `git ls-remote` and source/example trees were inspected at the listed repositories. Compatibility tests must pin these full SHAs. A later HEAD is not implicitly compatible.
+Checked: **2026-08-31**. HEAD values were resolved with `git ls-remote`; ReactSeq was also shallow-cloned to a temporary directory and its actual source/demo files inspected at the listed SHA. Compatibility tests must pin these full SHAs. A later HEAD is not implicitly compatible.
 
 ## Status matrix
 
@@ -12,6 +12,12 @@ Checked: **2026-08-31**. HEAD values were resolved with `git ls-remote` and sour
 | ReactionClassifier | `schwallergroup/ReactionClassifier`, `main`, `4d26f18a2350dfc9bdba8d57742fd3344545c3a0` | MIT for code and bundled data, per repository | Installable `reactionclassifier`, bundled neural gate/templates/taxonomy, examples/tests; full ~666k labelled database on Zenodo. README notes proprietary NameRXN-derived columns are excluded. Requires RDKit, PyTorch, NumPy. | Optional `classifier` provider; isolate its neural confidence from deterministic template confirmation and from calibrated SynthAudit evidence. Dataset download is explicit. |
 | AiZynthFinder | `MolecularAI/aizynthfinder`, `master`, `21ff546d5f22331b078390a2f12dc04defc3f39c` | MIT | Installable PyPI package, docs, tests, stocks and expansion/filter policies via explicit public-data download. Python 3.10-3.12 documented. | No core dependency. Potential route/reference provider in a separate optional environment; pin model and stock artifacts independently. |
 | Molecular Transformer | `pschwllr/MolecularTransformer`, `master`, `aeb339daf0a029b391f8307fb3f467f461605dd2` | License file present; exact redistribution obligations must be reviewed before packaging derived artifacts | Legacy OpenNMT-py v0.4.1 code, Python 3.5/PyTorch 0.4.1 instructions, links to datasets/models. Reproducible modern local checkpoint inference was not established. | Keep only a provider interface. Do not select as default or advertise local support until checkpoint, license, and inference reproduction pass. |
+
+### ReactSeq Phase 4 source findings
+
+At the pinned SHA, `get_b_smiles_forward/backward` defines bond symbols and bracket isotope/symbol composition; `get_lg_forward/backward` defines sorted attachment-point alignment, null records, charge deltas, `:1` leaving-group annotations, and starred multi-attachment regrouping; `merge_smiles_only` and `get_e_smiles` define the public `product>>>header<tail>...` envelope. `demo_tgt.txt` and `demo_output_smiles.txt` provide paired public examples. SynthAudit commits the first three pairs as attributed regression fixtures, adding stable product maps locally; no dataset-derived population statistic is claimed.
+
+`services/reactseq-legacy/server.py` now checks the actual checkout `git rev-parse HEAD`, request SHA, and configured SHA before invoking upstream through JSONL. It does not make network calls. The exact legacy runtime and Indigo installation are still not reproduced on this host.
 
 ## Phase 0 required answers
 

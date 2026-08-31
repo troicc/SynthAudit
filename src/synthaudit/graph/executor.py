@@ -36,7 +36,13 @@ class ReactionExecutor:
         core_result = self.core.execute(
             reaction.product.mapped_smiles, reaction.core_edits, sanitation_mode
         )
-        if not core_result.success:
+        recoverable_synthon = (
+            not core_result.success
+            and core_result.error is not None
+            and core_result.error.error_type == "SanitationError"
+            and bool(core_result.diagnostic_mapped_structures)
+        )
+        if not core_result.success and not recoverable_synthon:
             return FullExecutionResult(
                 success=False,
                 structurally_valid=False,
@@ -51,11 +57,17 @@ class ReactionExecutor:
                 core_result=core_result,
             )
 
+        core_structures = (
+            core_result.diagnostic_mapped_structures
+            if recoverable_synthon
+            else core_result.mapped_structures
+        )
         completion_result = self.completion.execute(
-            core_result.mapped_structures,
+            core_structures,
             reaction.attachment_edits,
             reaction.atom_state_edits,
             sanitation_mode,
+            allow_invalid_input=recoverable_synthon,
         )
         if not completion_result.success:
             return FullExecutionResult(
