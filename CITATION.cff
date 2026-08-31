@@ -5,6 +5,8 @@ type: software
 version: 1.0.0
 date-released: 2026-08-31
 license: Apache-2.0
+repository-code: "https://github.com/troicc/SynthAudit"
+url: "https://github.com/troicc/SynthAudit"
 authors:
   - name: "SynthAudit contributors"
 keywords:

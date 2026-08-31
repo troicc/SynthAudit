@@ -38,8 +38,8 @@
 
 ## Publication operations
 
-- [ ] Configure a real Git remote and replace no metadata until its URL is verified.
-- [ ] Push `codex/12-research-evaluation-and-release` when authorized.
+- [x] Configure the verified `https://github.com/troicc/SynthAudit` remote and record its URL in package and citation metadata.
+- [ ] Push `main` when authorized.
 - [ ] Push the `v1.0.0` tag when authorized.
 - [ ] Create a hosted release and attach/checksum artifacts when authorized.
 

@@ -17,6 +17,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Topic :: Scientific/Engineering :: Chemistry",
 ]
+
 dependencies = [
   "jinja2>=3.1,<4",
   "networkx>=3.4,<4",
@@ -29,6 +30,11 @@ dependencies = [
   "scikit-learn>=1.5,<2",
   "typer>=0.15,<1",
 ]
+
+[project.urls]
+Homepage = "https://github.com/troicc/SynthAudit"
+Repository = "https://github.com/troicc/SynthAudit"
+Issues = "https://github.com/troicc/SynthAudit/issues"
 
 [project.optional-dependencies]
 dev = [

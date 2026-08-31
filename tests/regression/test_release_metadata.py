@@ -6,9 +6,10 @@ from pathlib import Path
 from synthaudit import __version__
 
 ROOT = Path(__file__).resolve().parents[2]
+REPOSITORY_URL = "https://github.com/troicc/SynthAudit"
 
 
-def test_v1_release_metadata_is_consistent_and_has_no_placeholder_remote() -> None:
+def test_v1_release_metadata_is_consistent_and_uses_verified_remote() -> None:
     project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     lock = (ROOT / "uv.lock").read_text(encoding="utf-8")
@@ -19,7 +20,13 @@ def test_v1_release_metadata_is_consistent_and_has_no_placeholder_remote() -> No
     assert 'name = "synthaudit"\nversion = "1.0.0"' in lock
     assert "github.com/example" not in (ROOT / "README.md").read_text(encoding="utf-8")
     assert "github.com/example" not in citation
-    assert "urls" not in project["project"]
+    assert project["project"]["urls"] == {
+        "Homepage": REPOSITORY_URL,
+        "Repository": REPOSITORY_URL,
+        "Issues": f"{REPOSITORY_URL}/issues",
+    }
+    assert f'repository-code: "{REPOSITORY_URL}"' in citation
+    assert f'url: "{REPOSITORY_URL}"' in citation
     force_include = project["tool"]["hatch"]["build"]["targets"]["wheel"]["force-include"]
     assert force_include == {
         "app": "synthaudit/ui_app",
