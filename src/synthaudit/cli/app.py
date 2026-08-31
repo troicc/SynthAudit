@@ -11,7 +11,7 @@ from rich.console import Console
 
 from synthaudit import SCIENTIFIC_NOTICE, __version__
 from synthaudit.counterfactuals import validate_benchmark_artifacts
-from synthaudit.evaluation import run_reactseq_conformance
+from synthaudit.evaluation import run_evidence_model_contract_smoke, run_reactseq_conformance
 
 app = typer.Typer(
     name="synthaudit",
@@ -72,6 +72,18 @@ def counterfactual_benchmark(
         splits_path=splits,
         human_review_path=human_review,
     )
+    if json_output:
+        typer.echo(result.model_dump_json())
+    else:
+        console.print(result.model_dump(mode="json"))
+
+
+@benchmark_app.command("evidence-model-contract")
+def evidence_model_contract(
+    json_output: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """Exercise model/calibration/uncertainty contracts on authored numeric fixtures."""
+    result = run_evidence_model_contract_smoke()
     if json_output:
         typer.echo(result.model_dump_json())
     else:

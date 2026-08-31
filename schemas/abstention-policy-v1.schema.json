@@ -1,0 +1,68 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "calibration_parent_groups_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Calibration Parent Groups Sha256"
+    },
+    "maximum_bootstrap_standard_deviation": {
+      "minimum": 0,
+      "title": "Maximum Bootstrap Standard Deviation",
+      "type": "number"
+    },
+    "maximum_missing_feature_fraction": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Maximum Missing Feature Fraction",
+      "type": "number"
+    },
+    "maximum_ood_zscore": {
+      "minimum": 0,
+      "title": "Maximum Ood Zscore",
+      "type": "number"
+    },
+    "maximum_provider_score_range": {
+      "minimum": 0,
+      "title": "Maximum Provider Score Range",
+      "type": "number"
+    },
+    "policy_id": {
+      "minLength": 1,
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.abstention-policy/1",
+      "default": "synthaudit.abstention-policy/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "threshold_source": {
+      "enum": [
+        "prespecified",
+        "held_out_calibration"
+      ],
+      "title": "Threshold Source",
+      "type": "string"
+    }
+  },
+  "required": [
+    "policy_id",
+    "threshold_source",
+    "maximum_bootstrap_standard_deviation",
+    "maximum_missing_feature_fraction",
+    "maximum_ood_zscore",
+    "maximum_provider_score_range"
+  ],
+  "title": "AbstentionPolicyV1",
+  "type": "object"
+}

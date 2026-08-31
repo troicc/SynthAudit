@@ -1,0 +1,97 @@
+{
+  "schema_version": "synthaudit.evidence-model-plan/1",
+  "plan_id": "synthaudit-phase9-evidence-model-contract-v1",
+  "status": "contract_only_no_trained_research_artifact",
+  "baseline_roles": [
+    "corpus_familiarity_baseline",
+    "deterministic_structural_check_baseline",
+    "reaction_centre_evidence_model",
+    "completion_evidence_model",
+    "stereo_evidence_model",
+    "full_evidence_ensemble"
+  ],
+  "stage_models": [
+    {
+      "stage": "reaction_centre_supported",
+      "role": "reaction_centre_evidence_model",
+      "estimator_families": [
+        "logistic_regression",
+        "hist_gradient_boosting_classifier"
+      ],
+      "calibration_methods": ["platt", "isotonic"],
+      "feature_groups": [
+        "structural",
+        "reaction_centre",
+        "condition",
+        "precedent",
+        "forward_model",
+        "provider_agreement"
+      ],
+      "random_seed": 1901
+    },
+    {
+      "stage": "completion_supported_given_reaction_centre",
+      "role": "completion_evidence_model",
+      "estimator_families": [
+        "logistic_regression",
+        "hist_gradient_boosting_classifier"
+      ],
+      "calibration_methods": ["platt", "isotonic"],
+      "feature_groups": [
+        "structural",
+        "reaction_centre",
+        "completion",
+        "condition",
+        "precedent",
+        "forward_model",
+        "provider_agreement"
+      ],
+      "random_seed": 1902
+    },
+    {
+      "stage": "stereo_specification_supported",
+      "role": "stereo_evidence_model",
+      "estimator_families": [
+        "logistic_regression",
+        "hist_gradient_boosting_classifier"
+      ],
+      "calibration_methods": ["platt", "isotonic"],
+      "feature_groups": [
+        "structural",
+        "stereo",
+        "precedent",
+        "provider_agreement"
+      ],
+      "random_seed": 1903
+    },
+    {
+      "stage": "route_context_supported",
+      "role": "full_evidence_ensemble",
+      "estimator_families": [
+        "logistic_regression",
+        "hist_gradient_boosting_classifier"
+      ],
+      "calibration_methods": ["platt", "isotonic"],
+      "feature_groups": [
+        "structural",
+        "reaction_centre",
+        "completion",
+        "stereo",
+        "condition",
+        "precedent",
+        "forward_model",
+        "provider_agreement",
+        "route"
+      ],
+      "random_seed": 1904
+    }
+  ],
+  "split_grouping": "parent_group_id",
+  "test_split_use": "evaluation_only_no_calibration_or_threshold_selection",
+  "bootstrap_grouping": "parent_group_id",
+  "bootstrap_member_count": 20,
+  "abstention_threshold_source": "held_out_calibration",
+  "ood_splits": ["ood_scaffold", "ood_reaction_class"],
+  "model_selection_status": "not_run",
+  "mandatory_notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability."
+}

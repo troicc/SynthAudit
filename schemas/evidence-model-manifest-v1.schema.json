@@ -1,0 +1,347 @@
+{
+  "$defs": {
+    "CalibrationMethod": {
+      "enum": [
+        "none",
+        "platt",
+        "isotonic"
+      ],
+      "title": "CalibrationMethod",
+      "type": "string"
+    },
+    "EstimatorFamily": {
+      "enum": [
+        "logistic_regression",
+        "hist_gradient_boosting_classifier"
+      ],
+      "title": "EstimatorFamily",
+      "type": "string"
+    },
+    "EvidenceModelRole": {
+      "enum": [
+        "corpus_familiarity_baseline",
+        "deterministic_structural_check_baseline",
+        "reaction_centre_evidence_model",
+        "completion_evidence_model",
+        "stereo_evidence_model",
+        "full_evidence_ensemble"
+      ],
+      "title": "EvidenceModelRole",
+      "type": "string"
+    },
+    "EvidenceStage": {
+      "enum": [
+        "reaction_centre_supported",
+        "completion_supported_given_reaction_centre",
+        "stereo_specification_supported",
+        "route_context_supported"
+      ],
+      "title": "EvidenceStage",
+      "type": "string"
+    },
+    "FeatureGroup": {
+      "enum": [
+        "corpus_familiarity",
+        "structural",
+        "reaction_centre",
+        "completion",
+        "stereo",
+        "condition",
+        "precedent",
+        "forward_model",
+        "provider_agreement",
+        "route"
+      ],
+      "title": "FeatureGroup",
+      "type": "string"
+    },
+    "FeatureSchemaV1": {
+      "additionalProperties": false,
+      "properties": {
+        "feature_groups": {
+          "additionalProperties": {
+            "$ref": "#/$defs/FeatureGroup"
+          },
+          "title": "Feature Groups",
+          "type": "object"
+        },
+        "fit_parent_groups_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Fit Parent Groups Sha256",
+          "type": "string"
+        },
+        "imputation_values": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Imputation Values",
+          "type": "object"
+        },
+        "missing_flag_suffix": {
+          "const": "__missing",
+          "default": "__missing",
+          "title": "Missing Flag Suffix",
+          "type": "string"
+        },
+        "ordered_feature_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Ordered Feature Ids",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "synthaudit.evidence-feature-schema/1",
+          "default": "synthaudit.evidence-feature-schema/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "standardization_means": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Standardization Means",
+          "type": "object"
+        },
+        "standardization_scales": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Standardization Scales",
+          "type": "object"
+        }
+      },
+      "required": [
+        "ordered_feature_ids",
+        "feature_groups",
+        "imputation_values",
+        "standardization_means",
+        "standardization_scales",
+        "fit_parent_groups_sha256"
+      ],
+      "title": "FeatureSchemaV1",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "calibrated_score_semantics": {
+      "const": "calibrated_evidence_support_score_not_experimental_probability",
+      "default": "calibrated_evidence_support_score_not_experimental_probability",
+      "title": "Calibrated Score Semantics",
+      "type": "string"
+    },
+    "calibration_method": {
+      "$ref": "#/$defs/CalibrationMethod"
+    },
+    "calibration_parent_groups_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Calibration Parent Groups Sha256"
+    },
+    "calibration_uses_held_out_groups": {
+      "title": "Calibration Uses Held Out Groups",
+      "type": "boolean"
+    },
+    "configuration_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Configuration Sha256",
+      "type": "string"
+    },
+    "estimator_family": {
+      "$ref": "#/$defs/EstimatorFamily"
+    },
+    "feature_schema": {
+      "$ref": "#/$defs/FeatureSchemaV1"
+    },
+    "hyperparameters": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Hyperparameters",
+      "type": "object"
+    },
+    "model_id": {
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    },
+    "random_seed": {
+      "minimum": 0,
+      "title": "Random Seed",
+      "type": "integer"
+    },
+    "raw_score_semantics": {
+      "const": "uncalibrated_model_score",
+      "default": "uncalibrated_model_score",
+      "title": "Raw Score Semantics",
+      "type": "string"
+    },
+    "role": {
+      "$ref": "#/$defs/EvidenceModelRole"
+    },
+    "schema_version": {
+      "const": "synthaudit.evidence-model-manifest/1",
+      "default": "synthaudit.evidence-model-manifest/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sklearn_version": {
+      "minLength": 1,
+      "title": "Sklearn Version",
+      "type": "string"
+    },
+    "stage": {
+      "$ref": "#/$defs/EvidenceStage"
+    },
+    "train_parent_groups_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Train Parent Groups Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "model_id",
+    "stage",
+    "role",
+    "estimator_family",
+    "calibration_method",
+    "calibration_uses_held_out_groups",
+    "feature_schema",
+    "train_parent_groups_sha256",
+    "configuration_sha256",
+    "random_seed",
+    "sklearn_version",
+    "hyperparameters",
+    "provenance"
+  ],
+  "title": "EvidenceModelManifestV1",
+  "type": "object"
+}

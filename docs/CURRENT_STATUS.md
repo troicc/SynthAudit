@@ -290,3 +290,55 @@ configured. No performance result or experimental outcome is inferred from the s
 
 Next: Phase 9 stage-specific logistic/HGB evidence baselines, held-out calibration, bootstrap and
 provider uncertainty, missing-evidence flags, and abstention.
+
+## Phase 9 — calibrated stage-specific evidence models
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/09-calibrated-evidence-models`
+
+Implemented strict contracts for reaction-centre support, completion support conditional on a
+supported centre, stereo-specification support, and route-context support. The six required roles
+remain explicit: corpus familiarity, deterministic structural checking, reaction centre,
+completion, stereo, and full evidence ensemble. Corpus-familiarity features are rejected from the
+primary plausibility models rather than treated as evidence against a novel reaction.
+
+`EvidenceFeatureEncoder` fits feature order, median imputation, scaling, and parent-group digests
+on training examples only while appending visible missing flags. Logistic regression and histogram
+gradient boosting train only on `train`; Platt and isotonic calibration use disjoint grouped
+`calibration` data. Model manifests preserve feature schema, versions, hyperparameters, random
+seed, partition digests, configuration digest, provenance, and distinct raw/calibrated semantics.
+
+Uncertainty combines parent-group bootstrap summaries, provider disagreement, missing-evidence
+fraction, and train-standardized OOD diagnostics. Abstention thresholds are prespecified or fitted
+only from held-out calibration diagnostics and every abstention has explicit reasons. Evaluation
+supports reliability bins, novelty-stratified calibration, scaffold/reaction-class OOD splits,
+selective risk/coverage, and report-only feature-group ablations; test data cannot enter fitting or
+threshold selection.
+
+Optional forward and independent-critic providers fail closed. Forward evidence requires model or
+checkpoint provenance and never labels its raw score as calibrated. The critic is disabled by
+default and available outputs require versioned prompts, multiple raw samples, token/cost totals,
+provenance, and explicit independence from the generation provider. A local registry resolves
+only explicitly fitted models and never downloads an artifact.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed for 87 source files;
+- `make schemas`: generated nine Phase 9 configuration/evidence/provider schemas and the
+  committed-schema regression passed;
+- `make test`: 226 passed, total coverage 86%; 18 focused Phase 9 tests cover all four stages,
+  both estimators, both calibrators, split leakage, conditional completion labels, bootstrap,
+  missingness, provider disagreement, OOD, abstention, evaluation, ablations, providers, registry,
+  feature extraction, and the versioned plan;
+- `make evidence-model-small`: exercised the complete contract on authored numeric data and
+  returned `metrics_status=not_reportable_software_fixture` without publishing metric values;
+- `make smoke`, `make benchmark-small`, and `make reactseq-conformance-small` passed offline with
+  prior artifact digests and fixture-scoped claims unchanged.
+
+No licensed research training corpus, adjudicated support-label set, selected model, forward
+checkpoint, serialized research artifact, or reportable performance result exists. Calibrated
+outputs remain evidence-support scores, never experimental feasibility probabilities.
+
+Next: Phase 10 route dependencies/continuity/condition ordering and a provider-neutral prompt-
+robustness benchmark covering exact, partial, ambiguous, incorrect, and contradictory guidance.

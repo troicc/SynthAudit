@@ -18,7 +18,16 @@ from synthaudit.counterfactuals.models import (
     CounterfactualDatasetV1,
     CounterfactualRecordV1,
 )
+from synthaudit.evaluation.evidence_model_smoke import EvidenceModelContractSmokeV1
 from synthaudit.evaluation.reactseq_conformance import ReactSeqConformanceSummary
+from synthaudit.models.evidence import (
+    AbstentionPolicyV1,
+    EvidenceEvaluationV1,
+    EvidenceExampleV1,
+    EvidenceModelManifestV1,
+    EvidenceModelPlanV1,
+    EvidencePredictionV1,
+)
 from synthaudit.novelty.models import MultiViewNoveltyResultV1
 from synthaudit.precedent.models import (
     ConditionEvidenceV1,
@@ -26,6 +35,8 @@ from synthaudit.precedent.models import (
     ProcedureEvidenceV1,
     ReferenceIndexArtifactV1,
 )
+from synthaudit.providers.forward import ForwardReactionEvidenceV1
+from synthaudit.providers.llm_critic import IndependentCriticEvidenceV1
 from synthaudit.schema.evidence import EvidenceValueV1
 from synthaudit.schema.reaction_ir import ReactionIRV1
 from synthaudit.schema.results import (
@@ -62,6 +73,15 @@ SCHEMAS = {
     "counterfactual-dataset-v1.schema.json": CounterfactualDatasetV1,
     "benchmark-splits-v1.schema.json": BenchmarkSplitManifestV1,
     "counterfactual-benchmark-validation-v1.schema.json": (CounterfactualBenchmarkValidationV1),
+    "evidence-example-v1.schema.json": EvidenceExampleV1,
+    "evidence-model-manifest-v1.schema.json": EvidenceModelManifestV1,
+    "evidence-model-plan-v1.schema.json": EvidenceModelPlanV1,
+    "evidence-prediction-v1.schema.json": EvidencePredictionV1,
+    "evidence-evaluation-v1.schema.json": EvidenceEvaluationV1,
+    "abstention-policy-v1.schema.json": AbstentionPolicyV1,
+    "forward-reaction-evidence-v1.schema.json": ForwardReactionEvidenceV1,
+    "independent-critic-evidence-v1.schema.json": IndependentCriticEvidenceV1,
+    "evidence-model-contract-smoke-v1.schema.json": EvidenceModelContractSmokeV1,
 }
 
 

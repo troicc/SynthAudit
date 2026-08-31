@@ -1,0 +1,262 @@
+{
+  "$defs": {
+    "EvidenceAvailability": {
+      "enum": [
+        "available",
+        "unavailable",
+        "indeterminate",
+        "unsupported"
+      ],
+      "title": "EvidenceAvailability",
+      "type": "string"
+    },
+    "ForwardProductCandidateV1": {
+      "additionalProperties": false,
+      "properties": {
+        "product_smiles": {
+          "minLength": 1,
+          "title": "Product Smiles",
+          "type": "string"
+        },
+        "provider_raw_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Raw Score"
+        },
+        "rank": {
+          "minimum": 1,
+          "title": "Rank",
+          "type": "integer"
+        },
+        "raw_score_is_calibrated_probability": {
+          "const": false,
+          "default": false,
+          "title": "Raw Score Is Calibrated Probability",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rank",
+        "product_smiles"
+      ],
+      "title": "ForwardProductCandidateV1",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "availability": {
+      "$ref": "#/$defs/EvidenceAvailability"
+    },
+    "candidates": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ForwardProductCandidateV1"
+      },
+      "title": "Candidates",
+      "type": "array"
+    },
+    "interpretation": {
+      "const": "Forward-model support is independent provider evidence, not experimental validation.",
+      "default": "Forward-model support is independent provider evidence, not experimental validation.",
+      "title": "Interpretation",
+      "type": "string"
+    },
+    "missing_reasons": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Reasons",
+      "type": "array"
+    },
+    "model_uncertainty": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Model Uncertainty"
+    },
+    "provenance": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "title": "Provenance",
+      "type": "array"
+    },
+    "provider_id": {
+      "minLength": 1,
+      "title": "Provider Id",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.forward-reaction-evidence/1",
+      "default": "synthaudit.forward-reaction-evidence/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "target_rank": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Rank"
+    },
+    "target_similarity": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Similarity"
+    }
+  },
+  "required": [
+    "request_id",
+    "provider_id",
+    "availability"
+  ],
+  "title": "ForwardReactionEvidenceV1",
+  "type": "object"
+}

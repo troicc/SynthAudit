@@ -70,3 +70,16 @@ committed 200-record counterfactual set is authored specifically for offline sof
 verification under Apache-2.0. Its source metadata explicitly states that it is not experimental
 reaction evidence. Research-scale generation remains unavailable until a separately licensed,
 versioned, content-addressed mapped-reaction corpus is configured and reviewed.
+
+## Phase 9 model-provider boundary
+
+Phase 9 changes no pinned upstream SHA or availability claim. No forward-model, ReactSeq,
+ReactionClassifier, Molecular Transformer, LLM, dataset, or checkpoint artifact was downloaded,
+selected, or redistributed. The forward-provider interface fails closed until a checkpoint has a
+verified license, digest, documented input format, preprocessing record, and reproducible local
+inference. The independent critic remains disabled by default and requires explicit generation-
+provider independence, raw responses, multiple samples, token/cost accounting, and provenance.
+
+The logistic-regression and histogram-gradient-boosting implementations use the locally locked
+scikit-learn dependency against authored software fixtures. This verifies API and leakage guards,
+not scientific performance or upstream model compatibility.

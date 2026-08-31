@@ -1,0 +1,371 @@
+{
+  "$defs": {
+    "EvidenceAvailability": {
+      "enum": [
+        "available",
+        "unavailable",
+        "indeterminate",
+        "unsupported"
+      ],
+      "title": "EvidenceAvailability",
+      "type": "string"
+    },
+    "EvidenceStage": {
+      "enum": [
+        "reaction_centre_supported",
+        "completion_supported_given_reaction_centre",
+        "stereo_specification_supported",
+        "route_context_supported"
+      ],
+      "title": "EvidenceStage",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "ProviderDisagreementV1": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "$ref": "#/$defs/EvidenceAvailability"
+        },
+        "interpretation": {
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "missing_providers": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Providers",
+          "type": "array"
+        },
+        "provider_scores": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Provider Scores",
+          "type": "object"
+        },
+        "schema_version": {
+          "const": "synthaudit.provider-disagreement/1",
+          "default": "synthaudit.provider-disagreement/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "score_range": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Score Range"
+        },
+        "score_standard_deviation": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Score Standard Deviation"
+        }
+      },
+      "required": [
+        "availability",
+        "interpretation"
+      ],
+      "title": "ProviderDisagreementV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "abstained": {
+      "title": "Abstained",
+      "type": "boolean"
+    },
+    "abstention_reasons": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Abstention Reasons",
+      "type": "array"
+    },
+    "bootstrap_interval_90": {
+      "anyOf": [
+        {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bootstrap Interval 90"
+    },
+    "bootstrap_mean_score": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bootstrap Mean Score"
+    },
+    "bootstrap_member_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Bootstrap Member Count",
+      "type": "integer"
+    },
+    "bootstrap_standard_deviation": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bootstrap Standard Deviation"
+    },
+    "calibrated_evidence_support_score": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Calibrated Evidence Support Score"
+    },
+    "example_id": {
+      "minLength": 1,
+      "title": "Example Id",
+      "type": "string"
+    },
+    "interpretation": {
+      "const": "Evidence support score; not an experimental feasibility probability.",
+      "default": "Evidence support score; not an experimental feasibility probability.",
+      "title": "Interpretation",
+      "type": "string"
+    },
+    "missing_feature_flags": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Feature Flags",
+      "type": "array"
+    },
+    "missing_feature_fraction": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Missing Feature Fraction",
+      "type": "number"
+    },
+    "model_configuration_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Model Configuration Sha256",
+      "type": "string"
+    },
+    "model_id": {
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "ood_max_absolute_zscore": {
+      "minimum": 0,
+      "title": "Ood Max Absolute Zscore",
+      "type": "number"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    },
+    "provider_disagreement": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProviderDisagreementV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "raw_model_score": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Raw Model Score",
+      "type": "number"
+    },
+    "schema_version": {
+      "const": "synthaudit.evidence-prediction/1",
+      "default": "synthaudit.evidence-prediction/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "stage": {
+      "$ref": "#/$defs/EvidenceStage"
+    }
+  },
+  "required": [
+    "example_id",
+    "stage",
+    "model_id",
+    "model_configuration_sha256",
+    "raw_model_score",
+    "missing_feature_fraction",
+    "ood_max_absolute_zscore",
+    "abstained",
+    "provenance"
+  ],
+  "title": "EvidencePredictionV1",
+  "type": "object"
+}

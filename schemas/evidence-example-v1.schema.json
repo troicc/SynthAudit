@@ -1,0 +1,326 @@
+{
+  "$defs": {
+    "EvidenceAvailability": {
+      "enum": [
+        "available",
+        "unavailable",
+        "indeterminate",
+        "unsupported"
+      ],
+      "title": "EvidenceAvailability",
+      "type": "string"
+    },
+    "EvidenceExampleSplit": {
+      "enum": [
+        "train",
+        "calibration",
+        "test",
+        "ood_scaffold",
+        "ood_reaction_class"
+      ],
+      "title": "EvidenceExampleSplit",
+      "type": "string"
+    },
+    "EvidenceFeatureV1": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "$ref": "#/$defs/EvidenceAvailability"
+        },
+        "feature_id": {
+          "minLength": 1,
+          "title": "Feature Id",
+          "type": "string"
+        },
+        "group": {
+          "$ref": "#/$defs/FeatureGroup"
+        },
+        "interpretation": {
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Missing Reason"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "feature_id",
+        "group",
+        "availability",
+        "interpretation"
+      ],
+      "title": "EvidenceFeatureV1",
+      "type": "object"
+    },
+    "EvidenceStage": {
+      "enum": [
+        "reaction_centre_supported",
+        "completion_supported_given_reaction_centre",
+        "stereo_specification_supported",
+        "route_context_supported"
+      ],
+      "title": "EvidenceStage",
+      "type": "string"
+    },
+    "FeatureGroup": {
+      "enum": [
+        "corpus_familiarity",
+        "structural",
+        "reaction_centre",
+        "completion",
+        "stereo",
+        "condition",
+        "precedent",
+        "forward_model",
+        "provider_agreement",
+        "route"
+      ],
+      "title": "FeatureGroup",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "completion_condition_centre_supported": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Completion Condition Centre Supported"
+    },
+    "example_id": {
+      "minLength": 1,
+      "title": "Example Id",
+      "type": "string"
+    },
+    "features": {
+      "items": {
+        "$ref": "#/$defs/EvidenceFeatureV1"
+      },
+      "minItems": 1,
+      "title": "Features",
+      "type": "array"
+    },
+    "notice": {
+      "const": "Evidence-model targets are support annotations, not experimental outcomes or feasibility probabilities.",
+      "default": "Evidence-model targets are support annotations, not experimental outcomes or feasibility probabilities.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "parent_group_id": {
+      "minLength": 1,
+      "title": "Parent Group Id",
+      "type": "string"
+    },
+    "product_novelty": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Product Novelty"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "synthaudit.evidence-example/1",
+      "default": "synthaudit.evidence-example/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "split": {
+      "$ref": "#/$defs/EvidenceExampleSplit"
+    },
+    "stage": {
+      "$ref": "#/$defs/EvidenceStage"
+    },
+    "target_label": {
+      "enum": [
+        0,
+        1
+      ],
+      "title": "Target Label",
+      "type": "integer"
+    },
+    "target_semantics": {
+      "const": "evidence_support_annotation",
+      "default": "evidence_support_annotation",
+      "title": "Target Semantics",
+      "type": "string"
+    },
+    "target_source": {
+      "minLength": 1,
+      "title": "Target Source",
+      "type": "string"
+    }
+  },
+  "required": [
+    "example_id",
+    "parent_group_id",
+    "split",
+    "stage",
+    "target_label",
+    "target_source",
+    "features",
+    "provenance"
+  ],
+  "title": "EvidenceExampleV1",
+  "type": "object"
+}

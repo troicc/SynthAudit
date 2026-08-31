@@ -30,3 +30,21 @@ limitations.
 No learned score is substituted for unavailable deterministic evidence, and no collection of
 views is collapsed into a weighted composite until a leakage-controlled benchmark establishes
 and documents such a model.
+
+## Phase 9 evidence-model selection boundary
+
+Phase 9 implements the required comparison space but does not select or publish a research model.
+The candidate base estimators are logistic regression and histogram gradient boosting. Candidate
+calibrators are held-out Platt scaling and isotonic regression. Both are exercised by authored
+software fixtures only; fixture scores are not model-selection evidence.
+
+The primary stage-specific models exclude corpus-familiarity features. Corpus familiarity and the
+deterministic structural baseline remain separately visible comparators. Reaction-centre,
+completion, stereo, and full-evidence roles have independent manifests and targets. The test and
+OOD partitions are report-only: they cannot fit preprocessing, calibration, abstention thresholds,
+or choose among estimators, calibrators, and ablations.
+
+A later research selection must predeclare selection data and criteria, use parent/scaffold/class
+grouping as appropriate, compare calibration and selective-risk behaviour across novelty strata,
+and publish artifact/configuration digests. Until then `configs/evidence-models-v1.json` records
+`model_selection_status=not_run` and the local registry contains only explicitly fitted models.

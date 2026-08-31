@@ -1,7 +1,7 @@
 UV_CACHE_DIR ?= .uv-cache
 export UV_CACHE_DIR
 
-.PHONY: install quality format test smoke ui benchmark-small counterfactual-fixture reactseq-conformance-small reproduce-small schemas
+.PHONY: install quality format test smoke ui benchmark-small counterfactual-fixture evidence-model-small reactseq-conformance-small reproduce-small schemas
 
 install:
 	uv sync --all-extras --dev
@@ -30,10 +30,13 @@ benchmark-small:
 counterfactual-fixture:
 	uv run python scripts/build_counterfactual_fixture.py
 
+evidence-model-small:
+	uv run synthaudit benchmark evidence-model-contract --json
+
 reactseq-conformance-small:
 	uv run synthaudit benchmark reactseq-conformance --fixture tests/fixtures/reactseq/golden.json --json
 
-reproduce-small: quality test smoke benchmark-small reactseq-conformance-small
+reproduce-small: quality test smoke benchmark-small evidence-model-small reactseq-conformance-small
 
 schemas:
 	uv run python scripts/export_schemas.py

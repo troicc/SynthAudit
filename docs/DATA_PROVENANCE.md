@@ -38,3 +38,17 @@ Unknown licensing is not permission to copy or redistribute. Procedure text is a
 through an explicit local provider whose record includes license status and provenance. Missing
 or legally unavailable fields remain unavailable; they are never reconstructed from a retrieved
 neighbour or filled from an unrelated source.
+
+## Phase 9 label and model provenance
+
+An evidence-training example must record its parent group, split, stage, support annotation,
+annotation source, feature provenance, and overall record provenance. Completion examples must
+state that the reaction-centre support condition holds. A recorded reaction is not automatically
+assigned a positive support label, and a generated counterfactual is not automatically assigned a
+negative experimental label.
+
+The Phase 9 smoke data is authored numeric software-fixture data. It has no experimental source
+and cannot be mixed into a scientific evaluation. Real model artifacts must retain the corpus and
+label versions, grouped-split manifest, feature schema, estimator/calibrator configuration,
+scikit-learn version, random seed, train/calibration group digests, final artifact digest, and
+license status. No research model artifact or metric is currently published.

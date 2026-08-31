@@ -1,0 +1,287 @@
+{
+  "$defs": {
+    "CalibrationSliceV1": {
+      "additionalProperties": false,
+      "properties": {
+        "brier_score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Brier Score"
+        },
+        "expected_calibration_error": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Calibration Error"
+        },
+        "reliability_bins": {
+          "items": {
+            "$ref": "#/$defs/ReliabilityBinV1"
+          },
+          "title": "Reliability Bins",
+          "type": "array"
+        },
+        "sample_count": {
+          "minimum": 0,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "slice_id": {
+          "minLength": 1,
+          "title": "Slice Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "slice_id",
+        "sample_count",
+        "reliability_bins"
+      ],
+      "title": "CalibrationSliceV1",
+      "type": "object"
+    },
+    "EvidenceExampleSplit": {
+      "enum": [
+        "train",
+        "calibration",
+        "test",
+        "ood_scaffold",
+        "ood_reaction_class"
+      ],
+      "title": "EvidenceExampleSplit",
+      "type": "string"
+    },
+    "EvidenceStage": {
+      "enum": [
+        "reaction_centre_supported",
+        "completion_supported_given_reaction_centre",
+        "stereo_specification_supported",
+        "route_context_supported"
+      ],
+      "title": "EvidenceStage",
+      "type": "string"
+    },
+    "ReliabilityBinV1": {
+      "additionalProperties": false,
+      "properties": {
+        "lower_bound": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Lower Bound",
+          "type": "number"
+        },
+        "mean_evidence_score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mean Evidence Score"
+        },
+        "observed_support_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed Support Fraction"
+        },
+        "sample_count": {
+          "minimum": 0,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "upper_bound": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Upper Bound",
+          "type": "number"
+        }
+      },
+      "required": [
+        "lower_bound",
+        "upper_bound",
+        "sample_count"
+      ],
+      "title": "ReliabilityBinV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "auroc": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Auroc"
+    },
+    "average_precision": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Average Precision"
+    },
+    "brier_score": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Brier Score"
+    },
+    "calibration_slices": {
+      "items": {
+        "$ref": "#/$defs/CalibrationSliceV1"
+      },
+      "title": "Calibration Slices",
+      "type": "array"
+    },
+    "coverage": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Coverage",
+      "type": "number"
+    },
+    "evaluation_id": {
+      "minLength": 1,
+      "title": "Evaluation Id",
+      "type": "string"
+    },
+    "expected_calibration_error": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Calibration Error"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Limitations",
+      "type": "array"
+    },
+    "model_id": {
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "notice": {
+      "const": "Evidence-model evaluation targets support annotations, not experimental feasibility.",
+      "default": "Evidence-model evaluation targets support annotations, not experimental feasibility.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "sample_count": {
+      "minimum": 0,
+      "title": "Sample Count",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "synthaudit.evidence-evaluation/1",
+      "default": "synthaudit.evidence-evaluation/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "software_verification_fixture",
+        "research_benchmark"
+      ],
+      "title": "Scope",
+      "type": "string"
+    },
+    "selective_risk": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Selective Risk"
+    },
+    "split": {
+      "$ref": "#/$defs/EvidenceExampleSplit"
+    },
+    "stage": {
+      "$ref": "#/$defs/EvidenceStage"
+    }
+  },
+  "required": [
+    "evaluation_id",
+    "stage",
+    "model_id",
+    "split",
+    "scope",
+    "sample_count",
+    "coverage",
+    "calibration_slices",
+    "limitations"
+  ],
+  "title": "EvidenceEvaluationV1",
+  "type": "object"
+}

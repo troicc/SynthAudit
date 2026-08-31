@@ -1,0 +1,130 @@
+{
+  "$defs": {
+    "CalibrationMethod": {
+      "enum": [
+        "none",
+        "platt",
+        "isotonic"
+      ],
+      "title": "CalibrationMethod",
+      "type": "string"
+    },
+    "EstimatorFamily": {
+      "enum": [
+        "logistic_regression",
+        "hist_gradient_boosting_classifier"
+      ],
+      "title": "EstimatorFamily",
+      "type": "string"
+    },
+    "EvidenceStage": {
+      "enum": [
+        "reaction_centre_supported",
+        "completion_supported_given_reaction_centre",
+        "stereo_specification_supported",
+        "route_context_supported"
+      ],
+      "title": "EvidenceStage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "ablation_contract_count": {
+      "minimum": 1,
+      "title": "Ablation Contract Count",
+      "type": "integer"
+    },
+    "abstention_exercised": {
+      "title": "Abstention Exercised",
+      "type": "boolean"
+    },
+    "bootstrap_member_count": {
+      "minimum": 2,
+      "title": "Bootstrap Member Count",
+      "type": "integer"
+    },
+    "calibrated_score_semantics": {
+      "const": "calibrated_evidence_support_score_not_experimental_probability",
+      "default": "calibrated_evidence_support_score_not_experimental_probability",
+      "title": "Calibrated Score Semantics",
+      "type": "string"
+    },
+    "calibration_methods_exercised": {
+      "items": {
+        "$ref": "#/$defs/CalibrationMethod"
+      },
+      "title": "Calibration Methods Exercised",
+      "type": "array"
+    },
+    "estimator_families_exercised": {
+      "items": {
+        "$ref": "#/$defs/EstimatorFamily"
+      },
+      "title": "Estimator Families Exercised",
+      "type": "array"
+    },
+    "metrics_status": {
+      "const": "not_reportable_software_fixture",
+      "default": "not_reportable_software_fixture",
+      "title": "Metrics Status",
+      "type": "string"
+    },
+    "missing_flags_exercised": {
+      "title": "Missing Flags Exercised",
+      "type": "boolean"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "ood_evaluation_contract_exercised": {
+      "title": "Ood Evaluation Contract Exercised",
+      "type": "boolean"
+    },
+    "provider_disagreement_exercised": {
+      "title": "Provider Disagreement Exercised",
+      "type": "boolean"
+    },
+    "raw_score_semantics": {
+      "const": "uncalibrated_model_score",
+      "default": "uncalibrated_model_score",
+      "title": "Raw Score Semantics",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.evidence-model-contract-smoke/1",
+      "default": "synthaudit.evidence-model-contract-smoke/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "stage_model_count": {
+      "const": 4,
+      "default": 4,
+      "title": "Stage Model Count",
+      "type": "integer"
+    },
+    "stages": {
+      "items": {
+        "$ref": "#/$defs/EvidenceStage"
+      },
+      "title": "Stages",
+      "type": "array"
+    }
+  },
+  "required": [
+    "stages",
+    "estimator_families_exercised",
+    "calibration_methods_exercised",
+    "bootstrap_member_count",
+    "missing_flags_exercised",
+    "provider_disagreement_exercised",
+    "abstention_exercised",
+    "ood_evaluation_contract_exercised",
+    "ablation_contract_count"
+  ],
+  "title": "EvidenceModelContractSmokeV1",
+  "type": "object"
+}
