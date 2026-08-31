@@ -494,8 +494,8 @@ report research metrics as `not_run` and regenerate byte-for-byte.
 Added the complete technical report, release-level model and dataset cards, changelog, release
 notes/checklist, and the five required PhD application documents. All public Markdown reports,
 methodology documents, cards, ADRs, and examples now display the exact scientific boundary, with a
-regression test enforcing it. Placeholder repository URLs were removed because this checkout has
-no configured remote.
+regression test enforcing it. The verified public repository URL is recorded in package and
+citation metadata, and `main` tracks `https://github.com/troicc/SynthAudit`.
 
 Package, lock, runtime, and citation metadata now identify v1.0.0. The wheel force-includes the
 Streamlit theme and five UI pages; the CLI resolves the source application first and bundled wheel
@@ -527,7 +527,8 @@ One environment warning remains: joblib cannot query physical core count in this
 and falls back to logical cores. Docker is not installed, so image build/runtime validation was
 unavailable; the release wheel and YAML were validated separately. No licensed external corpus,
 official SynthEx schema, ReactSeq checkpoint, prompt provider, GPU experiment, laboratory result,
-Git remote, push, or hosted release exists.
+`v1.0.0` Git tag, or hosted release exists. The verified `main` branch is published to GitHub.
 
-Next: configure a verified Git remote and publish only when authorized; run the uncompleted
-research questions only under a separately licensed, preregistered, parent-grouped protocol.
+Next: create the `v1.0.0` tag and hosted release only when separately authorized; run the
+uncompleted research questions only under a separately licensed, preregistered, parent-grouped
+protocol.

@@ -39,7 +39,7 @@
 ## Publication operations
 
 - [x] Configure the verified `https://github.com/troicc/SynthAudit` remote and record its URL in package and citation metadata.
-- [ ] Push `main` when authorized.
+- [x] Push `main` to `https://github.com/troicc/SynthAudit` with upstream tracking.
 - [ ] Push the `v1.0.0` tag when authorized.
 - [ ] Create a hosted release and attach/checksum artifacts when authorized.
 
