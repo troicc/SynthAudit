@@ -2,7 +2,7 @@ UV_CACHE_DIR ?= .uv-cache
 export UV_CACHE_DIR
 UV_RUN ?= uv run --no-sync
 
-.PHONY: install quality format test smoke ui ui-smoke cli-smoke product-examples release-evaluation benchmark-small counterfactual-fixture prompt-fixture evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small reproduce-small schemas
+.PHONY: install quality format test smoke doctor easy-smoke ui ui-smoke cli-smoke product-examples release-evaluation benchmark-small counterfactual-fixture prompt-fixture evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small reproduce-small schemas
 
 install:
 	uv sync --all-extras --dev
@@ -21,6 +21,19 @@ test:
 
 smoke:
 	$(UV_RUN) synthaudit version --json
+
+doctor:
+	$(UV_RUN) synthaudit-easy doctor --json
+
+easy-smoke:
+	rm -rf /tmp/synthaudit-easy-smoke
+	@set +e; \
+	$(UV_RUN) synthaudit-easy audit --input examples/mapped-reaction.smi --output-dir /tmp/synthaudit-easy-smoke; \
+	code=$$?; \
+	set -e; \
+	test $$code -eq 0 -o $$code -eq 3
+	test -f /tmp/synthaudit-easy-smoke/audit.html
+	test -f /tmp/synthaudit-easy-smoke/summary.json
 
 ui:
 	$(UV_RUN) --extra ui streamlit run app/Home.py
@@ -59,7 +72,7 @@ route-prompt-small:
 reactseq-conformance-small:
 	$(UV_RUN) synthaudit benchmark reactseq-conformance --fixture tests/fixtures/reactseq/golden.json --json
 
-reproduce-small: quality test smoke ui-smoke cli-smoke benchmark-small evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small release-evaluation
+reproduce-small: quality test smoke doctor easy-smoke ui-smoke cli-smoke benchmark-small evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small release-evaluation
 
 schemas:
 	$(UV_RUN) python scripts/export_schemas.py
