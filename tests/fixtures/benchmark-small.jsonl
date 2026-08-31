@@ -1,0 +1,2 @@
+{"reaction_id":"fixture-001","label":"recorded_reaction"}
+{"reaction_id":"fixture-001-cf","label":"generated_counterfactual","parent_reaction_id":"fixture-001"}

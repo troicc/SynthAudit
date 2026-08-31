@@ -1,0 +1,11 @@
+services:
+  synthaudit-ui:
+    build: .
+    command: ["streamlit", "run", "app/Home.py", "--server.address=0.0.0.0"]
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app:/app/app:ro
+      - ./reports:/app/reports
+    environment:
+      SYNTHAUDIT_OFFLINE: "1"

@@ -14,3 +14,4 @@ Updated: 2026-08-31.
 - Initial evidence models are baselines. Calibration is conditional on declared data and may not transfer out of distribution.
 - Route condition compatibility and protecting-group timing begin with transparent rules and review flags; they are not comprehensive synthetic-chemistry reasoning.
 - Large MVP/full datasets, paid-provider prompt experiments, GPU models, and laboratory validation are outside offline tests and are not claimed complete without artifacts.
+- The Phase 1 CLI contains only bootstrap/version and small-manifest validation commands; reaction commands are implemented after the canonical schemas and execution engine.

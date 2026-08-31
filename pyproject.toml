@@ -1,0 +1,102 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "synthaudit"
+version = "0.1.0"
+description = "A representation-agnostic audit layer for reaction-edit retrosynthesis"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "SynthAudit contributors" }]
+keywords = ["cheminformatics", "retrosynthesis", "reaction-informatics", "audit"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Chemistry",
+]
+dependencies = [
+  "jinja2>=3.1,<4",
+  "networkx>=3.4,<4",
+  "numpy>=1.26,<3",
+  "pandas>=2.2,<4",
+  "pyarrow>=18,<23",
+  "pydantic>=2.10,<3",
+  "rdkit>=2024.9.6",
+  "rich>=13.9,<15",
+  "scikit-learn>=1.5,<2",
+  "typer>=0.15,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "hypothesis>=6.120,<7",
+  "mypy>=1.14,<2",
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.9,<1",
+]
+reactseq = []
+classifier = []
+forward = []
+llm = ["httpx>=0.28,<1"]
+ui = ["streamlit>=1.41,<2"]
+all = ["httpx>=0.28,<1", "streamlit>=1.41,<2"]
+
+[project.scripts]
+synthaudit = "synthaudit.cli.app:main"
+
+[project.urls]
+Documentation = "https://github.com/example/SynthAudit/tree/main/docs"
+Repository = "https://github.com/example/SynthAudit"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/synthaudit"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+markers = [
+  "integration: requires optional integration dependencies",
+  "upstream: accesses a pinned upstream artifact",
+  "slow: takes more than a few seconds",
+  "gpu: requires a GPU runtime",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["synthaudit"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_also = [
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+  "raise NotImplementedError",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["synthaudit"]
+plugins = ["pydantic.mypy"]
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = ["rdkit.*", "sklearn.*", "streamlit.*"]
+ignore_missing_imports = true
