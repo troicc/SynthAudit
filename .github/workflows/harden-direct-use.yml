@@ -1,0 +1,99 @@
+name: harden-direct-use
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.7"
+          enable-cache: true
+      - run: uv python install 3.11
+      - name: Harden batch output paths and tests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('src/synthaudit/easy.py')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace(
+              'import csv\nimport importlib.util\nimport json\n',
+              'import csv\nimport hashlib\nimport importlib.util\nimport json\nimport re\n',
+          )
+          anchor = '''def _record_iterator(
+              path: Path,
+          '''
+          helper = '''def _safe_record_key(identifier: str) -> str:
+              """Return a deterministic directory name that cannot escape the output root."""
+
+              original = identifier.strip()
+              digest = hashlib.sha256(original.encode("utf-8")).hexdigest()[:10]
+              readable = re.sub(r"[^A-Za-z0-9._-]+", "-", original).strip("._-")
+              readable = readable[:80] or "record"
+              return f"{readable}-{digest}"
+
+
+          def _record_iterator(
+              path: Path,
+          '''
+          if anchor not in text:
+              raise SystemExit('record iterator anchor not found')
+          text = text.replace(anchor, helper, 1)
+          old = '''        record_dir = output_dir / "records" / identifier
+          '''
+          new = '''        record_dir = output_dir / "records" / _safe_record_key(identifier)
+          '''
+          if old not in text:
+              raise SystemExit('record directory anchor not found')
+          text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
+
+          test_path = Path('tests/unit/test_easy.py')
+          tests = test_path.read_text(encoding='utf-8')
+          tests = tests.replace(
+              '    _record_iterator,\n',
+              '    _record_iterator,\n    _safe_record_key,\n',
+              1,
+          )
+          tests += '''
+
+          def test_batch_record_key_is_path_safe_and_deterministic() -> None:
+              first = _safe_record_key("../../unsafe / reaction")
+              second = _safe_record_key("../../unsafe / reaction")
+              other = _safe_record_key("another reaction")
+              assert first == second
+              assert first != other
+              assert "/" not in first
+              assert "\\\\" not in first
+              assert ".." not in first
+          '''
+          test_path.write_text(tests, encoding='utf-8')
+          PY
+          rm -f .github/workflows/harden-direct-use.yml
+      - run: uv sync --frozen --all-extras --dev
+      - run: uv run ruff check --fix src/synthaudit/easy.py tests/unit/test_easy.py
+      - run: uv run ruff format src/synthaudit/easy.py tests/unit/test_easy.py
+      - run: make quality
+      - run: make test
+      - run: make doctor
+      - run: make easy-smoke
+      - name: Commit hardened direct-use paths
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: harden batch output paths"
+          git push origin HEAD:main
