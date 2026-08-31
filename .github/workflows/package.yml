@@ -1,0 +1,33 @@
+name: package
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.7"
+          enable-cache: true
+      - run: uv python install 3.11
+      - run: uv lock --check
+      - run: uv build
+      - name: Verify the built wheel in a clean environment
+        run: |
+          python3 -m venv /tmp/synthaudit-wheel
+          /tmp/synthaudit-wheel/bin/pip install dist/*.whl
+          /tmp/synthaudit-wheel/bin/synthaudit version --json
+          /tmp/synthaudit-wheel/bin/synthaudit-easy doctor --json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthaudit-distributions
+          path: dist/*
+          if-no-files-found: error
