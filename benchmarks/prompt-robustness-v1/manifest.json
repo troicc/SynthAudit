@@ -1,0 +1,37 @@
+{
+  "case_count": 8,
+  "cases_sha256": "568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5",
+  "dataset_id": "synthaudit-authored-prompt-robustness-fixture",
+  "dataset_version": "1",
+  "eligibility_rule": "at_least_one_centre_and_two_total_declared_edit_operations",
+  "metrics_status": "not_run",
+  "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+  "provenance": [
+    {
+      "adapter": "build_prompt_dataset",
+      "adapter_version": "1",
+      "artifact_sha256": "568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5",
+      "generated_at": null,
+      "license": "Apache-2.0",
+      "metadata": {},
+      "source": "synthaudit",
+      "source_commit": null,
+      "source_version": "0.1.0"
+    }
+  ],
+  "purpose": "software_verification_fixture",
+  "schema_version": "synthaudit.prompt-benchmark-dataset-manifest/1",
+  "source_dataset_id": "synthaudit-authored-counterfactual-fixture",
+  "source_dataset_version": "1",
+  "source_label_semantics": "recorded_reaction_is_a_reference_representation_not_guaranteed_experimental_success",
+  "source_license_status": "Apache-2.0 fixture; not experimental reaction evidence",
+  "source_records_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+  "variant_count": 40,
+  "variant_kind_counts": {
+    "ambiguous": 8,
+    "contradictory": 8,
+    "exact": 8,
+    "incorrect_structurally_plausible": 8,
+    "partial": 8
+  }
+}

@@ -20,6 +20,7 @@ from synthaudit.counterfactuals.models import (
 )
 from synthaudit.evaluation.evidence_model_smoke import EvidenceModelContractSmokeV1
 from synthaudit.evaluation.reactseq_conformance import ReactSeqConformanceSummary
+from synthaudit.evaluation.route_prompt_smoke import RoutePromptContractSmokeV1
 from synthaudit.models.evidence import (
     AbstentionPolicyV1,
     EvidenceEvaluationV1,
@@ -35,6 +36,14 @@ from synthaudit.precedent.models import (
     ProcedureEvidenceV1,
     ReferenceIndexArtifactV1,
 )
+from synthaudit.prompting.models import (
+    PromptBenchmarkCaseV1,
+    PromptBenchmarkDatasetV1,
+    PromptBenchmarkEvaluationV1,
+    PromptBenchmarkValidationV1,
+    PromptModelOutputV1,
+    PromptModelRequestV1,
+)
 from synthaudit.providers.forward import ForwardReactionEvidenceV1
 from synthaudit.providers.llm_critic import IndependentCriticEvidenceV1
 from synthaudit.schema.evidence import EvidenceValueV1
@@ -46,6 +55,7 @@ from synthaudit.schema.results import (
     RepresentationConformanceV1,
     SemanticComparisonV1,
 )
+from synthaudit.schema.route_audit import RouteAuditResultV1, RouteStepEvidenceV1
 from synthaudit.schema.route_ir import RouteIRV1
 
 SCHEMAS = {
@@ -82,6 +92,15 @@ SCHEMAS = {
     "forward-reaction-evidence-v1.schema.json": ForwardReactionEvidenceV1,
     "independent-critic-evidence-v1.schema.json": IndependentCriticEvidenceV1,
     "evidence-model-contract-smoke-v1.schema.json": EvidenceModelContractSmokeV1,
+    "route-audit-result-v1.schema.json": RouteAuditResultV1,
+    "route-step-evidence-v1.schema.json": RouteStepEvidenceV1,
+    "prompt-benchmark-case-v1.schema.json": PromptBenchmarkCaseV1,
+    "prompt-benchmark-dataset-v1.schema.json": PromptBenchmarkDatasetV1,
+    "prompt-benchmark-validation-v1.schema.json": PromptBenchmarkValidationV1,
+    "prompt-model-request-v1.schema.json": PromptModelRequestV1,
+    "prompt-model-output-v1.schema.json": PromptModelOutputV1,
+    "prompt-benchmark-evaluation-v1.schema.json": PromptBenchmarkEvaluationV1,
+    "route-prompt-contract-smoke-v1.schema.json": RoutePromptContractSmokeV1,
 }
 
 

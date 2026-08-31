@@ -1,0 +1,93 @@
+{
+  "$defs": {
+    "PromptVariantKind": {
+      "enum": [
+        "exact",
+        "partial",
+        "ambiguous",
+        "incorrect_structurally_plausible",
+        "contradictory"
+      ],
+      "title": "PromptVariantKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "case_count": {
+      "minimum": 1,
+      "title": "Case Count",
+      "type": "integer"
+    },
+    "cases_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Cases Sha256",
+      "type": "string"
+    },
+    "dataset_id": {
+      "minLength": 1,
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "dataset_version": {
+      "minLength": 1,
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "metrics_status": {
+      "const": "not_run",
+      "default": "not_run",
+      "title": "Metrics Status",
+      "type": "string"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "parent_group_atomicity": {
+      "const": "passed",
+      "default": "passed",
+      "title": "Parent Group Atomicity",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.prompt-benchmark-validation/1",
+      "default": "synthaudit.prompt-benchmark-validation/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "valid": {
+      "const": true,
+      "default": true,
+      "title": "Valid",
+      "type": "boolean"
+    },
+    "variant_count": {
+      "minimum": 5,
+      "title": "Variant Count",
+      "type": "integer"
+    },
+    "variant_kind_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/PromptVariantKind"
+      },
+      "title": "Variant Kind Counts",
+      "type": "object"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "dataset_version",
+    "case_count",
+    "variant_count",
+    "variant_kind_counts",
+    "cases_sha256"
+  ],
+  "title": "PromptBenchmarkValidationV1",
+  "type": "object"
+}

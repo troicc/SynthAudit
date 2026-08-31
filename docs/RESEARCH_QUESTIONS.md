@@ -16,6 +16,13 @@ Representation outcomes include parse success, exact precursor reconstruction, c
 
 Evidence-model outcomes include AUROC, AUPRC, Brier score, Expected Calibration Error, false rejection/acceptance rates, selective risk, coverage, and high-novelty false rejection rate. Confidence intervals bootstrap parent reaction or route IDs.
 
+Prompt outcomes separately include reaction-centre exact accuracy, precursor exact match,
+completion and stereo accuracy, structural validity, prompt obedience, recovery from an incorrect
+prompt, abstention, confidence drop under contradiction, and reliability against reference-
+representation agreement. Route outcomes remain minimum step support, maximum uncertainty,
+blocking/completion/stereo/novelty/condition step sets, and an expert-review queue; step scores are
+not multiplied into a route success probability.
+
 ## Split and leakage contract
 
 All derivatives of one recorded parent remain in the same split. Evaluations include grouped parent-reaction, product-scaffold, and reaction-class splits plus high-novelty, ring-forming, and stereo-sensitive subsets. Calibration/threshold fitting never uses a test split. Corpus construction dates and all artifact hashes are recorded.

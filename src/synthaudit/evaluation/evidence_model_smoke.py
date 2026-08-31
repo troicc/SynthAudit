@@ -6,7 +6,8 @@ from typing import Literal
 
 from pydantic import Field
 
-from synthaudit.models import (
+from synthaudit.models.evaluation import evaluate_predictions, run_feature_group_ablations
+from synthaudit.models.evidence import (
     CalibrationMethod,
     EstimatorFamily,
     EvidenceExampleSplit,
@@ -15,13 +16,13 @@ from synthaudit.models import (
     EvidenceModelRole,
     EvidenceStage,
     FeatureGroup,
+)
+from synthaudit.models.training import fit_evidence_model
+from synthaudit.models.uncertainty import (
     fit_abstention_policy_from_calibration,
     fit_bootstrap_ensemble,
-    fit_evidence_model,
     predict_with_uncertainty,
-    run_feature_group_ablations,
 )
-from synthaudit.models.evaluation import evaluate_predictions
 from synthaudit.schema.common import ProvenanceRecord, StrictModel
 from synthaudit.schema.evidence import EvidenceAvailability
 

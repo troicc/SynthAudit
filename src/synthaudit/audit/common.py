@@ -19,7 +19,7 @@ from synthaudit.schema.results import (
     StageAuditResultV1,
 )
 
-AuditStage = Literal["structural", "reaction_centre", "completion", "stereo"]
+AuditStage = Literal["structural", "reaction_centre", "completion", "stereo", "route"]
 
 
 def audit_provenance(component: str) -> tuple[ProvenanceRecord, ...]:

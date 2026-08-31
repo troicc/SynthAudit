@@ -1,0 +1,470 @@
+{
+  "$defs": {
+    "JsonValue": {},
+    "PromptInstructionRelation": {
+      "enum": [
+        "correct",
+        "incomplete",
+        "ambiguous",
+        "incorrect",
+        "contradictory"
+      ],
+      "title": "PromptInstructionRelation",
+      "type": "string"
+    },
+    "PromptInstructionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "atom_maps": {
+          "default": [],
+          "items": {
+            "type": "integer"
+          },
+          "title": "Atom Maps",
+          "type": "array"
+        },
+        "edit_type": {
+          "minLength": 1,
+          "title": "Edit Type",
+          "type": "string"
+        },
+        "instruction_id": {
+          "minLength": 1,
+          "title": "Instruction Id",
+          "type": "string"
+        },
+        "operation_payload": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Operation Payload",
+          "type": "object"
+        },
+        "relation_to_reference": {
+          "$ref": "#/$defs/PromptInstructionRelation"
+        },
+        "rendered_text": {
+          "minLength": 1,
+          "title": "Rendered Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instruction_id",
+        "edit_type",
+        "operation_payload",
+        "relation_to_reference",
+        "rendered_text"
+      ],
+      "title": "PromptInstructionV1",
+      "type": "object"
+    },
+    "PromptMutationKind": {
+      "enum": [
+        "omit",
+        "generalize",
+        "replace",
+        "append_contradiction"
+      ],
+      "title": "PromptMutationKind",
+      "type": "string"
+    },
+    "PromptMutationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "mutation_kind": {
+          "$ref": "#/$defs/PromptMutationKind"
+        },
+        "reference_instruction_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Reference Instruction Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "mutation_kind",
+        "reference_instruction_ids",
+        "description"
+      ],
+      "title": "PromptMutationV1",
+      "type": "object"
+    },
+    "PromptVariantKind": {
+      "enum": [
+        "exact",
+        "partial",
+        "ambiguous",
+        "incorrect_structurally_plausible",
+        "contradictory"
+      ],
+      "title": "PromptVariantKind",
+      "type": "string"
+    },
+    "PromptVariantV1": {
+      "additionalProperties": false,
+      "properties": {
+        "generation_seed": {
+          "minimum": 0,
+          "title": "Generation Seed",
+          "type": "integer"
+        },
+        "instructions": {
+          "items": {
+            "$ref": "#/$defs/PromptInstructionV1"
+          },
+          "minItems": 1,
+          "title": "Instructions",
+          "type": "array"
+        },
+        "kind": {
+          "$ref": "#/$defs/PromptVariantKind"
+        },
+        "mutations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/PromptMutationV1"
+          },
+          "title": "Mutations",
+          "type": "array"
+        },
+        "omitted_reference_instruction_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Omitted Reference Instruction Ids",
+          "type": "array"
+        },
+        "prompt_text": {
+          "minLength": 1,
+          "title": "Prompt Text",
+          "type": "string"
+        },
+        "prompt_version": {
+          "minLength": 1,
+          "title": "Prompt Version",
+          "type": "string"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "minItems": 1,
+          "title": "Provenance",
+          "type": "array"
+        },
+        "provider_neutral": {
+          "const": true,
+          "default": true,
+          "title": "Provider Neutral",
+          "type": "boolean"
+        },
+        "reaction_id": {
+          "minLength": 1,
+          "title": "Reaction Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "synthaudit.prompt-variant/1",
+          "default": "synthaudit.prompt-variant/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_reaction_semantic_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Reaction Semantic Hash",
+          "type": "string"
+        },
+        "variant_id": {
+          "minLength": 1,
+          "title": "Variant Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variant_id",
+        "reaction_id",
+        "kind",
+        "prompt_version",
+        "prompt_text",
+        "instructions",
+        "source_reaction_semantic_hash",
+        "generation_seed",
+        "provenance"
+      ],
+      "title": "PromptVariantV1",
+      "type": "object"
+    },
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "ReactionConditions": {
+      "additionalProperties": false,
+      "description": "Structured conditions while retaining source-level text.",
+      "properties": {
+        "atmosphere": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Atmosphere"
+        },
+        "catalysts": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Catalysts",
+          "type": "array"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "pressure_bar": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pressure Bar"
+        },
+        "reagents": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Reagents",
+          "type": "array"
+        },
+        "solvents": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Solvents",
+          "type": "array"
+        },
+        "source_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Text"
+        },
+        "temperature_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature C"
+        },
+        "time_hours": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Hours"
+        }
+      },
+      "title": "ReactionConditions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "minLength": 1,
+      "title": "Case Id",
+      "type": "string"
+    },
+    "conditions": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReactionConditions"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "mapped_product_smiles": {
+      "minLength": 1,
+      "title": "Mapped Product Smiles",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "requested_candidate_count": {
+      "default": 1,
+      "maximum": 100,
+      "minimum": 1,
+      "title": "Requested Candidate Count",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "synthaudit.prompt-model-request/1",
+      "default": "synthaudit.prompt-model-request/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "variant": {
+      "$ref": "#/$defs/PromptVariantV1"
+    }
+  },
+  "required": [
+    "request_id",
+    "case_id",
+    "variant",
+    "mapped_product_smiles"
+  ],
+  "title": "PromptModelRequestV1",
+  "type": "object"
+}

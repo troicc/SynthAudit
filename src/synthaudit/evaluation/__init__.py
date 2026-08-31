@@ -10,12 +10,18 @@ from synthaudit.evaluation.reactseq_conformance import (
     ReactSeqConformanceSummary,
     run_reactseq_conformance,
 )
+from synthaudit.evaluation.route_prompt_smoke import (
+    RoutePromptContractSmokeV1,
+    run_route_prompt_contract_smoke,
+)
 
 __all__ = [
     "EvidenceModelContractSmokeV1",
     "ReactSeqConformanceCaseResult",
     "ReactSeqConformanceSummary",
+    "RoutePromptContractSmokeV1",
     "compare_representations",
     "run_evidence_model_contract_smoke",
     "run_reactseq_conformance",
+    "run_route_prompt_contract_smoke",
 ]

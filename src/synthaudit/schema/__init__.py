@@ -45,6 +45,12 @@ from synthaudit.schema.results import (
     StereoChangeV1,
     StereoExecutionResult,
 )
+from synthaudit.schema.route_audit import (
+    RouteAuditResultV1,
+    RouteReviewItemV1,
+    RouteStepAuditV1,
+    RouteStepEvidenceV1,
+)
 from synthaudit.schema.route_ir import RouteIRV1, RouteStepIRV1
 
 __all__ = [
@@ -78,7 +84,11 @@ __all__ = [
     "ReactionConditions",
     "ReactionIRV1",
     "RepresentationConformanceV1",
+    "RouteAuditResultV1",
     "RouteIRV1",
+    "RouteReviewItemV1",
+    "RouteStepAuditV1",
+    "RouteStepEvidenceV1",
     "RouteStepIRV1",
     "SemanticComparisonV1",
     "SetAtomStateEdit",

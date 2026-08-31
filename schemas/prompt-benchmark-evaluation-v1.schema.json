@@ -1,0 +1,634 @@
+{
+  "$defs": {
+    "CalibrationSliceV1": {
+      "additionalProperties": false,
+      "properties": {
+        "brier_score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Brier Score"
+        },
+        "expected_calibration_error": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Calibration Error"
+        },
+        "reliability_bins": {
+          "items": {
+            "$ref": "#/$defs/ReliabilityBinV1"
+          },
+          "title": "Reliability Bins",
+          "type": "array"
+        },
+        "sample_count": {
+          "minimum": 0,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "slice_id": {
+          "minLength": 1,
+          "title": "Slice Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "slice_id",
+        "sample_count",
+        "reliability_bins"
+      ],
+      "title": "CalibrationSliceV1",
+      "type": "object"
+    },
+    "EvidenceAvailability": {
+      "enum": [
+        "available",
+        "unavailable",
+        "indeterminate",
+        "unsupported"
+      ],
+      "title": "EvidenceAvailability",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "PromptProviderCalibrationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence_semantics": {
+          "enum": [
+            "calibrated_evidence_support_not_experimental_probability",
+            "raw_uncalibrated_provider_score"
+          ],
+          "title": "Confidence Semantics",
+          "type": "string"
+        },
+        "interpretation": {
+          "const": "Reliability diagnostic against reference agreement; it does not calibrate raw scores retroactively.",
+          "default": "Reliability diagnostic against reference agreement; it does not calibrate raw scores retroactively.",
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "model_id": {
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "provider_id": {
+          "minLength": 1,
+          "title": "Provider Id",
+          "type": "string"
+        },
+        "summary": {
+          "$ref": "#/$defs/CalibrationSliceV1"
+        },
+        "target": {
+          "const": "precursor_exact_match_against_reference_representation",
+          "default": "precursor_exact_match_against_reference_representation",
+          "title": "Target",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider_id",
+        "model_id",
+        "confidence_semantics",
+        "summary"
+      ],
+      "title": "PromptProviderCalibrationV1",
+      "type": "object"
+    },
+    "PromptProviderCaseEvaluationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "minLength": 1,
+          "title": "Case Id",
+          "type": "string"
+        },
+        "evaluations": {
+          "items": {
+            "$ref": "#/$defs/PromptVariantEvaluationV1"
+          },
+          "maxItems": 5,
+          "minItems": 5,
+          "title": "Evaluations",
+          "type": "array"
+        },
+        "model_id": {
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "provider_id": {
+          "minLength": 1,
+          "title": "Provider Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "synthaudit.prompt-provider-case-evaluation/1",
+          "default": "synthaudit.prompt-provider-case-evaluation/1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "case_id",
+        "provider_id",
+        "model_id",
+        "evaluations"
+      ],
+      "title": "PromptProviderCaseEvaluationV1",
+      "type": "object"
+    },
+    "PromptVariantEvaluationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "abstained": {
+          "title": "Abstained",
+          "type": "boolean"
+        },
+        "availability": {
+          "$ref": "#/$defs/EvidenceAvailability"
+        },
+        "case_id": {
+          "minLength": 1,
+          "title": "Case Id",
+          "type": "string"
+        },
+        "completion_accuracy": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completion Accuracy"
+        },
+        "confidence_drop_under_contradiction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": -1,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence Drop Under Contradiction"
+        },
+        "confidence_semantics": {
+          "enum": [
+            "calibrated_evidence_support_not_experimental_probability",
+            "raw_uncalibrated_provider_score",
+            "unavailable"
+          ],
+          "title": "Confidence Semantics",
+          "type": "string"
+        },
+        "missing_reasons": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Reasons",
+          "type": "array"
+        },
+        "model_confidence": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Confidence"
+        },
+        "model_id": {
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "precursor_exact_match": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Precursor Exact Match"
+        },
+        "prompt_obedience": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prompt Obedience"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "minItems": 1,
+          "title": "Provenance",
+          "type": "array"
+        },
+        "provider_id": {
+          "minLength": 1,
+          "title": "Provider Id",
+          "type": "string"
+        },
+        "reaction_centre_accuracy": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reaction Centre Accuracy"
+        },
+        "recovery_from_incorrect_prompt": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recovery From Incorrect Prompt"
+        },
+        "reference_semantics": {
+          "const": "agreement_with_reference_representation_not_experimental_truth",
+          "default": "agreement_with_reference_representation_not_experimental_truth",
+          "title": "Reference Semantics",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "synthaudit.prompt-variant-evaluation/1",
+          "default": "synthaudit.prompt-variant-evaluation/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stereo_accuracy": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stereo Accuracy"
+        },
+        "structural_validity": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Structural Validity"
+        },
+        "variant_id": {
+          "minLength": 1,
+          "title": "Variant Id",
+          "type": "string"
+        },
+        "variant_kind": {
+          "$ref": "#/$defs/PromptVariantKind"
+        }
+      },
+      "required": [
+        "case_id",
+        "variant_id",
+        "variant_kind",
+        "provider_id",
+        "model_id",
+        "availability",
+        "confidence_semantics",
+        "abstained",
+        "provenance"
+      ],
+      "title": "PromptVariantEvaluationV1",
+      "type": "object"
+    },
+    "PromptVariantKind": {
+      "enum": [
+        "exact",
+        "partial",
+        "ambiguous",
+        "incorrect_structurally_plausible",
+        "contradictory"
+      ],
+      "title": "PromptVariantKind",
+      "type": "string"
+    },
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "ReliabilityBinV1": {
+      "additionalProperties": false,
+      "properties": {
+        "lower_bound": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Lower Bound",
+          "type": "number"
+        },
+        "mean_evidence_score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mean Evidence Score"
+        },
+        "observed_support_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed Support Fraction"
+        },
+        "sample_count": {
+          "minimum": 0,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "upper_bound": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Upper Bound",
+          "type": "number"
+        }
+      },
+      "required": [
+        "lower_bound",
+        "upper_bound",
+        "sample_count"
+      ],
+      "title": "ReliabilityBinV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "case_count": {
+      "minimum": 1,
+      "title": "Case Count",
+      "type": "integer"
+    },
+    "comparison_policy": {
+      "const": "providers_evaluated_independently_against_reference_representation",
+      "default": "providers_evaluated_independently_against_reference_representation",
+      "title": "Comparison Policy",
+      "type": "string"
+    },
+    "evaluation_id": {
+      "minLength": 1,
+      "title": "Evaluation Id",
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Limitations",
+      "type": "array"
+    },
+    "metrics_status": {
+      "enum": [
+        "computed_software_fixture",
+        "computed_research_benchmark"
+      ],
+      "title": "Metrics Status",
+      "type": "string"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "provider_calibration": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/PromptProviderCalibrationV1"
+      },
+      "title": "Provider Calibration",
+      "type": "array"
+    },
+    "provider_case_evaluations": {
+      "items": {
+        "$ref": "#/$defs/PromptProviderCaseEvaluationV1"
+      },
+      "minItems": 1,
+      "title": "Provider Case Evaluations",
+      "type": "array"
+    },
+    "provider_count": {
+      "minimum": 1,
+      "title": "Provider Count",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "synthaudit.prompt-benchmark-evaluation/1",
+      "default": "synthaudit.prompt-benchmark-evaluation/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "software_verification_fixture",
+        "research_benchmark"
+      ],
+      "title": "Scope",
+      "type": "string"
+    },
+    "single_provider_as_ground_truth_permitted": {
+      "const": false,
+      "default": false,
+      "title": "Single Provider As Ground Truth Permitted",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "evaluation_id",
+    "scope",
+    "case_count",
+    "provider_case_evaluations",
+    "provider_count",
+    "metrics_status",
+    "limitations"
+  ],
+  "title": "PromptBenchmarkEvaluationV1",
+  "type": "object"
+}

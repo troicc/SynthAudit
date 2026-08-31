@@ -1,0 +1,1334 @@
+{
+  "$defs": {
+    "AtomPropertyChangeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "atom_map": {
+          "minimum": 1,
+          "title": "Atom Map",
+          "type": "integer"
+        },
+        "before": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "property": {
+          "title": "Property",
+          "type": "string"
+        }
+      },
+      "required": [
+        "atom_map",
+        "property",
+        "before",
+        "after"
+      ],
+      "title": "AtomPropertyChangeV1",
+      "type": "object"
+    },
+    "AtomSnapshotV1": {
+      "additionalProperties": false,
+      "properties": {
+        "aromatic": {
+          "title": "Aromatic",
+          "type": "boolean"
+        },
+        "atom_map": {
+          "minimum": 1,
+          "title": "Atom Map",
+          "type": "integer"
+        },
+        "atomic_number": {
+          "minimum": 0,
+          "title": "Atomic Number",
+          "type": "integer"
+        },
+        "chiral_tag": {
+          "title": "Chiral Tag",
+          "type": "string"
+        },
+        "explicit_hydrogens": {
+          "minimum": 0,
+          "title": "Explicit Hydrogens",
+          "type": "integer"
+        },
+        "formal_charge": {
+          "title": "Formal Charge",
+          "type": "integer"
+        },
+        "isotope": {
+          "minimum": 0,
+          "title": "Isotope",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "atom_map",
+        "atomic_number",
+        "formal_charge",
+        "isotope",
+        "aromatic",
+        "explicit_hydrogens",
+        "chiral_tag"
+      ],
+      "title": "AtomSnapshotV1",
+      "type": "object"
+    },
+    "BondOrderChangeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "exclusiveMinimum": 0,
+          "title": "After",
+          "type": "number"
+        },
+        "before": {
+          "exclusiveMinimum": 0,
+          "title": "Before",
+          "type": "number"
+        },
+        "map_a": {
+          "minimum": 1,
+          "title": "Map A",
+          "type": "integer"
+        },
+        "map_b": {
+          "minimum": 1,
+          "title": "Map B",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "map_a",
+        "map_b",
+        "before",
+        "after"
+      ],
+      "title": "BondOrderChangeV1",
+      "type": "object"
+    },
+    "BondSnapshotV1": {
+      "additionalProperties": false,
+      "properties": {
+        "map_a": {
+          "minimum": 1,
+          "title": "Map A",
+          "type": "integer"
+        },
+        "map_b": {
+          "minimum": 1,
+          "title": "Map B",
+          "type": "integer"
+        },
+        "order": {
+          "exclusiveMinimum": 0,
+          "title": "Order",
+          "type": "number"
+        },
+        "stereo": {
+          "title": "Stereo",
+          "type": "string"
+        }
+      },
+      "required": [
+        "map_a",
+        "map_b",
+        "order",
+        "stereo"
+      ],
+      "title": "BondSnapshotV1",
+      "type": "object"
+    },
+    "CheckResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "affected_atom_maps": {
+          "default": [],
+          "items": {
+            "type": "integer"
+          },
+          "title": "Affected Atom Maps",
+          "type": "array"
+        },
+        "category": {
+          "minLength": 1,
+          "title": "Category",
+          "type": "string"
+        },
+        "check_id": {
+          "minLength": 1,
+          "title": "Check Id",
+          "type": "string"
+        },
+        "deterministic": {
+          "default": true,
+          "title": "Deterministic",
+          "type": "boolean"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "message": {
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "references": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "References",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "synthaudit.check-result/1",
+          "default": "synthaudit.check-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "severity": {
+          "$ref": "#/$defs/Severity"
+        },
+        "status": {
+          "$ref": "#/$defs/CheckStatus"
+        }
+      },
+      "required": [
+        "check_id",
+        "category",
+        "severity",
+        "status",
+        "message"
+      ],
+      "title": "CheckResultV1",
+      "type": "object"
+    },
+    "CheckStatus": {
+      "enum": [
+        "pass",
+        "fail",
+        "warning",
+        "indeterminate",
+        "unavailable",
+        "unsupported"
+      ],
+      "title": "CheckStatus",
+      "type": "string"
+    },
+    "CompletionExecutionResult": {
+      "additionalProperties": false,
+      "properties": {
+        "applied_operations": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Applied Operations",
+          "type": "array"
+        },
+        "diagnostic_mapped_structures": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Diagnostic Mapped Structures",
+          "type": "array"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionErrorV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "graph_diff": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GraphDiffV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "input_mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Input Mapped Structures",
+          "type": "array"
+        },
+        "mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mapped Structures",
+          "type": "array"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "synthaudit.completion-execution-result/1",
+          "default": "synthaudit.completion-execution-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage": {
+          "const": "completion",
+          "default": "completion",
+          "title": "Stage",
+          "type": "string"
+        },
+        "structurally_valid": {
+          "title": "Structurally Valid",
+          "type": "boolean"
+        },
+        "success": {
+          "title": "Success",
+          "type": "boolean"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "success",
+        "structurally_valid",
+        "input_mapped_structures",
+        "mapped_structures"
+      ],
+      "title": "CompletionExecutionResult",
+      "type": "object"
+    },
+    "CoreExecutionResult": {
+      "additionalProperties": false,
+      "properties": {
+        "applied_operations": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Applied Operations",
+          "type": "array"
+        },
+        "diagnostic_mapped_structures": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Diagnostic Mapped Structures",
+          "type": "array"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionErrorV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "graph_diff": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GraphDiffV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "input_mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Input Mapped Structures",
+          "type": "array"
+        },
+        "mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mapped Structures",
+          "type": "array"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "synthaudit.core-execution-result/1",
+          "default": "synthaudit.core-execution-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage": {
+          "const": "core",
+          "default": "core",
+          "title": "Stage",
+          "type": "string"
+        },
+        "structurally_valid": {
+          "title": "Structurally Valid",
+          "type": "boolean"
+        },
+        "success": {
+          "title": "Success",
+          "type": "boolean"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "success",
+        "structurally_valid",
+        "input_mapped_structures",
+        "mapped_structures"
+      ],
+      "title": "CoreExecutionResult",
+      "type": "object"
+    },
+    "ExecutionErrorV1": {
+      "additionalProperties": false,
+      "properties": {
+        "affected_atom_maps": {
+          "default": [],
+          "items": {
+            "type": "integer"
+          },
+          "title": "Affected Atom Maps",
+          "type": "array"
+        },
+        "details": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Details",
+          "type": "object"
+        },
+        "error_type": {
+          "minLength": 1,
+          "title": "Error Type",
+          "type": "string"
+        },
+        "message": {
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "operation_index": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operation Index"
+        },
+        "operation_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operation Type"
+        },
+        "rdkit_error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rdkit Error"
+        }
+      },
+      "required": [
+        "error_type",
+        "message"
+      ],
+      "title": "ExecutionErrorV1",
+      "type": "object"
+    },
+    "FullExecutionResult": {
+      "additionalProperties": false,
+      "properties": {
+        "applied_operations": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Applied Operations",
+          "type": "array"
+        },
+        "completion_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CompletionExecutionResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "core_result": {
+          "$ref": "#/$defs/CoreExecutionResult"
+        },
+        "diagnostic_mapped_structures": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Diagnostic Mapped Structures",
+          "type": "array"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionErrorV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "graph_diff": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GraphDiffV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "input_mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Input Mapped Structures",
+          "type": "array"
+        },
+        "mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mapped Structures",
+          "type": "array"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "synthaudit.full-execution-result/1",
+          "default": "synthaudit.full-execution-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage": {
+          "const": "full",
+          "default": "full",
+          "title": "Stage",
+          "type": "string"
+        },
+        "stereo_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StereoExecutionResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "structurally_valid": {
+          "title": "Structurally Valid",
+          "type": "boolean"
+        },
+        "success": {
+          "title": "Success",
+          "type": "boolean"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "success",
+        "structurally_valid",
+        "input_mapped_structures",
+        "mapped_structures",
+        "core_result"
+      ],
+      "title": "FullExecutionResult",
+      "type": "object"
+    },
+    "GraphDiffV1": {
+      "additionalProperties": false,
+      "properties": {
+        "added_atoms": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/AtomSnapshotV1"
+          },
+          "title": "Added Atoms",
+          "type": "array"
+        },
+        "added_bonds": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/BondSnapshotV1"
+          },
+          "title": "Added Bonds",
+          "type": "array"
+        },
+        "changed_atom_properties": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/AtomPropertyChangeV1"
+          },
+          "title": "Changed Atom Properties",
+          "type": "array"
+        },
+        "changed_bond_orders": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/BondOrderChangeV1"
+          },
+          "title": "Changed Bond Orders",
+          "type": "array"
+        },
+        "changed_bond_stereo": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/StereoChangeV1"
+          },
+          "title": "Changed Bond Stereo",
+          "type": "array"
+        },
+        "changed_tetrahedral_stereo": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/StereoChangeV1"
+          },
+          "title": "Changed Tetrahedral Stereo",
+          "type": "array"
+        },
+        "precursor_fragment_count_after": {
+          "minimum": 0,
+          "title": "Precursor Fragment Count After",
+          "type": "integer"
+        },
+        "precursor_fragment_count_before": {
+          "minimum": 0,
+          "title": "Precursor Fragment Count Before",
+          "type": "integer"
+        },
+        "removed_atoms": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/AtomSnapshotV1"
+          },
+          "title": "Removed Atoms",
+          "type": "array"
+        },
+        "removed_bonds": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/BondSnapshotV1"
+          },
+          "title": "Removed Bonds",
+          "type": "array"
+        },
+        "ring_count_after": {
+          "minimum": 0,
+          "title": "Ring Count After",
+          "type": "integer"
+        },
+        "ring_count_before": {
+          "minimum": 0,
+          "title": "Ring Count Before",
+          "type": "integer"
+        },
+        "schema_version": {
+          "const": "synthaudit.graph-diff/1",
+          "default": "synthaudit.graph-diff/1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "precursor_fragment_count_before",
+        "precursor_fragment_count_after",
+        "ring_count_before",
+        "ring_count_after"
+      ],
+      "title": "GraphDiffV1",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "ReactionAuditResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "blocking": {
+          "title": "Blocking",
+          "type": "boolean"
+        },
+        "completion_audit": {
+          "$ref": "#/$defs/StageAuditResultV1"
+        },
+        "execution": {
+          "$ref": "#/$defs/FullExecutionResult"
+        },
+        "notice": {
+          "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "title": "Notice",
+          "type": "string"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "reaction_centre_audit": {
+          "$ref": "#/$defs/StageAuditResultV1"
+        },
+        "reaction_id": {
+          "minLength": 1,
+          "title": "Reaction Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "synthaudit.reaction-audit-result/1",
+          "default": "synthaudit.reaction-audit-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stereo_audit": {
+          "$ref": "#/$defs/StageAuditResultV1"
+        },
+        "structural_audit": {
+          "$ref": "#/$defs/StageAuditResultV1"
+        },
+        "structurally_valid": {
+          "title": "Structurally Valid",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "reaction_id",
+        "structural_audit",
+        "reaction_centre_audit",
+        "completion_audit",
+        "stereo_audit",
+        "execution",
+        "blocking",
+        "structurally_valid"
+      ],
+      "title": "ReactionAuditResultV1",
+      "type": "object"
+    },
+    "RouteReviewItemV1": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "structural",
+            "completion",
+            "stereo",
+            "condition",
+            "novelty",
+            "uncertainty",
+            "continuity"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "deterministic": {
+          "title": "Deterministic",
+          "type": "boolean"
+        },
+        "priority": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Priority",
+          "type": "integer"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "review_id": {
+          "minLength": 1,
+          "title": "Review Id",
+          "type": "string"
+        },
+        "step_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Step Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "review_id",
+        "priority",
+        "category",
+        "step_ids",
+        "reason",
+        "deterministic"
+      ],
+      "title": "RouteReviewItemV1",
+      "type": "object"
+    },
+    "RouteStepAuditV1": {
+      "additionalProperties": false,
+      "properties": {
+        "reaction_audit": {
+          "$ref": "#/$defs/ReactionAuditResultV1"
+        },
+        "step_id": {
+          "minLength": 1,
+          "title": "Step Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step_id",
+        "reaction_audit"
+      ],
+      "title": "RouteStepAuditV1",
+      "type": "object"
+    },
+    "Severity": {
+      "enum": [
+        "info",
+        "warning",
+        "error",
+        "blocking"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "StageAuditResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "checks": {
+          "items": {
+            "$ref": "#/$defs/CheckResultV1"
+          },
+          "minItems": 1,
+          "title": "Checks",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "synthaudit.stage-audit-result/1",
+          "default": "synthaudit.stage-audit-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage": {
+          "enum": [
+            "structural",
+            "reaction_centre",
+            "completion",
+            "stereo"
+          ],
+          "title": "Stage",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/CheckStatus"
+        }
+      },
+      "required": [
+        "stage",
+        "status",
+        "checks"
+      ],
+      "title": "StageAuditResultV1",
+      "type": "object"
+    },
+    "StereoChangeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "title": "After",
+          "type": "string"
+        },
+        "atom_maps": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Atom Maps",
+          "type": "array"
+        },
+        "before": {
+          "title": "Before",
+          "type": "string"
+        }
+      },
+      "required": [
+        "atom_maps",
+        "before",
+        "after"
+      ],
+      "title": "StereoChangeV1",
+      "type": "object"
+    },
+    "StereoExecutionResult": {
+      "additionalProperties": false,
+      "properties": {
+        "applied_operations": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Applied Operations",
+          "type": "array"
+        },
+        "diagnostic_mapped_structures": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Diagnostic Mapped Structures",
+          "type": "array"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionErrorV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "graph_diff": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GraphDiffV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "input_mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Input Mapped Structures",
+          "type": "array"
+        },
+        "mapped_structures": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mapped Structures",
+          "type": "array"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "synthaudit.stereo-execution-result/1",
+          "default": "synthaudit.stereo-execution-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage": {
+          "const": "stereo",
+          "default": "stereo",
+          "title": "Stage",
+          "type": "string"
+        },
+        "structurally_valid": {
+          "title": "Structurally Valid",
+          "type": "boolean"
+        },
+        "success": {
+          "title": "Success",
+          "type": "boolean"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "success",
+        "structurally_valid",
+        "input_mapped_structures",
+        "mapped_structures"
+      ],
+      "title": "StereoExecutionResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "blocking": {
+      "title": "Blocking",
+      "type": "boolean"
+    },
+    "checks": {
+      "items": {
+        "$ref": "#/$defs/CheckResultV1"
+      },
+      "minItems": 1,
+      "title": "Checks",
+      "type": "array"
+    },
+    "critical_condition_conflicts": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Critical Condition Conflicts",
+      "type": "array"
+    },
+    "expert_review_queue": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/RouteReviewItemV1"
+      },
+      "title": "Expert Review Queue",
+      "type": "array"
+    },
+    "exploratory_naive_independence_score": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Exploratory Naive Independence Score"
+    },
+    "exploratory_score_interpretation": {
+      "anyOf": [
+        {
+          "const": "Exploratory naive independence product; not a route success probability.",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Exploratory Score Interpretation"
+    },
+    "high_novelty_key_steps": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "High Novelty Key Steps",
+      "type": "array"
+    },
+    "maximum_uncertainty": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Maximum Uncertainty"
+    },
+    "maximum_uncertainty_steps": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Maximum Uncertainty Steps",
+      "type": "array"
+    },
+    "minimum_step_support": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Minimum Step Support"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    },
+    "route_id": {
+      "minLength": 1,
+      "title": "Route Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.route-audit-result/1",
+      "default": "synthaudit.route-audit-result/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "score_aggregation_policy": {
+      "const": "independent_step_summaries_no_route_success_probability",
+      "default": "independent_step_summaries_no_route_success_probability",
+      "title": "Score Aggregation Policy",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/CheckStatus"
+    },
+    "step_audits": {
+      "items": {
+        "$ref": "#/$defs/RouteStepAuditV1"
+      },
+      "title": "Step Audits",
+      "type": "array"
+    },
+    "stereo_sensitive_steps": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Stereo Sensitive Steps",
+      "type": "array"
+    },
+    "structural_blocking_steps": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Structural Blocking Steps",
+      "type": "array"
+    },
+    "unresolved_completion_failures": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Completion Failures",
+      "type": "array"
+    }
+  },
+  "required": [
+    "route_id",
+    "status",
+    "checks",
+    "step_audits",
+    "blocking",
+    "provenance"
+  ],
+  "title": "RouteAuditResultV1",
+  "type": "object"
+}

@@ -83,3 +83,15 @@ provider independence, raw responses, multiple samples, token/cost accounting, a
 The logistic-regression and histogram-gradient-boosting implementations use the locally locked
 scikit-learn dependency against authored software fixtures. This verifies API and leakage guards,
 not scientific performance or upstream model compatibility.
+
+## Phase 10 route and prompt boundary
+
+Phase 10 changes no upstream SHA, license, or compatibility status. Prompt cases are generated
+locally from authored Phase 8 reference representations; no ReactSeq checkpoint, SynthEx service,
+Synthelite planner, LLM, or other prompt-capable provider was invoked. The provider interface
+fails closed without an explicitly configured versioned model and preserves raw responses and
+confidence semantics when enabled.
+
+Route checks operate only on canonical RouteIR, embedded ReactionIR, and declared metadata. They
+do not add an official SynthEx RouteJSON claim or reinterpret Synthelite implementation exports as
+a stable upstream schema.

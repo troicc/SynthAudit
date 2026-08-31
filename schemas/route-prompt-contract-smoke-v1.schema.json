@@ -1,0 +1,93 @@
+{
+  "$defs": {
+    "PromptVariantKind": {
+      "enum": [
+        "exact",
+        "partial",
+        "ambiguous",
+        "incorrect_structurally_plausible",
+        "contradictory"
+      ],
+      "title": "PromptVariantKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "all_route_perturbations_detected": {
+      "title": "All Route Perturbations Detected",
+      "type": "boolean"
+    },
+    "default_prompt_provider_unavailable": {
+      "title": "Default Prompt Provider Unavailable",
+      "type": "boolean"
+    },
+    "expensive_provider_experiments_run": {
+      "const": false,
+      "default": false,
+      "title": "Expensive Provider Experiments Run",
+      "type": "boolean"
+    },
+    "metrics_status": {
+      "const": "not_run",
+      "default": "not_run",
+      "title": "Metrics Status",
+      "type": "string"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "prompt_variant_count": {
+      "const": 5,
+      "default": 5,
+      "title": "Prompt Variant Count",
+      "type": "integer"
+    },
+    "prompt_variant_kinds": {
+      "items": {
+        "$ref": "#/$defs/PromptVariantKind"
+      },
+      "title": "Prompt Variant Kinds",
+      "type": "array"
+    },
+    "required_route_outputs_present": {
+      "title": "Required Route Outputs Present",
+      "type": "boolean"
+    },
+    "route_check_count": {
+      "minimum": 15,
+      "title": "Route Check Count",
+      "type": "integer"
+    },
+    "route_perturbation_count": {
+      "const": 5,
+      "default": 5,
+      "title": "Route Perturbation Count",
+      "type": "integer"
+    },
+    "route_success_probability_reported": {
+      "const": false,
+      "default": false,
+      "title": "Route Success Probability Reported",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "synthaudit.route-prompt-contract-smoke/1",
+      "default": "synthaudit.route-prompt-contract-smoke/1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "route_check_count",
+    "required_route_outputs_present",
+    "all_route_perturbations_detected",
+    "prompt_variant_kinds",
+    "default_prompt_provider_unavailable"
+  ],
+  "title": "RoutePromptContractSmokeV1",
+  "type": "object"
+}

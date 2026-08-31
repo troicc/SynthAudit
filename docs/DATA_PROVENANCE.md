@@ -52,3 +52,17 @@ and cannot be mixed into a scientific evaluation. Real model artifacts must reta
 label versions, grouped-split manifest, feature schema, estimator/calibrator configuration,
 scikit-learn version, random seed, train/calibration group digests, final artifact digest, and
 license status. No research model artifact or metric is currently published.
+
+## Phase 10 route and prompt provenance
+
+Route audit results retain the route provenance, per-step ReactionIR provenance, per-step audit,
+and provenance for every optional support/uncertainty/novelty value. Literal node IDs and
+canonicalized molecular tokens support continuity checks, while atom-map identity is checked
+separately and never silently normalized.
+
+The prompt fixture derives from eight eligible `recorded_reaction` parents in the authored Phase 8
+software fixture. It contains 40 deterministic variants and is content-addressed at
+`568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5`. It carries no model output
+or experimental label and reports `metrics_status=not_run`. Provider-backed research outputs must
+add provider/model versions, prompt version, raw response, confidence semantics, calibration
+method when applicable, token/cost metadata where applicable, and artifact provenance.

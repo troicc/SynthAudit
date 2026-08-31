@@ -11,7 +11,12 @@ from rich.console import Console
 
 from synthaudit import SCIENTIFIC_NOTICE, __version__
 from synthaudit.counterfactuals import validate_benchmark_artifacts
-from synthaudit.evaluation import run_evidence_model_contract_smoke, run_reactseq_conformance
+from synthaudit.evaluation import (
+    run_evidence_model_contract_smoke,
+    run_reactseq_conformance,
+    run_route_prompt_contract_smoke,
+)
+from synthaudit.prompting import validate_prompt_benchmark_artifacts
 
 app = typer.Typer(
     name="synthaudit",
@@ -90,6 +95,23 @@ def evidence_model_contract(
         console.print(result.model_dump(mode="json"))
 
 
+@benchmark_app.command("prompt-cases")
+def prompt_cases(
+    cases: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    manifest: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    json_output: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """Validate content-addressed prompt cases without invoking a model provider."""
+    result = validate_prompt_benchmark_artifacts(
+        cases_path=cases,
+        manifest_path=manifest,
+    )
+    if json_output:
+        typer.echo(result.model_dump_json())
+    else:
+        console.print(result.model_dump(mode="json"))
+
+
 @benchmark_app.command("reactseq-conformance")
 def reactseq_conformance(
     fixture: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
@@ -107,6 +129,18 @@ def reactseq_conformance(
         raise typer.Exit(code=3)
     if result.exact_reconstruction_count != result.fixture_count:
         raise typer.Exit(code=4)
+
+
+@benchmark_app.command("route-prompt-contract")
+def route_prompt_contract(
+    json_output: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """Exercise route and prompt contracts without running external model experiments."""
+    result = run_route_prompt_contract_smoke()
+    if json_output:
+        typer.echo(result.model_dump_json())
+    else:
+        console.print(result.model_dump(mode="json"))
 
 
 def main() -> None:

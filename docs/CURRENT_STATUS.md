@@ -342,3 +342,62 @@ outputs remain evidence-support scores, never experimental feasibility probabili
 
 Next: Phase 10 route dependencies/continuity/condition ordering and a provider-neutral prompt-
 robustness benchmark covering exact, partial, ambiguous, incorrect, and contradictory guidance.
+
+## Phase 10 — route context and prompt robustness
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/10-route-and-prompt-robustness`
+
+Implemented `RouteAuditor` with 18 named route checks and a versioned `RouteAuditResultV1`.
+Every step retains its step ID and complete reaction audit. Dependency cycles/order, terminal target
+production, declared material and mapped-graph continuity, atom-map continuity, unexplained
+intermediates, redundant steps, protection/deprotection timing, fragile-intermediate condition
+lifetime, structural/completion/stereo status, step support, uncertainty, and key-step novelty
+remain separately visible.
+
+Primary route summaries expose minimum available calibrated step support, maximum uncertainty and
+contributing steps, structural blockers, unresolved completion failures, stereo-sensitive steps,
+high-novelty key steps, critical condition conflicts, and a priority-sorted expert queue. There is
+no route-success-probability field. The naive independence product is opt-in, requires all step
+support values, and cannot validate without its explicit “not a route success probability” label.
+
+Implemented a deterministic provider-neutral prompt benchmark for exact, partial, ambiguous,
+incorrect-but-structurally-plausible, and contradictory prompts. Cases retain reference semantic
+hash, parent group, seed, versioned structured instructions, rendered text, exact mutation trace,
+and provenance. Provider outputs preserve raw response, raw versus calibrated confidence
+semantics, candidate-or-abstention state, and provenance. Evaluation covers all required prompt
+metrics against the reference representation and supports independent multi-provider reliability
+summaries without treating any provider or LLM as ground truth.
+
+The committed `synthaudit-authored-prompt-robustness-fixture/1` contains eight eligible authored
+Phase 8 parents and 40 prompt variants, eight of each kind. It regenerates byte-for-byte and is
+content-addressed at `568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5`.
+It contains no model outputs or experimental labels and reports `metrics_status=not_run`.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed for 96 source files;
+- `make schemas`: generated nine Phase 10 route/prompt/dataset/provider schemas and the
+  committed-schema regression passed;
+- `make test`: 249 passed, total coverage 86%; route audit coverage is 91%, prompt dataset 86%,
+  prompt evaluation 88%, prompt generator 82%, and prompt contracts 82%;
+- 23 Phase 10 tests cover all five route perturbations, cycles/order/target/material/atom-map
+  continuity, protection and condition conflicts, opt-in aggregation labeling, all five prompt
+  kinds, deterministic generation, provider failure/accounting, all required prompt metrics,
+  two-provider comparison, import-order independence, dataset tamper rejection, and byte-exact
+  regeneration;
+- `make prompt-benchmark-small` validated 8 cases, 40 variants, parent-group atomicity, and the
+  committed digest without running metrics;
+- `make route-prompt-small` exercised 18 route checks, detected all five route perturbation classes,
+  emitted all five prompt variants, kept the default provider unavailable, and reported
+  `metrics_status=not_run`;
+- prior offline version, counterfactual, evidence-model, and ReactSeq smoke contracts remain
+  unchanged.
+
+No prompt-capable model, LLM, checkpoint, paid API, or network service was invoked. Reference
+agreement is not experimental truth; protection/condition rules are transparent declared-context
+checks rather than comprehensive synthetic-chemistry adjudication.
+
+Next: Phase 11 complete CLI workflows, Streamlit interface, expanded standalone reports, and
+committed example outputs after applying the required UI/UX and diagram skills.

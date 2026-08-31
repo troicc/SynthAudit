@@ -6,6 +6,7 @@ from pathlib import Path
 from synthaudit.schema.evidence import EvidenceValueV1
 from synthaudit.schema.reaction_ir import ReactionIRV1
 from synthaudit.schema.results import CheckResultV1, FullExecutionResult, SemanticComparisonV1
+from synthaudit.schema.route_audit import RouteAuditResultV1
 from synthaudit.schema.route_ir import RouteIRV1
 
 
@@ -18,6 +19,7 @@ def test_committed_json_schemas_match_models() -> None:
         "check-result-v1.schema.json": CheckResultV1,
         "semantic-comparison-v1.schema.json": SemanticComparisonV1,
         "execution-result-v1.schema.json": FullExecutionResult,
+        "route-audit-result-v1.schema.json": RouteAuditResultV1,
     }
     for filename, model in expected.items():
         assert json.loads((root / filename).read_text()) == model.model_json_schema()
