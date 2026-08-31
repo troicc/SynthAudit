@@ -197,3 +197,44 @@ remain explicit limitations.
 
 Next: Phase 7 multi-view novelty, versioned precedent index, optional ReactSeq MEO and taxonomy
 providers, and evidence-preserving retrieval.
+
+## Phase 7 — multi-view novelty and precedent
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/07-novelty-and-precedent`
+
+Implemented independent product/precursor Morgan and scaffold views, SynthAudit reaction-
+difference and changed-bond/changed-atom views, normalized edit/centre/ring/fragment/attachment
+views, optional ReactSeq MEO and taxonomy-provider boundaries, a content-addressed local reference
+index, and six-axis precedent retrieval. Every available fingerprint metric is exactly one minus
+the maximum reference-set Tanimoto similarity; learned MEO distance remains separate. No
+weighted novelty or plausibility composite exists.
+
+Reference indexes record corpus identity/version, record count and SHA-256, fingerprint/RDKit
+versions, source license statuses, and provenance. Stored learned embeddings require artifact
+provenance. Precedents separately expose substrate, product, transformation, reaction-centre,
+leaving-group, and stereo similarities plus metric versions, conditions/yield when supplied,
+missing evidence, and source/license provenance. Procedure and condition providers fail closed
+unless explicit licensed local evidence is configured.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed for 65 source files;
+- `make schemas`: generated five Phase 7 schemas and committed-schema regression passed;
+- `make test`: 172 passed, total coverage 88%; novelty engine 80%, novelty fingerprints 90%,
+  novelty models 85%, novelty providers 92%, precedent models 87%, and retrieval 84%;
+- import-order subprocess regressions prove the lazy `novelty` and `precedent` package APIs do
+  not form a runtime cycle;
+- `make smoke`, `make benchmark-small`, and `make reactseq-conformance-small` passed offline;
+- a two-record authored smoke index returned exact self-match novelty 0.0 for product,
+  reaction-difference, and changed-bond/changed-atom views, ranked the declared substitution
+  fixture first, and kept ReactSeq MEO unavailable. This is calculation plumbing evidence only,
+  not a population benchmark.
+
+Phase 7 adds no external corpus, model, checkpoint, download, or SynthAtlas scrape. Novelty is
+corpus-relative, precedent is support rather than experimental validation, and the documented
+0.5/0.7 interpretation thresholds are descriptive defaults rather than fitted boundaries.
+
+Next: Phase 8 deterministic stage-aware counterfactual generation, grouped leakage-resistant
+splits, dataset card, and human-review sheet.

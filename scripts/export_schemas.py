@@ -13,6 +13,13 @@ from synthaudit.adapters.reactseq.models import (
     ReactSeqTraversalContext,
 )
 from synthaudit.evaluation.reactseq_conformance import ReactSeqConformanceSummary
+from synthaudit.novelty.models import MultiViewNoveltyResultV1
+from synthaudit.precedent.models import (
+    ConditionEvidenceV1,
+    PrecedentSearchResultV1,
+    ProcedureEvidenceV1,
+    ReferenceIndexArtifactV1,
+)
 from synthaudit.schema.evidence import EvidenceValueV1
 from synthaudit.schema.reaction_ir import ReactionIRV1
 from synthaudit.schema.results import (
@@ -40,6 +47,11 @@ SCHEMAS = {
     "reaction-adapter-result-v1.schema.json": ReactionAdapterResultV1,
     "route-adapter-result-v1.schema.json": RouteAdapterResultV1,
     "representation-conformance-v1.schema.json": RepresentationConformanceV1,
+    "multi-view-novelty-v1.schema.json": MultiViewNoveltyResultV1,
+    "precedent-search-v1.schema.json": PrecedentSearchResultV1,
+    "reference-index-v1.schema.json": ReferenceIndexArtifactV1,
+    "procedure-evidence-v1.schema.json": ProcedureEvidenceV1,
+    "condition-evidence-v1.schema.json": ConditionEvidenceV1,
 }
 
 

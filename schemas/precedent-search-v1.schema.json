@@ -1,0 +1,522 @@
+{
+  "$defs": {
+    "FingerprintSpecificationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": {
+          "minLength": 1,
+          "title": "Algorithm",
+          "type": "string"
+        },
+        "bit_length": {
+          "exclusiveMinimum": 0,
+          "title": "Bit Length",
+          "type": "integer"
+        },
+        "implementation": {
+          "minLength": 1,
+          "title": "Implementation",
+          "type": "string"
+        },
+        "implementation_version": {
+          "minLength": 1,
+          "title": "Implementation Version",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Parameters",
+          "type": "object"
+        },
+        "radius": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Radius"
+        },
+        "schema_version": {
+          "const": "synthaudit.fingerprint-specification/1",
+          "default": "synthaudit.fingerprint-specification/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "use_chirality": {
+          "title": "Use Chirality",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "algorithm",
+        "bit_length",
+        "use_chirality",
+        "implementation",
+        "implementation_version"
+      ],
+      "title": "FingerprintSpecificationV1",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "PrecedentHitV1": {
+      "additionalProperties": false,
+      "properties": {
+        "conditions": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReactionConditions"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "data_license_status": {
+          "title": "Data License Status",
+          "type": "string"
+        },
+        "fingerprint_specification": {
+          "$ref": "#/$defs/FingerprintSpecificationV1"
+        },
+        "interpretation": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Interpretation",
+          "type": "array"
+        },
+        "leaving_group_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Leaving Group Similarity"
+        },
+        "missing_evidence": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Evidence",
+          "type": "array"
+        },
+        "product_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Similarity"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "reaction_centre_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reaction Centre Similarity"
+        },
+        "reaction_class": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reaction Class"
+        },
+        "reported_yield": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reported Yield"
+        },
+        "schema_version": {
+          "const": "synthaudit.precedent-hit/1",
+          "default": "synthaudit.precedent-hit/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "similarity_methods": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Similarity Methods",
+          "type": "object"
+        },
+        "source_dataset": {
+          "title": "Source Dataset",
+          "type": "string"
+        },
+        "source_reaction_id": {
+          "title": "Source Reaction Id",
+          "type": "string"
+        },
+        "stereo_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stereo Similarity"
+        },
+        "substrate_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Substrate Similarity"
+        },
+        "transformation_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transformation Similarity"
+        }
+      },
+      "required": [
+        "source_dataset",
+        "source_reaction_id",
+        "data_license_status",
+        "similarity_methods",
+        "fingerprint_specification"
+      ],
+      "title": "PrecedentHitV1",
+      "type": "object"
+    },
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "ReactionConditions": {
+      "additionalProperties": false,
+      "description": "Structured conditions while retaining source-level text.",
+      "properties": {
+        "atmosphere": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Atmosphere"
+        },
+        "catalysts": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Catalysts",
+          "type": "array"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "pressure_bar": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pressure Bar"
+        },
+        "reagents": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Reagents",
+          "type": "array"
+        },
+        "solvents": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Solvents",
+          "type": "array"
+        },
+        "source_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Text"
+        },
+        "temperature_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature C"
+        },
+        "time_hours": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Hours"
+        }
+      },
+      "title": "ReactionConditions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "corpus_id": {
+      "title": "Corpus Id",
+      "type": "string"
+    },
+    "corpus_version": {
+      "title": "Corpus Version",
+      "type": "string"
+    },
+    "hits": {
+      "items": {
+        "$ref": "#/$defs/PrecedentHitV1"
+      },
+      "title": "Hits",
+      "type": "array"
+    },
+    "notice": {
+      "const": "Retrieved reactions are precedent support, not experimental validation of the query.",
+      "default": "Retrieved reactions are precedent support, not experimental validation of the query.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "provenance": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "title": "Provenance",
+      "type": "array"
+    },
+    "query_reaction_id": {
+      "title": "Query Reaction Id",
+      "type": "string"
+    },
+    "ranking_method": {
+      "const": "lexicographic_transformation_centre_product_substrate_leaving_group_stereo",
+      "default": "lexicographic_transformation_centre_product_substrate_leaving_group_stereo",
+      "title": "Ranking Method",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.precedent-search/1",
+      "default": "synthaudit.precedent-search/1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "query_reaction_id",
+    "corpus_id",
+    "corpus_version",
+    "hits"
+  ],
+  "title": "PrecedentSearchResultV1",
+  "type": "object"
+}

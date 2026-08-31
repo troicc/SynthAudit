@@ -1,0 +1,186 @@
+{
+  "$defs": {
+    "EvidenceAvailability": {
+      "enum": [
+        "available",
+        "unavailable",
+        "indeterminate",
+        "unsupported"
+      ],
+      "title": "EvidenceAvailability",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "availability": {
+      "$ref": "#/$defs/EvidenceAvailability"
+    },
+    "data_license_status": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Data License Status"
+    },
+    "missing_reasons": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Reasons",
+      "type": "array"
+    },
+    "procedure_text": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Procedure Text"
+    },
+    "provenance": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "title": "Provenance",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "synthaudit.procedure-evidence/1",
+      "default": "synthaudit.procedure-evidence/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_reaction_id": {
+      "title": "Source Reaction Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_reaction_id",
+    "availability"
+  ],
+  "title": "ProcedureEvidenceV1",
+  "type": "object"
+}

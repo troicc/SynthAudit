@@ -53,3 +53,12 @@ maps atoms implicitly.
 ## Recheck protocol
 
 Run `scripts/check_upstreams.py` explicitly with network access, review diffs manually, update exact SHAs and licenses, regenerate official fixtures only through the isolated bridge, and add a compatibility test before changing any availability status.
+
+## Phase 7 provider boundary
+
+Phase 7 adds no upstream download, vendored dataset, checkpoint, or model claim. ReactSeq MEO
+remains unavailable because the external checkpoint has not been checksum-pinned and reproduced.
+ReactionClassifier remains an optional provider whose model/taxonomy provenance and raw score
+must be returned explicitly. DRFP is an optional independent view and is not installed by the
+core package. Local reference indexes accept only caller-supplied records with source and license
+metadata; SynthAtlas is not scraped. No upstream status or pinned SHA changed in this phase.
