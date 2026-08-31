@@ -1,0 +1,94 @@
+{
+  "$defs": {
+    "CheckStatus": {
+      "enum": [
+        "pass",
+        "fail",
+        "warning",
+        "indeterminate",
+        "unavailable",
+        "unsupported"
+      ],
+      "title": "CheckStatus",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "Severity": {
+      "enum": [
+        "info",
+        "warning",
+        "error",
+        "blocking"
+      ],
+      "title": "Severity",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "affected_atom_maps": {
+      "default": [],
+      "items": {
+        "type": "integer"
+      },
+      "title": "Affected Atom Maps",
+      "type": "array"
+    },
+    "category": {
+      "minLength": 1,
+      "title": "Category",
+      "type": "string"
+    },
+    "check_id": {
+      "minLength": 1,
+      "title": "Check Id",
+      "type": "string"
+    },
+    "deterministic": {
+      "default": true,
+      "title": "Deterministic",
+      "type": "boolean"
+    },
+    "evidence": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Evidence",
+      "type": "object"
+    },
+    "message": {
+      "minLength": 1,
+      "title": "Message",
+      "type": "string"
+    },
+    "references": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "synthaudit.check-result/1",
+      "default": "synthaudit.check-result/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "severity": {
+      "$ref": "#/$defs/Severity"
+    },
+    "status": {
+      "$ref": "#/$defs/CheckStatus"
+    }
+  },
+  "required": [
+    "check_id",
+    "category",
+    "severity",
+    "status",
+    "message"
+  ],
+  "title": "CheckResultV1",
+  "type": "object"
+}

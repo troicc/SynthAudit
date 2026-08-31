@@ -15,3 +15,4 @@ Updated: 2026-08-31.
 - Route condition compatibility and protecting-group timing begin with transparent rules and review flags; they are not comprehensive synthetic-chemistry reasoning.
 - Large MVP/full datasets, paid-provider prompt experiments, GPU models, and laboratory validation are outside offline tests and are not claimed complete without artifacts.
 - The Phase 1 CLI contains only bootstrap/version and small-manifest validation commands; reaction commands are implemented after the canonical schemas and execution engine.
+- IR schema validation intentionally checks representation shape, edit invariants, roles, IDs, and dependency references; SMILES parsing, atom-map uniqueness, valence, sanitation, and chemistry-aware no-op checks belong to the graph/audit stages and are not implied by successful Pydantic validation.

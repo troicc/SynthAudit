@@ -45,3 +45,23 @@ Verification:
 No network access occurs in tests. No model or dataset is downloaded at import time.
 
 Next: Phase 2 ReactionIR/RouteIR, generated JSON Schemas, semantic hashing, and serialization/property tests.
+
+## Phase 2 — canonical reaction and route IR
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/02-reaction-ir`
+
+Implemented frozen/strict Pydantic v2 models for `ReactionIRV1`, `RouteIRV1`, provenance, conditions, evidence, audit checks, and semantic comparison. Core, attachment, atom-state, and stereo operations are discriminated unions covering every v1 edit type, including null and charge-only completion. Generated five committed JSON Schemas and a deterministic schema exporter.
+
+`reaction_ir_semantic_hash` canonicalizes mapped graphs, normalizes undirected edit endpoints, ignores source traversal/IDs/provenance, and makes precursor/edit ordering invariant while preserving meaningful stereo order.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed;
+- `make test`: 18 passed; total coverage 89%; ReactionIR 90%, RouteIR 92%, edit schemas 85%, semantic hash 84%;
+- property tests cover deterministic JSON round trips and precursor-order invariance;
+- regression test verifies committed JSON Schemas match runtime models;
+- `make schemas` regenerates schemas deterministically.
+
+Next: Phase 3 staged transactional RDKit execution, atom-map policy, sanitation, graph diff, rollback, and execution result schemas.
