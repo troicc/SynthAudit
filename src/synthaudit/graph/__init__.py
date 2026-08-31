@@ -1,5 +1,10 @@
 """Molecular graph utilities and staged execution."""
 
+from synthaudit.graph.comparison import (
+    compare_execution_results,
+    compare_precursor_sets,
+    compare_reaction_ir,
+)
 from synthaudit.graph.completion_executor import AttachmentCompletionExecutor
 from synthaudit.graph.core_executor import CoreGraphExecutor
 from synthaudit.graph.diff import graph_diff
@@ -21,6 +26,9 @@ __all__ = [
     "SemanticHashError",
     "StereoExecutor",
     "canonicalize_mapped_smiles",
+    "compare_execution_results",
+    "compare_precursor_sets",
+    "compare_reaction_ir",
     "graph_diff",
     "reaction_ir_semantic_hash",
     "reaction_ir_semantic_payload",

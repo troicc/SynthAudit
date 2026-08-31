@@ -110,3 +110,44 @@ Verification:
 Upstream assumptions remain pinned to `ReactSeq@9838a3058e32e1c0ee04b2bab0448104dc293384`. The official legacy runtime and checkpoint were not reproduced, so no full official compatibility, MEO embedding, or model-probability claim is made.
 
 Next: Phase 5 mapped-reaction, SynthEx draft/fail-closed official, Synthelite route, and cross-representation adapters.
+
+## Phase 5 — reaction and route adapters
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/05-reactionjson-and-route-adapters`
+
+Implemented a fail-closed mapped-reaction-SMILES adapter, the explicitly unofficial
+`synthaudit.synthex-paper-draft/0.1` reaction namespace, the separate local
+`synthaudit.synthex-paper-draft-route/0.1` route namespace, permanently fail-closed official
+SynthEx entry points, and a version-pinned Synthelite nested-tree adapter. Source payloads,
+warnings, unsupported fields, exact upstream commits, and license availability remain visible.
+No adapter silently maps atoms or guesses an ambiguous fragment.
+
+Cross-representation comparison now operates on normalized product graphs, edit stages, and
+executed precursor sets. It aligns pure atom-map renumbering through bounded product-graph
+isomorphism, reports symmetric competing correspondences as `indeterminate`, and separates
+unspecified stereo, partial representability, unsupported semantics, and chemical difference.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed;
+- `make test`: 126 passed, total coverage 88%; the complete adapters package is 85%, mapped
+  reaction adapter 90%, and cross-representation comparison modules together 83%;
+- `make schemas`: generated adapter-result, route-adapter-result, and representation-
+  conformance JSON Schemas; committed-schema regression passed;
+- `make smoke` and `make benchmark-small`: passed offline; the small benchmark continues to
+  report `metrics=not_run` rather than invented measurements;
+- `make reactseq-conformance-small`: the same 3/3 pinned demo fixtures reconstructed exactly,
+  still explicitly fixture-scoped;
+- 26 Phase 5 tests cover mapped graph differencing, fragment completion, rejection paths,
+  all documented draft operations, draft routes, official unavailability, actual Synthelite
+  tree shape, map-renumbering alignment, stereo information loss, unsupported cases, and
+  symmetric indeterminacy.
+
+Official SynthEx ReactionJSON/RouteJSON remain unavailable at
+`5f41a6b21e3906fde93e84c88bb91f9dc4d37e6f`. Synthelite support remains pinned to
+`45168f8a5846c2fd15a833eddc88bac843b5bbee` and requires explicit mapping metadata.
+
+Next: Phase 6 structural, reaction-centre, synthon-completion, and stereo audits with
+stage-specific standalone HTML output.

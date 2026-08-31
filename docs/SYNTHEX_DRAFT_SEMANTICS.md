@@ -43,3 +43,17 @@ The draft adapter rejects missing maps, ambiguous fragment attachment atoms, dup
 The official version/envelope, field names beyond the one README example, order defaults, group grammar, atom-change representation, stereo-neighbour convention, errors, route identifiers/dependencies, intermediate representation, condition model, provenance, and canonicalization/round-trip guarantees remain undocumented.
 
 No draft serialization is claimed to round-trip to future official ReactionJSON or RouteJSON.
+
+## Draft route envelope
+
+The separate route namespace is **`synthaudit.synthex-paper-draft-route/0.1`**.
+It is a local SynthAudit interoperability envelope, not official RouteJSON. The route object
+must declare that exact schema, a mapped target, and ordered steps. Each step has an explicit
+`step_id`, a reaction payload in the reaction-draft namespace, and optional `depends_on`,
+`consumes`, `produces`, strategy text, key-step flag, and metadata. Route-level starting
+materials, intermediates, strategy text, and metadata are preserved in `RouteIRV1`.
+
+Unknown route and step fields are reported with their source paths. Step reactions retain
+their own unsupported-field reports and warnings. Dependency validation belongs to the
+canonical `RouteIRV1` schema and route-audit stage; no undocumented SynthEx ordering,
+intermediate, or condition semantics are inferred.

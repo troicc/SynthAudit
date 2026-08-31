@@ -19,6 +19,16 @@ At the pinned SHA, `get_b_smiles_forward/backward` defines bond symbols and brac
 
 `services/reactseq-legacy/server.py` now checks the actual checkout `git rev-parse HEAD`, request SHA, and configured SHA before invoking upstream through JSONL. It does not make network calls. The exact legacy runtime and Indigo installation are still not reproduced on this host.
 
+### Synthelite Phase 5 source findings
+
+The exact pinned repository was shallow-cloned and inspected locally. Its
+`ReactionTree.to_dict` serializer emits a nested bipartite tree of `mol` and `reaction` nodes,
+not ReactionJSON or RouteJSON. Reaction metadata can carry `mapped_reaction_smiles`; other
+exports may contain only unmapped reaction SMILES. SynthAudit supports a single fixed nested
+tree only when every normalized step supplies that explicit mapped artifact. It preserves
+unknown fields and planner scores as source metadata, does not import the planner, and never
+maps atoms implicitly.
+
 ## Phase 0 required answers
 
 1. **Is the official ReactSeq converter runnable?** The converter source is public and structurally runnable in the upstream-pinned legacy environment. It is not compatible with the SynthAudit Python 3.11 environment as documented: upstream calls for Python 3.7, RDKit 2019.03.2, and Indigo. On this Apple Silicon host that exact environment was not established in Phase 0, so no conformance claim is made. The bridge remains isolated and optional.

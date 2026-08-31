@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from synthaudit.adapters.models import ReactionAdapterResultV1, RouteAdapterResultV1
 from synthaudit.adapters.reactseq.models import (
     ReactSeqAdapterResult,
     ReactSeqBridgeRequest,
@@ -14,7 +15,12 @@ from synthaudit.adapters.reactseq.models import (
 from synthaudit.evaluation.reactseq_conformance import ReactSeqConformanceSummary
 from synthaudit.schema.evidence import EvidenceValueV1
 from synthaudit.schema.reaction_ir import ReactionIRV1
-from synthaudit.schema.results import CheckResultV1, FullExecutionResult, SemanticComparisonV1
+from synthaudit.schema.results import (
+    CheckResultV1,
+    FullExecutionResult,
+    RepresentationConformanceV1,
+    SemanticComparisonV1,
+)
 from synthaudit.schema.route_ir import RouteIRV1
 
 SCHEMAS = {
@@ -29,6 +35,9 @@ SCHEMAS = {
     "reactseq-bridge-request-v1.schema.json": ReactSeqBridgeRequest,
     "reactseq-bridge-response-v1.schema.json": ReactSeqBridgeResponse,
     "reactseq-conformance-v1.schema.json": ReactSeqConformanceSummary,
+    "reaction-adapter-result-v1.schema.json": ReactionAdapterResultV1,
+    "route-adapter-result-v1.schema.json": RouteAdapterResultV1,
+    "representation-conformance-v1.schema.json": RepresentationConformanceV1,
 }
 
 

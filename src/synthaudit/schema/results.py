@@ -59,6 +59,28 @@ class SemanticComparisonV1(StrictModel):
     provenance: tuple[ProvenanceRecord, ...] = ()
 
 
+class RepresentationConformanceV1(StrictModel):
+    schema_version: Literal["synthaudit.representation-conformance/1"] = (
+        "synthaudit.representation-conformance/1"
+    )
+    left_representation: str = Field(min_length=1)
+    right_representation: str = Field(min_length=1)
+    classification: Literal[
+        "semantically_equivalent",
+        "equivalent_except_atom_map_renumbering",
+        "equivalent_except_unspecified_stereo",
+        "partially_representable",
+        "unsupported",
+        "indeterminate",
+        "different",
+    ]
+    product_equivalent: bool | None
+    comparison: SemanticComparisonV1
+    information_lost: tuple[str, ...] = ()
+    unsupported_cases: tuple[str, ...] = ()
+    provenance: tuple[ProvenanceRecord, ...] = ()
+
+
 class AtomSnapshotV1(StrictModel):
     atom_map: int = Field(ge=1)
     atomic_number: int = Field(ge=0)
