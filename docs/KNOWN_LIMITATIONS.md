@@ -16,3 +16,6 @@ Updated: 2026-08-31.
 - Large MVP/full datasets, paid-provider prompt experiments, GPU models, and laboratory validation are outside offline tests and are not claimed complete without artifacts.
 - The Phase 1 CLI contains only bootstrap/version and small-manifest validation commands; reaction commands are implemented after the canonical schemas and execution engine.
 - IR schema validation intentionally checks representation shape, edit invariants, roles, IDs, and dependency references; SMILES parsing, atom-map uniqueness, valence, sanitation, and chemistry-aware no-op checks belong to the graph/audit stages and are not implied by successful Pydantic validation.
+- Introduced external fragments must already carry the exact next sequential atom maps in ReactionIR. Adapters allocate them; the executor rejects rather than renumbering an ambiguous IR payload.
+- Absolute tetrahedral assignment is conservative: duplicate canonical substituent ranks are marked indeterminate. Advanced pseudo-asymmetric and cyclic cases require dedicated audit evidence rather than forced configuration.
+- Core-stage synthons are currently required to pass RDKit sanitation. Some valid radical, metal, or aromatic-ring-opening representations may therefore require diagnostic handling or a future explicitly typed synthon-valence model.

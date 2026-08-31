@@ -65,3 +65,24 @@ Verification:
 - `make schemas` regenerates schemas deterministically.
 
 Next: Phase 3 staged transactional RDKit execution, atom-map policy, sanitation, graph diff, rollback, and execution result schemas.
+
+## Phase 3 — staged transactional graph execution
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/03-execution-engine`
+
+Implemented `CoreGraphExecutor`, `AttachmentCompletionExecutor`, `StereoExecutor`, and `ReactionExecutor`. Every stage edits a copy, returns the original structures on failure, exposes partial structures only through diagnostic fields, records operation index/type/maps and RDKit errors, and enforces success/error invariants in Pydantic results.
+
+The atom-map policy rejects missing/duplicate/reused maps and requires introduced fragment atoms to occupy the next deterministic sequential range. GraphDiff reports atoms, atom properties, bonds/orders, tetrahedral/bond stereo, fragments, and rings. Strict and diagnostic sanitation share one fail-closed result protocol. Symmetric absolute stereocentres and ambiguous E/Z neighbours are explicitly rejected rather than assigned using atom-map-influenced ranking.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed;
+- `make test`: 75 passed, total coverage 92%; core executor 95%, completion executor 94%, stereo executor 92%, full executor 91%, graph diff 97%, atom-map helpers 94%;
+- property tests cover deterministic execution and transactional rollback;
+- tests cover every core edit, single/multi attachment, fresh maps, detach/null/charge-only completion, atom-state edits, sanitation modes, tetrahedral set/invert/clear, E/Z set/clear, symmetry/ambiguity, and stage short-circuiting;
+- `make schemas` generated the versioned full-execution JSON Schema and regression verification passed;
+- `make smoke` passed.
+
+Next: Phase 4 ReactSeq traversal normalization, safe parser, official legacy bridge protocol, fixtures, and conformance runner.

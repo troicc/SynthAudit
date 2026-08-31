@@ -25,17 +25,32 @@ from synthaudit.schema.edits import (
 from synthaudit.schema.evidence import EvidenceAvailability, EvidenceValueV1
 from synthaudit.schema.reaction_ir import ReactionIRV1
 from synthaudit.schema.results import (
+    AtomPropertyChangeV1,
+    AtomSnapshotV1,
+    BondOrderChangeV1,
+    BondSnapshotV1,
     CheckResultV1,
     CheckStatus,
     ComparisonState,
+    CompletionExecutionResult,
+    CoreExecutionResult,
+    ExecutionErrorV1,
+    FullExecutionResult,
+    GraphDiffV1,
     SemanticComparisonV1,
     Severity,
+    StereoChangeV1,
+    StereoExecutionResult,
 )
 from synthaudit.schema.route_ir import RouteIRV1, RouteStepIRV1
 
 __all__ = [
     "AddBondEdit",
+    "AtomPropertyChangeV1",
+    "AtomSnapshotV1",
     "AttachFragmentEdit",
+    "BondOrderChangeV1",
+    "BondSnapshotV1",
     "BreakBondEdit",
     "ChangeBondOrderEdit",
     "CheckResultV1",
@@ -43,10 +58,15 @@ __all__ = [
     "ClearBondStereoEdit",
     "ClearTetrahedralStereoEdit",
     "ComparisonState",
+    "CompletionExecutionResult",
+    "CoreExecutionResult",
     "DetachFragmentEdit",
     "EvidenceAvailability",
     "EvidenceValueV1",
+    "ExecutionErrorV1",
     "FragmentConnection",
+    "FullExecutionResult",
+    "GraphDiffV1",
     "InvertTetrahedralStereoEdit",
     "MoleculeRecord",
     "MoleculeRole",
@@ -62,4 +82,6 @@ __all__ = [
     "SetTetrahedralStereoEdit",
     "Severity",
     "SourcePayloadReference",
+    "StereoChangeV1",
+    "StereoExecutionResult",
 ]

@@ -7,7 +7,7 @@ from pathlib import Path
 
 from synthaudit.schema.evidence import EvidenceValueV1
 from synthaudit.schema.reaction_ir import ReactionIRV1
-from synthaudit.schema.results import CheckResultV1, SemanticComparisonV1
+from synthaudit.schema.results import CheckResultV1, FullExecutionResult, SemanticComparisonV1
 from synthaudit.schema.route_ir import RouteIRV1
 
 SCHEMAS = {
@@ -16,6 +16,7 @@ SCHEMAS = {
     "evidence-v1.schema.json": EvidenceValueV1,
     "check-result-v1.schema.json": CheckResultV1,
     "semantic-comparison-v1.schema.json": SemanticComparisonV1,
+    "execution-result-v1.schema.json": FullExecutionResult,
 }
 
 

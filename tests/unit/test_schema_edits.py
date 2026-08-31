@@ -21,6 +21,7 @@ from synthaudit.schema import (
     SetExplicitHydrogenEdit,
     SetTetrahedralStereoEdit,
 )
+from synthaudit.schema.results import CoreExecutionResult, ExecutionErrorV1
 
 
 def _reaction_with_every_edit() -> ReactionIRV1:
@@ -105,4 +106,22 @@ def test_reaction_rejects_duplicate_edit_ids() -> None:
             product=MoleculeRecord(mapped_smiles="[CH3:1][OH:2]", role=MoleculeRole.PRODUCT),
             core_edits=(BreakBondEdit(edit_id="same", map_a=1, map_b=2),),
             stereo_edits=(ClearBondStereoEdit(edit_id="same", map_a=1, map_b=2),),
+        )
+
+
+def test_execution_result_success_contract_is_fail_closed() -> None:
+    with pytest.raises(ValidationError, match="failed execution must contain"):
+        CoreExecutionResult(
+            success=False,
+            structurally_valid=False,
+            input_mapped_structures=("[CH4:1]",),
+            mapped_structures=("[CH4:1]",),
+        )
+    with pytest.raises(ValidationError, match="successful execution cannot contain"):
+        CoreExecutionResult(
+            success=True,
+            structurally_valid=True,
+            input_mapped_structures=("[CH4:1]",),
+            mapped_structures=("[CH4:1]",),
+            error=ExecutionErrorV1(error_type="Unexpected", message="must not coexist"),
         )
