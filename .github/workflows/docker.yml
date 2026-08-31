@@ -1,0 +1,17 @@
+name: docker
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t synthaudit:pr .
+      - run: docker run --rm synthaudit:pr synthaudit version --json
+      - run: docker run --rm synthaudit:pr synthaudit-easy doctor --json
