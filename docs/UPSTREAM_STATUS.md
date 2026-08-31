@@ -1,0 +1,39 @@
+# Upstream status
+
+Checked: **2026-08-31**. HEAD values were resolved with `git ls-remote` and source/example trees were inspected at the listed repositories. Compatibility tests must pin these full SHAs. A later HEAD is not implicitly compatible.
+
+## Status matrix
+
+| Project | Repository / branch / exact commit | License status | Public artifacts and runtime | Integration decision |
+|---|---|---|---|---|
+| ReactSeq | `jiachengxiong/ReactSeq`, `main`, `9838a3058e32e1c0ee04b2bab0448104dc293384` | LGPL-2.1 for repository code; linked datasets/checkpoints require their own provenance review | Generator/converter code (`e_smiles.py`, `preprocess_data.py`, `transform.py`), OpenNMT fork, configs, USPTO-50K-derived files, demo source/target/output, notebooks, prompt paths, embedding extraction scripts. Repository model directories are placeholders; README links checkpoints/preprocessed data externally. Conversion runtime documents Python 3.7, RDKit 2019.03.2 and `epam.indigo`; inference documents Python 3.8, PyTorch 2.0 and OpenNMT-py 3.4.1. | Do not vendor. Use pinned golden fixtures and an optional isolated JSONL bridge. Main package implements only source-verified, fail-closed parsing semantics. |
+| SynthEx | `schwallergroup/synthex`, `main`, `5f41a6b21e3906fde93e84c88bb91f9dc4d37e6f` | Repository contains no license file at checked commit. README says a future release is planned under Apache-2.0; this is not a present code license. | README, figures, paper citation, one two-operation example, and names of ten operations. No package, code, JSON Schema, reference implementation, checkpoint, fixture, dataset download, ReactionJSON spec, or RouteJSON spec in the repository. SynthAtlas is browsable but has no documented API inspected here. | Official adapters are unavailable and must raise `UpstreamSpecificationUnavailable`. Implement only `synthaudit.synthex-paper-draft/0.1`, with assumptions isolated and visibly labelled. Do not scrape SynthAtlas. |
+| Synthelite | `schwallergroup/synthelite`, `main`, `45168f8a5846c2fd15a833eddc88bac843b5bbee` | MIT | Source, Poetry lock, configs, benchmark definitions, simple launch example, route exporter/download command, and precomputed routes on Hugging Face. Full planner requires API credentials, stock/templates, policy models, and WandB. Its `routes.llm_query_explorer.json` is an implementation export, not ReactionJSON/RouteJSON. | Optional version-pinned file adapter. Preserve unknown fields and avoid importing planner dependencies into core. No live planner call in offline tests. |
+| ReactionClassifier | `schwallergroup/ReactionClassifier`, `main`, `4d26f18a2350dfc9bdba8d57742fd3344545c3a0` | MIT for code and bundled data, per repository | Installable `reactionclassifier`, bundled neural gate/templates/taxonomy, examples/tests; full ~666k labelled database on Zenodo. README notes proprietary NameRXN-derived columns are excluded. Requires RDKit, PyTorch, NumPy. | Optional `classifier` provider; isolate its neural confidence from deterministic template confirmation and from calibrated SynthAudit evidence. Dataset download is explicit. |
+| AiZynthFinder | `MolecularAI/aizynthfinder`, `master`, `21ff546d5f22331b078390a2f12dc04defc3f39c` | MIT | Installable PyPI package, docs, tests, stocks and expansion/filter policies via explicit public-data download. Python 3.10-3.12 documented. | No core dependency. Potential route/reference provider in a separate optional environment; pin model and stock artifacts independently. |
+| Molecular Transformer | `pschwllr/MolecularTransformer`, `master`, `aeb339daf0a029b391f8307fb3f467f461605dd2` | License file present; exact redistribution obligations must be reviewed before packaging derived artifacts | Legacy OpenNMT-py v0.4.1 code, Python 3.5/PyTorch 0.4.1 instructions, links to datasets/models. Reproducible modern local checkpoint inference was not established. | Keep only a provider interface. Do not select as default or advertise local support until checkpoint, license, and inference reproduction pass. |
+
+## Phase 0 required answers
+
+1. **Is the official ReactSeq converter runnable?** The converter source is public and structurally runnable in the upstream-pinned legacy environment. It is not compatible with the SynthAudit Python 3.11 environment as documented: upstream calls for Python 3.7, RDKit 2019.03.2, and Indigo. On this Apple Silicon host that exact environment was not established in Phase 0, so no conformance claim is made. The bridge remains isolated and optional.
+2. **Which ReactSeq artifacts are public?** LGPL-2.1 source for generation, conversion, preprocessing, training/inference and the OpenNMT fork; configs; demo inputs/predictions/outputs; notebooks; USPTO-50K-derived directories; prompt workflows; vocabulary/data links; embedding extraction code; and external checkpoint/preprocessed-data links.
+3. **Can ReactSeq_MEO embeddings be extracted from a released checkpoint?** The repository contains extraction code (`embedding/1_extract_emebddings.py` and notebooks), but the checked Git tree does not contain a checkpoint in `trained_models`. Because the externally linked checkpoint was not checksum-pinned and loaded here, reproducible extraction is currently **unverified/unavailable**, never fabricated.
+4. **Does ReactSeq require isolation?** Yes for pinned official conversion/inference. Conversion and model inference specify mutually different legacy environments, both outside the Python 3.11 core contract.
+5. **Is an official SynthEx ReactionJSON schema available?** No, not at the checked commit.
+6. **Is an official RouteJSON schema available?** No, not at the checked commit.
+7. **Which SynthEx semantics remain undocumented?** Container/version fields; required/optional fields; exact meaning and validation of every parameter; absolute versus delta bond order; fragment syntax and attachment indexing; fresh map allocation; operation ordering; atom changes; explicit-H/charge behavior; stereo neighbour conventions; errors; route step/dependency/intermediate identifiers; condition schema; and round-trip guarantees.
+8. **What can be implemented without guessing?** Canonical IR, mapped-reaction graph differencing, deterministic execution/audits, an official-adapter failure boundary, and a visibly namespaced draft parser limited to the operation names/example documented by the README plus user-supplied fields validated under declared draft rules.
+9. **Minimum fully reproducible v0.1?** Offline ReactionIR/RouteIR schemas, mapped-reaction adapter, staged execution, structural/centre/completion/stereo audits, safe ReactSeq adapter subset with pinned fixtures and optional legacy bridge, semantic comparison, CLI, standalone report, and tests. Official SynthEx and model inference are not release blockers.
+10. **Which licenses govern artifacts?** SynthAudit: Apache-2.0. ReactSeq repository code: LGPL-2.1. Synthelite, ReactionClassifier, and AiZynthFinder code: MIT. SynthEx currently has no repository license; its README only announces a planned Apache-2.0 release. Molecular Transformer and every external checkpoint/dataset must be reviewed separately. USPTO-derived and third-party datasets retain their source terms and are not redistributed by default.
+
+## Availability vocabulary
+
+- **available**: present, licensed, and inspected at the pinned commit;
+- **optional**: reproducible only with an explicitly installed extra/artifact;
+- **unverified**: referenced upstream but not reproducibly loaded or executed here;
+- **unavailable**: required specification/artifact is absent;
+- **unsupported**: intentionally rejected by the current adapter.
+
+## Recheck protocol
+
+Run `scripts/check_upstreams.py` explicitly with network access, review diffs manually, update exact SHAs and licenses, regenerate official fixtures only through the isolated bridge, and add a compatibility test before changing any availability status.
