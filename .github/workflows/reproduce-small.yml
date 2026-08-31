@@ -1,0 +1,23 @@
+name: reproduce-small
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.7"
+          enable-cache: true
+      - run: uv python install 3.11
+      - run: uv sync --frozen --all-extras --dev
+      - run: make reproduce-small
+      - name: Verify generated tracked artifacts are unchanged
+        run: git diff --exit-code
