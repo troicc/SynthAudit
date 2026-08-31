@@ -1,0 +1,1032 @@
+{
+  "audit": {
+    "blocking": false,
+    "completion_audit": {
+      "checks": [
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.attachment_points",
+          "deterministic": true,
+          "evidence": {
+            "missing_attachment_maps": []
+          },
+          "message": "Every completion attachment point exists at its execution stage.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.fragment_parsing",
+          "deterministic": true,
+          "evidence": {
+            "errors": [],
+            "fragment_count": 1
+          },
+          "message": "Every declared external fragment parses and sanitizes.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.attachment_identity",
+          "deterministic": true,
+          "evidence": {
+            "errors": [],
+            "explicit_multi_attached_fragment_maps": []
+          },
+          "message": "Fragment attachment atoms are explicit and connection pairs are unique.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.execution",
+          "deterministic": true,
+          "evidence": {
+            "applied_operations": [
+              "0:set_atom_state:mapped:atom:0",
+              "1:attach_fragment:mapped:attach:0"
+            ],
+            "error_type": null,
+            "rdkit_error": null
+          },
+          "message": "Completion edits executed transactionally.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.charge_valence",
+          "deterministic": true,
+          "evidence": {
+            "rdkit_error": null,
+            "structurally_valid": true
+          },
+          "message": "Post-completion graph passed RDKit charge/valence sanitation.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.expected_precursor_reconstruction",
+          "deterministic": true,
+          "evidence": {
+            "expected": [
+              "[CH3:1][CH2:2][Br:5]",
+              "[OH-:4]"
+            ],
+            "reconstructed": [
+              "[CH3:1][CH2:2][Br:5]",
+              "[OH-:4]"
+            ],
+            "stereo_ignored_at_completion_stage": true
+          },
+          "message": "Completion reconstructs the expected mapped precursor set before stereo.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.external_fragments_explained",
+          "deterministic": true,
+          "evidence": {
+            "declared_external_atom_maps": [
+              5
+            ],
+            "observed_added_atom_maps": [
+              5
+            ]
+          },
+          "message": "Every externally introduced atom belongs to an attachment edit.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.required_fragments_present",
+          "deterministic": true,
+          "evidence": {
+            "missing_fragment_atom_maps": []
+          },
+          "message": "Every required attachment-fragment atom remains in completed precursors.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.unexplained_atoms",
+          "deterministic": true,
+          "evidence": {
+            "unexplained_added": [],
+            "unexplained_removed": []
+          },
+          "message": "Completion atom accounting is fully explained by declared fragments.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "completion",
+          "check_id": "completion.leaving_group_review",
+          "deterministic": true,
+          "evidence": {
+            "corpus_novelty_evaluated": false,
+            "fragment_count": 1
+          },
+          "message": "Fragments passed structural rules; corpus-based leaving-group novelty is unavailable.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "unavailable"
+        }
+      ],
+      "schema_version": "synthaudit.stage-audit-result/1",
+      "stage": "completion",
+      "status": "pass"
+    },
+    "execution": {
+      "applied_operations": [
+        "core/0:break_bond:mapped:core:0",
+        "completion/0:set_atom_state:mapped:atom:0",
+        "completion/1:attach_fragment:mapped:attach:0"
+      ],
+      "completion_result": {
+        "applied_operations": [
+          "0:set_atom_state:mapped:atom:0",
+          "1:attach_fragment:mapped:attach:0"
+        ],
+        "diagnostic_mapped_structures": [],
+        "error": null,
+        "graph_diff": {
+          "added_atoms": [
+            {
+              "aromatic": false,
+              "atom_map": 5,
+              "atomic_number": 35,
+              "chiral_tag": "CHI_UNSPECIFIED",
+              "explicit_hydrogens": 0,
+              "formal_charge": 0,
+              "isotope": 0
+            }
+          ],
+          "added_bonds": [
+            {
+              "map_a": 2,
+              "map_b": 5,
+              "order": 1.0,
+              "stereo": "STEREONONE"
+            }
+          ],
+          "changed_atom_properties": [
+            {
+              "after": -1,
+              "atom_map": 4,
+              "before": 0,
+              "property": "formal_charge"
+            }
+          ],
+          "changed_bond_orders": [],
+          "changed_bond_stereo": [],
+          "changed_tetrahedral_stereo": [],
+          "precursor_fragment_count_after": 2,
+          "precursor_fragment_count_before": 2,
+          "removed_atoms": [],
+          "removed_bonds": [],
+          "ring_count_after": 0,
+          "ring_count_before": 0,
+          "schema_version": "synthaudit.graph-diff/1"
+        },
+        "input_mapped_structures": [
+          "[CH3:1][CH2:2]",
+          "[OH:4]"
+        ],
+        "mapped_structures": [
+          "[CH3:1][CH2:2][Br:5]",
+          "[OH-:4]"
+        ],
+        "provenance": [
+          {
+            "adapter": "AttachmentCompletionExecutor",
+            "adapter_version": "1",
+            "artifact_sha256": null,
+            "generated_at": null,
+            "license": "Apache-2.0",
+            "metadata": {},
+            "source": "synthaudit",
+            "source_commit": null,
+            "source_version": "0.1.0"
+          }
+        ],
+        "schema_version": "synthaudit.completion-execution-result/1",
+        "stage": "completion",
+        "structurally_valid": true,
+        "success": true,
+        "warnings": []
+      },
+      "core_result": {
+        "applied_operations": [
+          "0:break_bond:mapped:core:0"
+        ],
+        "diagnostic_mapped_structures": [],
+        "error": null,
+        "graph_diff": {
+          "added_atoms": [],
+          "added_bonds": [],
+          "changed_atom_properties": [],
+          "changed_bond_orders": [],
+          "changed_bond_stereo": [],
+          "changed_tetrahedral_stereo": [],
+          "precursor_fragment_count_after": 2,
+          "precursor_fragment_count_before": 1,
+          "removed_atoms": [],
+          "removed_bonds": [
+            {
+              "map_a": 2,
+              "map_b": 4,
+              "order": 1.0,
+              "stereo": "STEREONONE"
+            }
+          ],
+          "ring_count_after": 0,
+          "ring_count_before": 0,
+          "schema_version": "synthaudit.graph-diff/1"
+        },
+        "input_mapped_structures": [
+          "[CH3:1][CH2:2][OH:4]"
+        ],
+        "mapped_structures": [
+          "[CH3:1][CH2:2]",
+          "[OH:4]"
+        ],
+        "provenance": [
+          {
+            "adapter": "CoreGraphExecutor",
+            "adapter_version": "1",
+            "artifact_sha256": null,
+            "generated_at": null,
+            "license": "Apache-2.0",
+            "metadata": {},
+            "source": "synthaudit",
+            "source_commit": null,
+            "source_version": "0.1.0"
+          }
+        ],
+        "schema_version": "synthaudit.core-execution-result/1",
+        "stage": "core",
+        "structurally_valid": true,
+        "success": true,
+        "warnings": []
+      },
+      "diagnostic_mapped_structures": [],
+      "error": null,
+      "graph_diff": {
+        "added_atoms": [
+          {
+            "aromatic": false,
+            "atom_map": 5,
+            "atomic_number": 35,
+            "chiral_tag": "CHI_UNSPECIFIED",
+            "explicit_hydrogens": 0,
+            "formal_charge": 0,
+            "isotope": 0
+          }
+        ],
+        "added_bonds": [
+          {
+            "map_a": 2,
+            "map_b": 5,
+            "order": 1.0,
+            "stereo": "STEREONONE"
+          }
+        ],
+        "changed_atom_properties": [
+          {
+            "after": -1,
+            "atom_map": 4,
+            "before": 0,
+            "property": "formal_charge"
+          }
+        ],
+        "changed_bond_orders": [],
+        "changed_bond_stereo": [],
+        "changed_tetrahedral_stereo": [],
+        "precursor_fragment_count_after": 2,
+        "precursor_fragment_count_before": 1,
+        "removed_atoms": [],
+        "removed_bonds": [
+          {
+            "map_a": 2,
+            "map_b": 4,
+            "order": 1.0,
+            "stereo": "STEREONONE"
+          }
+        ],
+        "ring_count_after": 0,
+        "ring_count_before": 0,
+        "schema_version": "synthaudit.graph-diff/1"
+      },
+      "input_mapped_structures": [
+        "[CH3:1][CH2:2][OH:4]"
+      ],
+      "mapped_structures": [
+        "[CH3:1][CH2:2][Br:5]",
+        "[OH-:4]"
+      ],
+      "provenance": [
+        {
+          "adapter": "ReactionExecutor",
+          "adapter_version": "1",
+          "artifact_sha256": null,
+          "generated_at": null,
+          "license": "Apache-2.0",
+          "metadata": {},
+          "source": "synthaudit",
+          "source_commit": null,
+          "source_version": "0.1.0"
+        }
+      ],
+      "schema_version": "synthaudit.full-execution-result/1",
+      "stage": "full",
+      "stereo_result": {
+        "applied_operations": [],
+        "diagnostic_mapped_structures": [],
+        "error": null,
+        "graph_diff": {
+          "added_atoms": [],
+          "added_bonds": [],
+          "changed_atom_properties": [],
+          "changed_bond_orders": [],
+          "changed_bond_stereo": [],
+          "changed_tetrahedral_stereo": [],
+          "precursor_fragment_count_after": 2,
+          "precursor_fragment_count_before": 2,
+          "removed_atoms": [],
+          "removed_bonds": [],
+          "ring_count_after": 0,
+          "ring_count_before": 0,
+          "schema_version": "synthaudit.graph-diff/1"
+        },
+        "input_mapped_structures": [
+          "[CH3:1][CH2:2][Br:5]",
+          "[OH-:4]"
+        ],
+        "mapped_structures": [
+          "[CH3:1][CH2:2][Br:5]",
+          "[OH-:4]"
+        ],
+        "provenance": [
+          {
+            "adapter": "StereoExecutor",
+            "adapter_version": "1",
+            "artifact_sha256": null,
+            "generated_at": null,
+            "license": "Apache-2.0",
+            "metadata": {},
+            "source": "synthaudit",
+            "source_commit": null,
+            "source_version": "0.1.0"
+          }
+        ],
+        "schema_version": "synthaudit.stereo-execution-result/1",
+        "stage": "stereo",
+        "structurally_valid": true,
+        "success": true,
+        "warnings": []
+      },
+      "structurally_valid": true,
+      "success": true,
+      "warnings": []
+    },
+    "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+    "provenance": [
+      {
+        "adapter": "ReactionAuditor",
+        "adapter_version": "1",
+        "artifact_sha256": null,
+        "generated_at": null,
+        "license": "Apache-2.0",
+        "metadata": {},
+        "source": "synthaudit",
+        "source_commit": null,
+        "source_version": "0.1.0"
+      }
+    ],
+    "reaction_centre_audit": {
+      "checks": [
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.referenced_atoms",
+          "deterministic": true,
+          "evidence": {
+            "referenced_atom_maps": [
+              2,
+              4
+            ]
+          },
+          "message": "Every core edit references a mapped product atom.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.declared_bond_state",
+          "deterministic": true,
+          "evidence": {
+            "errors": []
+          },
+          "message": "Every core edit matches the graph state at its declared operation order.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.core_execution",
+          "deterministic": true,
+          "evidence": {
+            "applied_operations": [
+              "0:break_bond:mapped:core:0"
+            ],
+            "error_type": null,
+            "rdkit_error": null
+          },
+          "message": "Core graph edits executed to a sanitized synthon graph.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.explained_graph_diff",
+          "deterministic": true,
+          "evidence": {
+            "added": [],
+            "order_changed": [],
+            "removed": []
+          },
+          "message": "Core graph diff is exactly explained by declared bond edits.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.ring_change",
+          "deterministic": true,
+          "evidence": {
+            "ring_count_after": 0,
+            "ring_count_before": 0,
+            "topology_edit_count": 1
+          },
+          "message": "Observed ring-count change is consistent with declared topology edits.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.real_graph_change",
+          "deterministic": true,
+          "evidence": {
+            "declared_edits": 1,
+            "observed_changes": 1
+          },
+          "message": "Declared core edits produce observable bond changes.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.alternative_site_ambiguity",
+          "deterministic": true,
+          "evidence": {
+            "ambiguous_atom_maps": []
+          },
+          "message": "Referenced reaction-centre atoms have unique graph environments.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "reaction_centre",
+          "check_id": "reaction_centre.expected_precursor_reconstruction",
+          "deterministic": true,
+          "evidence": {
+            "declared_signature": [
+              [
+                "break_bond",
+                2,
+                4,
+                1.0
+              ]
+            ],
+            "expected_signature": [
+              [
+                "break_bond",
+                2,
+                4,
+                1.0
+              ]
+            ]
+          },
+          "message": "Declared reaction-centre edits match mapped expected-precursor graph differences.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        }
+      ],
+      "schema_version": "synthaudit.stage-audit-result/1",
+      "stage": "reaction_centre",
+      "status": "pass"
+    },
+    "reaction_id": "synthaudit-demo-substitution",
+    "schema_version": "synthaudit.reaction-audit-result/1",
+    "stereo_audit": {
+      "checks": [
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.centres_exist",
+          "deterministic": true,
+          "evidence": {
+            "invalid_degree_atom_maps": [],
+            "missing_atom_maps": []
+          },
+          "message": "Every tetrahedral target exists and has at least three explicit neighbours.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.cip_intent",
+          "deterministic": true,
+          "evidence": {
+            "after_cip": {},
+            "before_cip": {}
+          },
+          "message": "No tetrahedral CIP transition was declared.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.bond_references",
+          "deterministic": true,
+          "evidence": {},
+          "message": "No E/Z bond operation was declared.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.silent_erasure",
+          "deterministic": true,
+          "evidence": {
+            "erased_atom_maps": [],
+            "erased_bonds": []
+          },
+          "message": "No unrequested tetrahedral or bond stereo was erased.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.new_centres",
+          "deterministic": true,
+          "evidence": {
+            "new_cip_atom_maps": [],
+            "undeclared_new_atom_maps": []
+          },
+          "message": "Every newly assigned stereocentre was explicitly declared.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.symmetric_centres",
+          "deterministic": true,
+          "evidence": {},
+          "message": "No tetrahedral target requires symmetry analysis.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.cyclic_path",
+          "deterministic": true,
+          "evidence": {
+            "cyclic_stereo_atom_maps": []
+          },
+          "message": "No declared stereo edit occurs in a ring-specific context.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "stereo",
+          "check_id": "stereo.execution",
+          "deterministic": true,
+          "evidence": {
+            "applied_operations": [],
+            "error_type": null,
+            "rdkit_error": null
+          },
+          "message": "Stereo edits executed and the final graph sanitized.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        }
+      ],
+      "schema_version": "synthaudit.stage-audit-result/1",
+      "stage": "stereo",
+      "status": "pass"
+    },
+    "structural_audit": {
+      "checks": [
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.map_uniqueness",
+          "deterministic": true,
+          "evidence": {
+            "errors": []
+          },
+          "message": "Atom maps are complete and unique in every inspected stage.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.dangling_references",
+          "deterministic": true,
+          "evidence": {
+            "dangling_atom_maps": []
+          },
+          "message": "All edit atom references resolve in execution order.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.valence",
+          "deterministic": true,
+          "evidence": {
+            "rdkit_errors": []
+          },
+          "message": "RDKit sanitation accepted the inspected mapped structures.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.formal_charge",
+          "deterministic": true,
+          "evidence": {
+            "net_charges": [
+              0,
+              0,
+              -1,
+              0,
+              -1
+            ],
+            "review_threshold_absolute_charge": 3,
+            "unusual_atom_charges": {}
+          },
+          "message": "Formal charges were recorded without extreme per-atom values.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.aromaticity_kekule",
+          "deterministic": true,
+          "evidence": {
+            "errors": []
+          },
+          "message": "Aromatic and Kekule forms are internally representable.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.connectivity",
+          "deterministic": true,
+          "evidence": {
+            "disconnected_records": []
+          },
+          "message": "Each molecule record contains one connected graph.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.empty_fragments",
+          "deterministic": true,
+          "evidence": {
+            "invalid_values": []
+          },
+          "message": "No empty fragment token is present.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.suspicious_single_atom_fragments",
+          "deterministic": true,
+          "evidence": {
+            "fragments": [
+              "[OH-:4]"
+            ]
+          },
+          "message": "Single-heavy-atom precursors are retained but flagged for review.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "warning",
+          "status": "warning"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.atom_conservation",
+          "deterministic": true,
+          "evidence": {
+            "unexplained_added": [],
+            "unexplained_removed": []
+          },
+          "message": "All added and removed atom maps are explained by attachment edits.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.unexplained_graph_changes",
+          "deterministic": true,
+          "evidence": {
+            "unexplained_changes": []
+          },
+          "message": "Every observed graph change is explained by a declared edit.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.operation_noops",
+          "deterministic": true,
+          "evidence": {
+            "execution_error": null
+          },
+          "message": "No operation was diagnosed as a no-op.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        },
+        {
+          "affected_atom_maps": [],
+          "category": "structural",
+          "check_id": "structural.edit_complexity",
+          "deterministic": true,
+          "evidence": {
+            "edit_count": 3,
+            "warning_threshold": 12
+          },
+          "message": "Declared edit count is within the transparent review threshold.",
+          "references": [],
+          "schema_version": "synthaudit.check-result/1",
+          "severity": "info",
+          "status": "pass"
+        }
+      ],
+      "schema_version": "synthaudit.stage-audit-result/1",
+      "stage": "structural",
+      "status": "warning"
+    },
+    "structurally_valid": true
+  },
+  "corpus_versions": [],
+  "evidence": [],
+  "limitations": [
+    "Authored software example only; no external corpus or calibrated model was run."
+  ],
+  "model_versions": [],
+  "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+  "novelty": null,
+  "precedents": null,
+  "provenance": [
+    {
+      "adapter": "build-product-examples/reaction",
+      "adapter_version": "1",
+      "artifact_sha256": null,
+      "generated_at": null,
+      "license": "Apache-2.0",
+      "metadata": {},
+      "source": "synthaudit",
+      "source_commit": null,
+      "source_version": "0.1.0"
+    }
+  ],
+  "reaction": {
+    "atom_state_edits": [
+      {
+        "atom_map": 4,
+        "edit_id": "mapped:atom:0",
+        "edit_type": "set_atom_state",
+        "from_value": 0,
+        "metadata": {},
+        "property": "formal_charge",
+        "source_range": null,
+        "to_value": -1
+      }
+    ],
+    "attachment_edits": [
+      {
+        "attachment_kind": "fragment",
+        "charge_delta": null,
+        "connections": [
+          {
+            "fragment_atom_map": 5,
+            "order": 1.0,
+            "product_atom_map": 2
+          }
+        ],
+        "edit_id": "mapped:attach:0",
+        "edit_type": "attach_fragment",
+        "fragment_smiles": "[Br:5]",
+        "metadata": {
+          "source_external_maps": [
+            3
+          ]
+        },
+        "source_range": null,
+        "target_atom_map": null
+      }
+    ],
+    "conditions": null,
+    "core_edits": [
+      {
+        "edit_id": "mapped:core:0",
+        "edit_type": "break_bond",
+        "expected_order": 1.0,
+        "map_a": 2,
+        "map_b": 4,
+        "metadata": {},
+        "source_range": null
+      }
+    ],
+    "direction": "retrosynthesis",
+    "expected_precursors": [
+      {
+        "identifiers": {},
+        "mapped_smiles": "[CH3:1][CH2:2][Br:5]",
+        "metadata": {},
+        "name": null,
+        "role": "precursor"
+      },
+      {
+        "identifiers": {},
+        "mapped_smiles": "[OH-:4]",
+        "metadata": {},
+        "name": null,
+        "role": "precursor"
+      }
+    ],
+    "metadata": {},
+    "product": {
+      "identifiers": {},
+      "mapped_smiles": "[CH3:1][CH2:2][OH:4]",
+      "metadata": {},
+      "name": null,
+      "role": "product"
+    },
+    "provenance": [
+      {
+        "adapter": "synthaudit.mapped-reaction-smiles/1",
+        "adapter_version": "0.1.0",
+        "artifact_sha256": null,
+        "generated_at": null,
+        "license": "input-controlled",
+        "metadata": {},
+        "source": "mapped-reaction-smiles",
+        "source_commit": null,
+        "source_version": null
+      }
+    ],
+    "reaction_id": "synthaudit-demo-substitution",
+    "schema_version": "synthaudit.reaction-ir/1",
+    "source_payload_reference": {
+      "byte_length": 50,
+      "media_type": "chemical/x-daylight-smiles",
+      "representation": "mapped-reaction-smiles",
+      "sha256": "c0aef2964e2e9362f73f8636173e4e63e1c3cd0e609eb080b7771c0e7727f1df",
+      "uri": null
+    },
+    "stage_metadata": {
+      "canonical_direction": "retrosynthesis",
+      "participating_reactant_fragments": [
+        "[CH3:1][CH2:2][Br:3]",
+        "[OH-:4]"
+      ],
+      "reagent_field": "",
+      "source_direction": "forward_reaction_smiles",
+      "source_external_map_to_fresh_map": {
+        "3": 5
+      },
+      "unmapped_left_side_reagents": []
+    },
+    "stereo_edits": []
+  },
+  "schema_version": "synthaudit.reaction-report/1"
+}

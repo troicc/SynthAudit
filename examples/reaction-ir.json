@@ -1,0 +1,110 @@
+{
+  "atom_state_edits": [
+    {
+      "atom_map": 4,
+      "edit_id": "mapped:atom:0",
+      "edit_type": "set_atom_state",
+      "from_value": 0,
+      "metadata": {},
+      "property": "formal_charge",
+      "source_range": null,
+      "to_value": -1
+    }
+  ],
+  "attachment_edits": [
+    {
+      "attachment_kind": "fragment",
+      "charge_delta": null,
+      "connections": [
+        {
+          "fragment_atom_map": 5,
+          "order": 1.0,
+          "product_atom_map": 2
+        }
+      ],
+      "edit_id": "mapped:attach:0",
+      "edit_type": "attach_fragment",
+      "fragment_smiles": "[Br:5]",
+      "metadata": {
+        "source_external_maps": [
+          3
+        ]
+      },
+      "source_range": null,
+      "target_atom_map": null
+    }
+  ],
+  "conditions": null,
+  "core_edits": [
+    {
+      "edit_id": "mapped:core:0",
+      "edit_type": "break_bond",
+      "expected_order": 1.0,
+      "map_a": 2,
+      "map_b": 4,
+      "metadata": {},
+      "source_range": null
+    }
+  ],
+  "direction": "retrosynthesis",
+  "expected_precursors": [
+    {
+      "identifiers": {},
+      "mapped_smiles": "[CH3:1][CH2:2][Br:5]",
+      "metadata": {},
+      "name": null,
+      "role": "precursor"
+    },
+    {
+      "identifiers": {},
+      "mapped_smiles": "[OH-:4]",
+      "metadata": {},
+      "name": null,
+      "role": "precursor"
+    }
+  ],
+  "metadata": {},
+  "product": {
+    "identifiers": {},
+    "mapped_smiles": "[CH3:1][CH2:2][OH:4]",
+    "metadata": {},
+    "name": null,
+    "role": "product"
+  },
+  "provenance": [
+    {
+      "adapter": "synthaudit.mapped-reaction-smiles/1",
+      "adapter_version": "0.1.0",
+      "artifact_sha256": null,
+      "generated_at": null,
+      "license": "input-controlled",
+      "metadata": {},
+      "source": "mapped-reaction-smiles",
+      "source_commit": null,
+      "source_version": null
+    }
+  ],
+  "reaction_id": "synthaudit-demo-substitution",
+  "schema_version": "synthaudit.reaction-ir/1",
+  "source_payload_reference": {
+    "byte_length": 50,
+    "media_type": "chemical/x-daylight-smiles",
+    "representation": "mapped-reaction-smiles",
+    "sha256": "c0aef2964e2e9362f73f8636173e4e63e1c3cd0e609eb080b7771c0e7727f1df",
+    "uri": null
+  },
+  "stage_metadata": {
+    "canonical_direction": "retrosynthesis",
+    "participating_reactant_fragments": [
+      "[CH3:1][CH2:2][Br:3]",
+      "[OH-:4]"
+    ],
+    "reagent_field": "",
+    "source_direction": "forward_reaction_smiles",
+    "source_external_map_to_fresh_map": {
+      "3": 5
+    },
+    "unmapped_left_side_reagents": []
+  },
+  "stereo_edits": []
+}

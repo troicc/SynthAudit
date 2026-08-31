@@ -1,0 +1,285 @@
+{
+  "intermediates": [
+    {
+      "identifiers": {
+        "route_node_id": "bromo-intermediate"
+      },
+      "mapped_smiles": "[CH3:1][CH2:2][Br:4]",
+      "metadata": {},
+      "name": null,
+      "role": "intermediate"
+    }
+  ],
+  "metadata": {},
+  "provenance": [
+    {
+      "adapter": "demo_route",
+      "adapter_version": "0.1.0",
+      "artifact_sha256": null,
+      "generated_at": null,
+      "license": "Apache-2.0 fixture; not experimental reaction evidence",
+      "metadata": {},
+      "source": "synthaudit-authored-demo",
+      "source_commit": null,
+      "source_version": "1"
+    }
+  ],
+  "route_id": "synthaudit-demo-route",
+  "schema_version": "synthaudit.route-ir/1",
+  "starting_materials": [
+    {
+      "identifiers": {
+        "route_node_id": "start-carbon"
+      },
+      "mapped_smiles": "[CH3:1][CH3:2]",
+      "metadata": {},
+      "name": null,
+      "role": "starting_material"
+    },
+    {
+      "identifiers": {
+        "route_node_id": "start-hydroxide"
+      },
+      "mapped_smiles": "[OH-:3]",
+      "metadata": {},
+      "name": null,
+      "role": "starting_material"
+    }
+  ],
+  "steps": [
+    {
+      "consumes": [
+        "start-carbon"
+      ],
+      "depends_on": [],
+      "key_step": false,
+      "metadata": {},
+      "produces": [
+        "bromo-intermediate"
+      ],
+      "reaction": {
+        "atom_state_edits": [
+          {
+            "atom_map": 2,
+            "edit_id": "mapped:atom:0",
+            "edit_type": "set_explicit_hydrogen",
+            "from_count": 2,
+            "metadata": {},
+            "source_range": null,
+            "to_count": 3
+          }
+        ],
+        "attachment_edits": [
+          {
+            "attachment_bonds": [
+              [
+                2,
+                4
+              ]
+            ],
+            "edit_id": "mapped:detach:0",
+            "edit_type": "detach_fragment",
+            "fragment_atom_maps": [
+              4
+            ],
+            "metadata": {},
+            "source_range": null
+          }
+        ],
+        "conditions": null,
+        "core_edits": [],
+        "direction": "retrosynthesis",
+        "expected_precursors": [
+          {
+            "identifiers": {},
+            "mapped_smiles": "[CH3:1][CH3:2]",
+            "metadata": {},
+            "name": null,
+            "role": "precursor"
+          }
+        ],
+        "metadata": {},
+        "product": {
+          "identifiers": {},
+          "mapped_smiles": "[CH3:1][CH2:2][Br:4]",
+          "metadata": {},
+          "name": null,
+          "role": "product"
+        },
+        "provenance": [
+          {
+            "adapter": "synthaudit.mapped-reaction-smiles/1",
+            "adapter_version": "0.1.0",
+            "artifact_sha256": null,
+            "generated_at": null,
+            "license": "input-controlled",
+            "metadata": {},
+            "source": "mapped-reaction-smiles",
+            "source_commit": null,
+            "source_version": null
+          }
+        ],
+        "reaction_id": "synthaudit-demo-route-step-1",
+        "schema_version": "synthaudit.reaction-ir/1",
+        "source_payload_reference": {
+          "byte_length": 36,
+          "media_type": "chemical/x-daylight-smiles",
+          "representation": "mapped-reaction-smiles",
+          "sha256": "639071567a6a9338e8e6f744b4ae97b1597d6b76b89ae35a1c4ca7b470e7ca94",
+          "uri": null
+        },
+        "stage_metadata": {
+          "canonical_direction": "retrosynthesis",
+          "participating_reactant_fragments": [
+            "[CH3:1][CH3:2]"
+          ],
+          "reagent_field": "",
+          "source_direction": "forward_reaction_smiles",
+          "source_external_map_to_fresh_map": {},
+          "unmapped_left_side_reagents": []
+        },
+        "stereo_edits": []
+      },
+      "schema_version": "synthaudit.route-step-ir/1",
+      "step_id": "step-1",
+      "strategy_text": "protection"
+    },
+    {
+      "consumes": [
+        "bromo-intermediate",
+        "start-hydroxide"
+      ],
+      "depends_on": [
+        "step-1"
+      ],
+      "key_step": true,
+      "metadata": {},
+      "produces": [
+        "target"
+      ],
+      "reaction": {
+        "atom_state_edits": [
+          {
+            "atom_map": 3,
+            "edit_id": "mapped:atom:0",
+            "edit_type": "set_atom_state",
+            "from_value": 0,
+            "metadata": {},
+            "property": "formal_charge",
+            "source_range": null,
+            "to_value": -1
+          }
+        ],
+        "attachment_edits": [
+          {
+            "attachment_kind": "fragment",
+            "charge_delta": null,
+            "connections": [
+              {
+                "fragment_atom_map": 4,
+                "order": 1.0,
+                "product_atom_map": 2
+              }
+            ],
+            "edit_id": "mapped:attach:0",
+            "edit_type": "attach_fragment",
+            "fragment_smiles": "[Br:4]",
+            "metadata": {
+              "source_external_maps": [
+                4
+              ]
+            },
+            "source_range": null,
+            "target_atom_map": null
+          }
+        ],
+        "conditions": null,
+        "core_edits": [
+          {
+            "edit_id": "mapped:core:0",
+            "edit_type": "break_bond",
+            "expected_order": 1.0,
+            "map_a": 2,
+            "map_b": 3,
+            "metadata": {},
+            "source_range": null
+          }
+        ],
+        "direction": "retrosynthesis",
+        "expected_precursors": [
+          {
+            "identifiers": {},
+            "mapped_smiles": "[CH3:1][CH2:2][Br:4]",
+            "metadata": {},
+            "name": null,
+            "role": "precursor"
+          },
+          {
+            "identifiers": {},
+            "mapped_smiles": "[OH-:3]",
+            "metadata": {},
+            "name": null,
+            "role": "precursor"
+          }
+        ],
+        "metadata": {},
+        "product": {
+          "identifiers": {},
+          "mapped_smiles": "[CH3:1][CH2:2][OH:3]",
+          "metadata": {},
+          "name": null,
+          "role": "product"
+        },
+        "provenance": [
+          {
+            "adapter": "synthaudit.mapped-reaction-smiles/1",
+            "adapter_version": "0.1.0",
+            "artifact_sha256": null,
+            "generated_at": null,
+            "license": "input-controlled",
+            "metadata": {},
+            "source": "mapped-reaction-smiles",
+            "source_commit": null,
+            "source_version": null
+          }
+        ],
+        "reaction_id": "synthaudit-demo-route-step-2",
+        "schema_version": "synthaudit.reaction-ir/1",
+        "source_payload_reference": {
+          "byte_length": 50,
+          "media_type": "chemical/x-daylight-smiles",
+          "representation": "mapped-reaction-smiles",
+          "sha256": "b7211d5cecc3ce3634a07dfdf9d6b567c911c277dd089db03a1de096614a3cc8",
+          "uri": null
+        },
+        "stage_metadata": {
+          "canonical_direction": "retrosynthesis",
+          "participating_reactant_fragments": [
+            "[CH3:1][CH2:2][Br:4]",
+            "[OH-:3]"
+          ],
+          "reagent_field": "",
+          "source_direction": "forward_reaction_smiles",
+          "source_external_map_to_fresh_map": {
+            "4": 4
+          },
+          "unmapped_left_side_reagents": []
+        },
+        "stereo_edits": []
+      },
+      "schema_version": "synthaudit.route-step-ir/1",
+      "step_id": "step-2",
+      "strategy_text": "deprotection"
+    }
+  ],
+  "strategy_text": "Authored two-step software demonstration; not a synthetic recommendation.",
+  "target": {
+    "identifiers": {
+      "route_node_id": "target"
+    },
+    "mapped_smiles": "[CH3:1][CH2:2][OH:3]",
+    "metadata": {},
+    "name": null,
+    "role": "product"
+  }
+}

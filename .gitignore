@@ -16,6 +16,8 @@ artifacts/*
 !artifacts/.gitkeep
 reports/*
 !reports/.gitkeep
-data/
+!reports/examples/
+!reports/examples/**
+/data/
 .env
 *.key

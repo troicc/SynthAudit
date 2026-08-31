@@ -12,15 +12,18 @@ from synthaudit.adapters.reactseq.models import (
     ReactSeqBridgeResponse,
     ReactSeqTraversalContext,
 )
+from synthaudit.application.models import CommandEnvelopeV1, NormalizedReactionV1
 from synthaudit.counterfactuals.models import (
     BenchmarkSplitManifestV1,
     CounterfactualBenchmarkValidationV1,
     CounterfactualDatasetV1,
     CounterfactualRecordV1,
 )
+from synthaudit.data.transfer import DataDownloadManifestV1, DataDownloadResultV1
 from synthaudit.evaluation.evidence_model_smoke import EvidenceModelContractSmokeV1
 from synthaudit.evaluation.reactseq_conformance import ReactSeqConformanceSummary
 from synthaudit.evaluation.route_prompt_smoke import RoutePromptContractSmokeV1
+from synthaudit.models.artifacts import EvidenceModelArtifactV1
 from synthaudit.models.evidence import (
     AbstentionPolicyV1,
     EvidenceEvaluationV1,
@@ -46,6 +49,7 @@ from synthaudit.prompting.models import (
 )
 from synthaudit.providers.forward import ForwardReactionEvidenceV1
 from synthaudit.providers.llm_critic import IndependentCriticEvidenceV1
+from synthaudit.reports.models import EvidenceReportItemV1, ReactionReportV1, RouteReportV1
 from synthaudit.schema.evidence import EvidenceValueV1
 from synthaudit.schema.reaction_ir import ReactionIRV1
 from synthaudit.schema.results import (
@@ -57,6 +61,7 @@ from synthaudit.schema.results import (
 )
 from synthaudit.schema.route_audit import RouteAuditResultV1, RouteStepEvidenceV1
 from synthaudit.schema.route_ir import RouteIRV1
+from synthaudit.ui.workspace import BenchmarkWorkspaceV1
 
 SCHEMAS = {
     "reaction-ir-v1.schema.json": ReactionIRV1,
@@ -101,6 +106,15 @@ SCHEMAS = {
     "prompt-model-output-v1.schema.json": PromptModelOutputV1,
     "prompt-benchmark-evaluation-v1.schema.json": PromptBenchmarkEvaluationV1,
     "route-prompt-contract-smoke-v1.schema.json": RoutePromptContractSmokeV1,
+    "command-envelope-v1.schema.json": CommandEnvelopeV1,
+    "normalized-reaction-v1.schema.json": NormalizedReactionV1,
+    "data-download-manifest-v1.schema.json": DataDownloadManifestV1,
+    "data-download-result-v1.schema.json": DataDownloadResultV1,
+    "evidence-model-artifact-v1.schema.json": EvidenceModelArtifactV1,
+    "evidence-report-item-v1.schema.json": EvidenceReportItemV1,
+    "reaction-report-v1.schema.json": ReactionReportV1,
+    "route-report-v1.schema.json": RouteReportV1,
+    "benchmark-workspace-v1.schema.json": BenchmarkWorkspaceV1,
 }
 
 

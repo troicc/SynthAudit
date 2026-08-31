@@ -66,3 +66,16 @@ software fixture. It contains 40 deterministic variants and is content-addressed
 or experimental label and reports `metrics_status=not_run`. Provider-backed research outputs must
 add provider/model versions, prompt version, raw response, confidence semantics, calibration
 method when applicable, token/cost metadata where applicable, and artifact provenance.
+
+## Phase 11 product artifacts
+
+`examples/reaction-ir.json`, `examples/route-ir.json`, and `reports/examples/*` are generated from
+SynthAudit-authored software examples by `scripts/build_product_examples.py`. They contain no
+external corpus record, model output, experimental label, yield, or feasibility assertion. The
+HTML reports retain missing corpus/model evidence as unavailable and embed all visual assets.
+
+The data-download CLI accepts only an explicit versioned manifest containing source URI,
+destination, SHA-256, media type, license status, and provenance. Remote access is off by default.
+The reference-index preparation command accepts strict `ReferenceReactionV1` JSONL and preserves
+each caller-supplied source/license field; SynthAudit does not adjudicate whether the caller has
+redistribution permission.

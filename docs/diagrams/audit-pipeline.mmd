@@ -1,0 +1,26 @@
+flowchart LR
+  source["Declared source representation"] --> adapter["Fail-closed adapter"]
+  adapter --> ir["ReactionIR / RouteIR"]
+
+  subgraph execution["Transactional execution"]
+    product["Mapped product"] --> centre["Reaction-centre edits"]
+    centre --> synthons["Synthons"]
+    synthons --> completion["Attachment and atom-state completion"]
+    completion --> precursors["Mapped precursor set"]
+    precursors --> stereo["Stereo verification"]
+  end
+
+  ir --> product
+  stereo --> audit["Stage-specific deterministic audit"]
+  ir --> novelty["Corpus novelty views"]
+  ir --> precedent["Six-axis precedent retrieval"]
+  audit --> evidence["Calibrated evidence support and abstention"]
+  precedent --> evidence
+
+  audit --> surfaces["CLI · Streamlit · standalone HTML · JSON"]
+  novelty --> surfaces
+  precedent --> surfaces
+  evidence --> surfaces
+
+  novelty -. "independent; never 1 - novelty" .-> evidence
+  official["Official SynthEx schema unavailable"] -. "fail closed" .-> adapter

@@ -95,3 +95,11 @@ confidence semantics when enabled.
 Route checks operate only on canonical RouteIR, embedded ReactionIR, and declared metadata. They
 do not add an official SynthEx RouteJSON claim or reinterpret Synthelite implementation exports as
 a stable upstream schema.
+
+## Phase 11 product boundary
+
+Phase 11 changes no pinned upstream SHA, license, schema, or compatibility claim. The CLI,
+Streamlit workspace, standalone reports, diagrams, and authored examples consume only existing
+canonical APIs and committed fixtures. They do not call a live ReactSeq model, SynthEx service,
+Synthelite planner, external corpus, or LLM. Optional data transfer is user-invoked, manifest-
+declared, checksum-verified, and network-disabled unless explicitly enabled.

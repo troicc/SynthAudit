@@ -1,51 +1,62 @@
 UV_CACHE_DIR ?= .uv-cache
 export UV_CACHE_DIR
+UV_RUN ?= uv run --no-sync
 
-.PHONY: install quality format test smoke ui benchmark-small counterfactual-fixture prompt-fixture evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small reproduce-small schemas
+.PHONY: install quality format test smoke ui ui-smoke cli-smoke product-examples benchmark-small counterfactual-fixture prompt-fixture evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small reproduce-small schemas
 
 install:
 	uv sync --all-extras --dev
 
 quality:
-	uv run ruff check .
-	uv run ruff format --check .
-	uv run mypy src
+	$(UV_RUN) ruff check .
+	$(UV_RUN) ruff format --check .
+	$(UV_RUN) mypy src
 
 format:
-	uv run ruff check --fix .
-	uv run ruff format .
+	$(UV_RUN) ruff check --fix .
+	$(UV_RUN) ruff format .
 
 test:
-	uv run pytest -m "not upstream and not slow and not gpu" --cov=synthaudit --cov-report=term-missing
+	$(UV_RUN) pytest -m "not upstream and not slow and not gpu" --cov=synthaudit --cov-report=term-missing
 
 smoke:
-	uv run synthaudit version --json
+	$(UV_RUN) synthaudit version --json
 
 ui:
-	uv run --extra ui streamlit run app/Home.py
+	$(UV_RUN) --extra ui streamlit run app/Home.py
+
+ui-smoke:
+	$(UV_RUN) --extra ui synthaudit ui --check --json -
+
+cli-smoke:
+	$(UV_RUN) synthaudit audit-reaction --input examples/reaction-ir.json --json /private/tmp/synthaudit-cli-reaction.json
+	$(UV_RUN) synthaudit audit-route --input examples/route-ir.json --json /private/tmp/synthaudit-cli-route.json
+
+product-examples:
+	$(UV_RUN) python scripts/build_product_examples.py
 
 benchmark-small:
-	uv run synthaudit benchmark counterfactuals --records benchmarks/counterfactual-v1/records.jsonl --manifest benchmarks/counterfactual-v1/manifest.json --splits benchmarks/counterfactual-v1/splits.json --human-review benchmarks/counterfactual-v1/human-review.csv --json
+	$(UV_RUN) synthaudit benchmark counterfactuals --records benchmarks/counterfactual-v1/records.jsonl --manifest benchmarks/counterfactual-v1/manifest.json --splits benchmarks/counterfactual-v1/splits.json --human-review benchmarks/counterfactual-v1/human-review.csv --json
 
 counterfactual-fixture:
-	uv run python scripts/build_counterfactual_fixture.py
+	$(UV_RUN) python scripts/build_counterfactual_fixture.py
 
 prompt-fixture:
-	uv run python scripts/build_prompt_fixture.py
+	$(UV_RUN) python scripts/build_prompt_fixture.py
 
 evidence-model-small:
-	uv run synthaudit benchmark evidence-model-contract --json
+	$(UV_RUN) synthaudit benchmark evidence-model-contract --json
 
 prompt-benchmark-small:
-	uv run synthaudit benchmark prompt-cases --cases benchmarks/prompt-robustness-v1/cases.jsonl --manifest benchmarks/prompt-robustness-v1/manifest.json --json
+	$(UV_RUN) synthaudit benchmark prompt-cases --cases benchmarks/prompt-robustness-v1/cases.jsonl --manifest benchmarks/prompt-robustness-v1/manifest.json --json
 
 route-prompt-small:
-	uv run synthaudit benchmark route-prompt-contract --json
+	$(UV_RUN) synthaudit benchmark route-prompt-contract --json
 
 reactseq-conformance-small:
-	uv run synthaudit benchmark reactseq-conformance --fixture tests/fixtures/reactseq/golden.json --json
+	$(UV_RUN) synthaudit benchmark reactseq-conformance --fixture tests/fixtures/reactseq/golden.json --json
 
-reproduce-small: quality test smoke benchmark-small evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small
+reproduce-small: quality test smoke ui-smoke cli-smoke benchmark-small evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small
 
 schemas:
-	uv run python scripts/export_schemas.py
+	$(UV_RUN) python scripts/export_schemas.py

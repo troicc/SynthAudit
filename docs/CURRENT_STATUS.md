@@ -401,3 +401,62 @@ checks rather than comprehensive synthetic-chemistry adjudication.
 
 Next: Phase 11 complete CLI workflows, Streamlit interface, expanded standalone reports, and
 committed example outputs after applying the required UI/UX and diagram skills.
+
+## Phase 11 — CLI, interactive product, and standalone reports
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/11-cli-ui-and-reports`
+
+Implemented a shared application layer and complete Typer command tree for declared
+representation normalization, ReactSeq parsing, reaction execution and comparison, reaction and
+route audits, benchmark construction/validation, counterfactual and prompt contracts, local
+precedent and novelty workflows, explicit data transfer/preparation, stage-model training and
+held-out evaluation, report generation, and UI launch/validation. Machine-readable commands use a
+versioned success/error envelope where appropriate, fail with nonzero status on blocking audits or
+invalid inputs, and never map, repair, download, or trust serialized models implicitly.
+
+Added checksum- and license-gated local/HTTP data manifests with network disabled by default.
+Serialized evidence models require an exact SHA-256 manifest match and an explicit
+`--trust-artifact` acknowledgement before trusted-local pickle loading. Training accepts only
+train plus disjoint calibration partitions; evaluation accepts a held-out partition and cannot
+refit the model or its abstention policy.
+
+The five-page Streamlit product now contains Representation Explorer, Single Reaction Audit,
+Route Audit, Benchmark, and Methodology and Limitations pages. The pages call package workflows
+rather than carrying chemistry algorithms in Streamlit files. They expose stage-specific results,
+token-to-atom traversal, graph edits, route continuity, local precedent/novelty, missing-evidence
+states, and downloadable artifacts without synthesizing unavailable scores. The UI uses local
+system fonts/assets, visible keyboard focus, 44-pixel controls, reduced-motion handling, and a
+responsive dark data-workspace layout.
+
+Standalone reaction and route reports are responsive, print-friendly, serverless HTML documents
+with embedded RDKit/SVG structures, versioned JSON sidecars, provenance, model/corpus versions,
+limitations, and the required scientific boundary notice. Missing corpus, provider, or calibrated
+model evidence is rendered as unavailable rather than zero or negative evidence. Committed
+reaction/route examples and an accessible architecture SVG regenerate byte-for-byte through
+`make product-examples`; editable Mermaid source and a task-oriented product guide are also
+included.
+
+Verification:
+
+- `make quality`: ruff formatting/lint and strict mypy passed for 108 source files;
+- `make schemas`: generated nine Phase 11 schemas and committed-schema regression passed;
+- `make test`: 270 passed, total branch coverage 86%; application workflows 73%, data transfer
+  82%, trusted artifacts 90%, report models 83%, standalone rendering 92%, and UI helpers 80%;
+- 22 focused product/regression tests cover application normalization, CLI success and structured
+  failures, reaction/route reports, XSS escaping, sidecar collision prevention, local data/index,
+  explicit artifact trust, benchmark workspace facts, all five Streamlit page startups, every new
+  schema, required notices, and byte-exact example regeneration;
+- `make reproduce-small` passed offline, including version, five-page UI, reaction/route CLI,
+  200-record counterfactual validation, evidence-model contract, 40 prompt variants, route/prompt
+  contract, and three pinned ReactSeq examples;
+- the architecture SVG rendered successfully through the diagram toolchain and the five pages
+  also started under `streamlit.testing.v1.AppTest`.
+
+The committed benchmark and reports remain authored software fixtures. No licensed research
+corpus, official SynthEx schema, selected research model, paid provider, browser-compatibility
+certification, experimental feasibility result, or reportable population metric is claimed.
+
+Next: Phase 12 reproducible research/evaluation package, technical report, cards, release
+materials, and PhD-application narrative without fabricating unavailable scientific results.

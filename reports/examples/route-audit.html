@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SynthAudit route report — synthaudit-demo-route</title><style>
+:root { color-scheme:light; --primary:#1e3a5f; --secondary:#2563eb; --accent:#16803c;
+  --background:#f8fafc; --surface:#ffffff; --foreground:#0f172a; --muted:#475569;
+  --border:#cbd5e1; --danger:#b91c1c; --warning:#9a5800; --pass:#14733d;
+  --space-1:.25rem; --space-2:.5rem; --space-3:1rem; --space-4:1.5rem;
+  --space-5:2rem; --radius:.75rem; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--background); color:var(--foreground);
+  font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+main { width:min(1180px,calc(100% - 2rem)); margin:var(--space-4) auto; }
+header,.panel { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:0 1px 2px rgba(15,23,42,.05); padding:var(--space-4); margin-bottom:var(--space-3); }
+h1,h2,h3 { color:var(--primary); line-height:1.25; letter-spacing:-.02em; }
+h1 { font-size:clamp(1.75rem,4vw,2.75rem); margin:.25rem 0; }
+h2 { font-size:1.35rem; border-bottom:2px solid var(--border); padding-bottom:.5rem; }
+h3 { font-size:1.05rem; }
+.eyebrow { color:var(--secondary); font:600 .78rem/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em; text-transform:uppercase; }
+.notice { border-left:.35rem solid var(--primary); background:#eaf0f7; padding:.9rem 1rem;
+  font-weight:650; margin:1rem 0 0; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:var(--space-3); }
+.metric { min-height:7rem; border:1px solid var(--border); border-radius:.55rem; padding:var(--space-3); }
+.metric strong { display:block; color:var(--muted); font-size:.78rem; text-transform:uppercase;
+  letter-spacing:.05em; }
+.metric span { display:block; font-size:1.25rem; font-weight:750; margin-top:.35rem; }
+.badge { display:inline-block; border:1px solid currentColor; border-radius:999px; padding:.15rem .55rem;
+  font-size:.75rem; font-weight:750; text-transform:uppercase; letter-spacing:.04em; }
+.pass { color:var(--pass); } .fail { color:var(--danger); }
+.warning,.indeterminate,.unavailable,.unsupported { color:var(--warning); }
+.table-wrap { max-width:100%; overflow-x:auto; }
+table { width:100%; border-collapse:collapse; min-width:680px; }
+th,td { border-bottom:1px solid var(--border); padding:.7rem .55rem; text-align:left; vertical-align:top; }
+th { color:var(--muted); font-size:.75rem; letter-spacing:.05em; text-transform:uppercase; }
+tbody tr:hover { background:#f1f5f9; }
+code,pre { font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; overflow-wrap:anywhere; }
+pre { white-space:pre-wrap; background:#f1f5f9; border:1px solid var(--border); border-radius:.5rem;
+  padding:.8rem; max-height:32rem; overflow:auto; }
+.molecule svg,.route-graph svg { display:block; width:100%; height:auto; max-height:360px; }
+.empty { border:1px dashed var(--border); border-radius:.5rem; color:var(--muted); padding:1rem; }
+.skip-link { position:absolute; left:-9999px; } .skip-link:focus { left:1rem; top:1rem; z-index:10;
+  background:var(--surface); border:2px solid var(--primary); padding:.75rem; }
+a { color:var(--secondary); } a:focus-visible { outline:3px solid var(--primary); outline-offset:3px; }
+footer { color:var(--muted); border-top:1px solid var(--border); margin-top:2rem; padding:1rem 0 2rem; }
+@media (max-width:600px) { main { width:min(100% - 1rem,1180px); margin:.5rem auto; }
+  header,.panel { padding:1rem; border-radius:.5rem; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after {
+  animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+@media print { body { background:#fff; font-size:11pt; } main { width:100%; margin:0; }
+  header,.panel { box-shadow:none; break-inside:avoid; } .panel { border-color:#94a3b8; }
+  a { color:inherit; text-decoration:none; } h2 { break-after:avoid; } }
+</style></head>
+<body><a class="skip-link" href="#content">Skip to report content</a><main id="content">
+<header><div class="eyebrow">SynthAudit · route report · schema v1</div><h1>synthaudit-demo-route</h1>
+<p>Authored two-step software demonstration; not a synthetic recommendation.</p><p class="notice">SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.</p></header>
+<section class="panel"><h2>Route summary</h2><div class="grid">
+<div class="metric"><strong>Status</strong><span class="pass">pass</span></div>
+<div class="metric"><strong>Steps</strong><span>2</span></div>
+<div class="metric"><strong>Blocking</strong><span>False</span></div>
+<div class="metric"><strong>Minimum step support</strong><span>unavailable</span></div>
+<div class="metric"><strong>Maximum uncertainty</strong><span>unavailable</span></div></div></section>
+<section class="panel"><h2>Strategy and dependency graph</h2><div class="route-graph"><svg viewBox="0 0 900 280" role="img" aria-labelledby="route-title route-desc" xmlns="http://www.w3.org/2000/svg"><title id="route-title">Route dependency graph</title><desc id="route-desc">Ordered route steps and declared dependency arrows.</desc><defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><path d="M0,0 L10,3.5 L0,7 Z" fill="#64748b"/></marker></defs><path d="M450 79 C650 79,650 150,450 150" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/><g><rect x="55" y="25" width="395" height="72" rx="10" fill="#ffffff" stroke="#1e3a5f" stroke-width="2"/><text x="75" y="54" fill="#0f172a" font-family="system-ui,sans-serif" font-size="17" font-weight="700">step-1</text><text x="75" y="78" fill="#475569" font-family="system-ui,sans-serif" font-size="13">route step · 0 centre edit(s)</text></g><g><rect x="55" y="130" width="395" height="72" rx="10" fill="#ffffff" stroke="#1e3a5f" stroke-width="2"/><text x="75" y="159" fill="#0f172a" font-family="system-ui,sans-serif" font-size="17" font-weight="700">step-2</text><text x="75" y="183" fill="#475569" font-family="system-ui,sans-serif" font-size="13">key step · 1 centre edit(s)</text></g></svg></div></section>
+<section class="panel"><h2>Dependency, continuity, and condition checks</h2><div class="table-wrap"><table><thead><tr><th>Check</th><th>Status</th><th>Severity</th><th>Message</th><th>Evidence</th></tr></thead><tbody>
+<tr><td><code>route.unique_step_ids</code></td><td class="pass">pass</td><td>info</td><td>Route step identifiers are unique under RouteIR validation.</td><td><pre>{
+  &#34;step_count&#34;: 2
+}</pre></td></tr><tr><td><code>route.valid_dependency_references</code></td><td class="pass">pass</td><td>info</td><td>Every dependency references a declared route step under RouteIR validation.</td><td><pre>{}</pre></td></tr><tr><td><code>route.acyclic_dependencies</code></td><td class="pass">pass</td><td>info</td><td>The dependency graph is acyclic.</td><td><pre>{}</pre></td></tr><tr><td><code>route.target_reachability</code></td><td class="pass">pass</td><td>info</td><td>The declared target is produced by a terminal route step.</td><td><pre>{
+  &#34;target_steps&#34;: [
+    &#34;step-2&#34;
+  ],
+  &#34;terminal_target_steps&#34;: [
+    &#34;step-2&#34;
+  ]
+}</pre></td></tr><tr><td><code>route.ordering</code></td><td class="pass">pass</td><td>info</td><td>Every dependency precedes its dependent step.</td><td><pre>{
+  &#34;violations&#34;: []
+}</pre></td></tr><tr><td><code>route.precursor_intermediate_continuity</code></td><td class="pass">pass</td><td>info</td><td>Declared route material and comparable dependency links are continuous.</td><td><pre>{
+  &#34;broken_dependency_edges&#34;: [],
+  &#34;comparable_dependency_edges&#34;: 1,
+  &#34;missing_consumes&#34;: []
+}</pre></td></tr><tr><td><code>route.unexplained_intermediates</code></td><td class="pass">pass</td><td>info</td><td>No unexplained declared intermediate was found.</td><td><pre>{
+  &#34;unexplained&#34;: []
+}</pre></td></tr><tr><td><code>route.atom_map_continuity</code></td><td class="pass">pass</td><td>info</td><td>Repeated intermediate graphs preserve their atom-map identities.</td><td><pre>{
+  &#34;repeated_graph_count&#34;: 4
+}</pre></td></tr><tr><td><code>route.duplicate_or_redundant_steps</code></td><td class="pass">pass</td><td>info</td><td>No duplicate reaction semantics or declared material flows were found.</td><td><pre>{
+  &#34;step_ids&#34;: []
+}</pre></td></tr><tr><td><code>route.protection_deprotection_timing</code></td><td class="pass">pass</td><td>info</td><td>Protection/deprotection events are ordered consistently under declared rules.</td><td><pre>{
+  &#34;conflicts&#34;: [],
+  &#34;event_count&#34;: 2
+}</pre></td></tr><tr><td><code>route.condition_sensitive_intermediate_lifetime</code></td><td class="unavailable">unavailable</td><td>info</td><td>No structured fragile-intermediate compatibility constraint was supplied.</td><td><pre>{
+  &#34;conflicts&#34;: [],
+  &#34;evaluated_constraints&#34;: 0
+}</pre></td></tr><tr><td><code>route.structural_blocking_steps</code></td><td class="pass">pass</td><td>info</td><td>No reaction step contains a blocking structural audit failure.</td><td><pre>{
+  &#34;step_ids&#34;: []
+}</pre></td></tr><tr><td><code>route.unresolved_completion_failures</code></td><td class="pass">pass</td><td>info</td><td>No step has an unresolved completion failure.</td><td><pre>{
+  &#34;step_ids&#34;: []
+}</pre></td></tr><tr><td><code>route.stereo_sensitive_steps</code></td><td class="pass">pass</td><td>info</td><td>Stereo-sensitive steps remain explicitly identified.</td><td><pre>{
+  &#34;step_ids&#34;: []
+}</pre></td></tr><tr><td><code>route.minimum_step_support</code></td><td class="unavailable">unavailable</td><td>info</td><td>No calibrated step-support evidence was supplied.</td><td><pre>{
+  &#34;available_step_count&#34;: 0,
+  &#34;missing_step_ids&#34;: [
+    &#34;step-1&#34;,
+    &#34;step-2&#34;
+  ]
+}</pre></td></tr><tr><td><code>route.maximum_uncertainty</code></td><td class="unavailable">unavailable</td><td>info</td><td>No step-level uncertainty evidence was supplied.</td><td><pre>{
+  &#34;available_step_count&#34;: 0,
+  &#34;maximum_step_ids&#34;: []
+}</pre></td></tr><tr><td><code>route.high_novelty_key_step_location</code></td><td class="unavailable">unavailable</td><td>info</td><td>No corpus-relative step novelty evidence was supplied.</td><td><pre>{
+  &#34;step_ids&#34;: [],
+  &#34;threshold&#34;: 0.7
+}</pre></td></tr><tr><td><code>route.exploratory_naive_independence_score</code></td><td class="unavailable">unavailable</td><td>info</td><td>Exploratory independence aggregation was not requested.</td><td><pre>{}</pre></td></tr></tbody></table></div></section>
+<section class="panel"><h2>Per-step alerts</h2><div class="table-wrap"><table><thead><tr><th>Step</th><th>Structural</th><th>Centre</th><th>Completion</th><th>Stereo</th><th>Blocking</th></tr></thead><tbody>
+<tr><td>step-1</td><td>pass</td><td>pass</td><td>pass</td><td>pass</td><td>False</td></tr><tr><td>step-2</td><td>warning</td><td>pass</td><td>pass</td><td>pass</td><td>False</td></tr></tbody></table></div></section>
+<section class="panel"><h2>Key-step novelty and uncertainty</h2><p>High-novelty key steps: none identified / evidence unavailable</p>
+<p>Maximum-uncertainty steps: unavailable</p><p>Novelty is not interpreted as implausibility.</p></section>
+<section class="panel"><h2>Critical condition conflicts</h2><p class="empty">No declared conflict was detected; undeclared chemistry remains outside this check.</p></section>
+<section class="panel"><h2>Expert-review queue</h2><p class="empty">The current declared evidence produced no review item.</p></section>
+<section class="panel"><h2>Limitations, versions, and provenance</h2><ul><li>The report audits representation consistency and declared evidence, not laboratory feasibility.</li><li>Unavailable evidence remains unavailable and is not converted into a favourable result.</li><li>Novelty is corpus-relative and is not the inverse of plausibility.</li><li>Authored software example only; no external route evidence was supplied.</li></ul>
+<p>Models: unavailable</p><p>Corpora: unavailable</p><p>No route success probability is reported.</p><pre>[
+  {
+    &#34;adapter&#34;: &#34;build-product-examples/route&#34;,
+    &#34;adapter_version&#34;: &#34;1&#34;,
+    &#34;artifact_sha256&#34;: null,
+    &#34;generated_at&#34;: null,
+    &#34;license&#34;: &#34;Apache-2.0&#34;,
+    &#34;metadata&#34;: {},
+    &#34;source&#34;: &#34;synthaudit&#34;,
+    &#34;source_commit&#34;: null,
+    &#34;source_version&#34;: &#34;0.1.0&#34;
+  }
+]</pre></section>
+<footer>SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability. · Generated by SynthAudit 0.1.0.</footer></main></body></html>
