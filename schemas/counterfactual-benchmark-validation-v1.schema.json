@@ -1,0 +1,161 @@
+{
+  "$defs": {
+    "BenchmarkLabel": {
+      "enum": [
+        "recorded_reaction",
+        "generated_counterfactual"
+      ],
+      "title": "BenchmarkLabel",
+      "type": "string"
+    },
+    "CounterfactualCategory": {
+      "enum": [
+        "representation",
+        "reaction_centre",
+        "completion",
+        "stereo",
+        "route"
+      ],
+      "title": "CounterfactualCategory",
+      "type": "string"
+    },
+    "DatasetPartition": {
+      "enum": [
+        "train",
+        "calibration",
+        "test"
+      ],
+      "title": "DatasetPartition",
+      "type": "string"
+    },
+    "EvaluationSlice": {
+      "enum": [
+        "high_novelty_test",
+        "ring_forming_test",
+        "stereo_sensitive_test"
+      ],
+      "title": "EvaluationSlice",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "category_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/CounterfactualCategory"
+      },
+      "title": "Category Counts",
+      "type": "object"
+    },
+    "dataset_id": {
+      "minLength": 1,
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "dataset_version": {
+      "minLength": 1,
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "evaluation_slice_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/EvaluationSlice"
+      },
+      "title": "Evaluation Slice Counts",
+      "type": "object"
+    },
+    "human_review_row_count": {
+      "minimum": 0,
+      "title": "Human Review Row Count",
+      "type": "integer"
+    },
+    "label_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/BenchmarkLabel"
+      },
+      "title": "Label Counts",
+      "type": "object"
+    },
+    "leakage_checks": {
+      "const": "passed",
+      "default": "passed",
+      "title": "Leakage Checks",
+      "type": "string"
+    },
+    "method_count": {
+      "minimum": 0,
+      "title": "Method Count",
+      "type": "integer"
+    },
+    "metrics_status": {
+      "const": "not_run",
+      "default": "not_run",
+      "title": "Metrics Status",
+      "type": "string"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "record_count": {
+      "minimum": 0,
+      "title": "Record Count",
+      "type": "integer"
+    },
+    "records_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Records Sha256",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.counterfactual-benchmark-validation/1",
+      "default": "synthaudit.counterfactual-benchmark-validation/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "split_partition_counts": {
+      "additionalProperties": {
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "propertyNames": {
+          "$ref": "#/$defs/DatasetPartition"
+        },
+        "type": "object"
+      },
+      "title": "Split Partition Counts",
+      "type": "object"
+    },
+    "valid": {
+      "const": true,
+      "default": true,
+      "title": "Valid",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "dataset_version",
+    "record_count",
+    "records_sha256",
+    "label_counts",
+    "category_counts",
+    "method_count",
+    "split_partition_counts",
+    "evaluation_slice_counts",
+    "human_review_row_count"
+  ],
+  "title": "CounterfactualBenchmarkValidationV1",
+  "type": "object"
+}

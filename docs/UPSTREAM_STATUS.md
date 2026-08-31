@@ -62,3 +62,11 @@ ReactionClassifier remains an optional provider whose model/taxonomy provenance 
 must be returned explicitly. DRFP is an optional independent view and is not installed by the
 core package. Local reference indexes accept only caller-supplied records with source and license
 metadata; SynthAtlas is not scraped. No upstream status or pinned SHA changed in this phase.
+
+## Phase 8 data boundary
+
+Phase 8 adds no upstream corpus or model artifact and changes no pinned upstream status. The
+committed 200-record counterfactual set is authored specifically for offline software
+verification under Apache-2.0. Its source metadata explicitly states that it is not experimental
+reaction evidence. Research-scale generation remains unavailable until a separately licensed,
+versioned, content-addressed mapped-reaction corpus is configured and reviewed.

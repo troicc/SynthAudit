@@ -1,0 +1,44 @@
+{
+  "category_counts": {
+    "completion": 21,
+    "reaction_centre": 28,
+    "representation": 69,
+    "route": 18,
+    "stereo": 44
+  },
+  "dataset_id": "synthaudit-authored-counterfactual-fixture",
+  "dataset_version": "1",
+  "difficulty_counts": {
+    "easy": 100,
+    "hard": 34,
+    "medium": 46
+  },
+  "generator_version": "synthaudit.counterfactual-generator/1",
+  "global_seed": 20260831,
+  "label_counts": {
+    "generated_counterfactual": 180,
+    "recorded_reaction": 20
+  },
+  "metrics_status": "not_run",
+  "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+  "provenance": [
+    {
+      "adapter": "build_dataset",
+      "adapter_version": "1",
+      "artifact_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+      "generated_at": null,
+      "license": "Apache-2.0",
+      "metadata": {},
+      "source": "synthaudit",
+      "source_commit": null,
+      "source_version": "0.1.0"
+    }
+  ],
+  "purpose": "software_verification_fixture",
+  "record_count": 200,
+  "records_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+  "schema_version": "synthaudit.counterfactual-dataset-manifest/1",
+  "source_licenses": [
+    "Apache-2.0 fixture; not experimental reaction evidence"
+  ]
+}

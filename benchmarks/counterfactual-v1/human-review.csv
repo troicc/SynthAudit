@@ -1,0 +1,10 @@
+record_id,parent_reaction_id,category,generation_method,difficulty,structurally_valid,reviewer_id,chemistry_support_judgement,ambiguity_reason,review_notes
+cf-3b04a1760bd8c7d57c42,fixture-substitution-2,completion,wrong_leaving_group,hard,True,,,,
+cf-6c8ed0f4abdb63fc3899,fixture-substitution-2,completion,precursor_analog_lacking_required_handle,hard,True,,,,
+cf-3c5d505457feb63de3ea,fixture-substitution-4,completion,wrong_leaving_group,hard,True,,,,
+cf-e675802426ca7f4b3f1b,fixture-substitution-4,completion,precursor_analog_lacking_required_handle,hard,True,,,,
+cf-9e7a2b12335163273099,fixture-ring-1,reaction_centre,wrong_ring_closure_atom,hard,True,,,,
+cf-9a5160ff210ae817fad6,fixture-route-1-reaction-3,route,fragile_intermediate_before_incompatible_conditions,hard,True,,,,
+cf-8252e4f15dde2c4f7d7c,fixture-route-1-reaction-3,route,fragile_intermediate_before_incompatible_conditions,hard,True,,,,
+cf-f434197618f6162e9696,fixture-route-2-reaction-3,route,fragile_intermediate_before_incompatible_conditions,hard,True,,,,
+cf-4063f8c9bbb1f452a3ee,fixture-route-2-reaction-3,route,fragile_intermediate_before_incompatible_conditions,hard,True,,,,

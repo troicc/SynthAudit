@@ -12,6 +12,12 @@ from synthaudit.adapters.reactseq.models import (
     ReactSeqBridgeResponse,
     ReactSeqTraversalContext,
 )
+from synthaudit.counterfactuals.models import (
+    BenchmarkSplitManifestV1,
+    CounterfactualBenchmarkValidationV1,
+    CounterfactualDatasetV1,
+    CounterfactualRecordV1,
+)
 from synthaudit.evaluation.reactseq_conformance import ReactSeqConformanceSummary
 from synthaudit.novelty.models import MultiViewNoveltyResultV1
 from synthaudit.precedent.models import (
@@ -52,6 +58,10 @@ SCHEMAS = {
     "reference-index-v1.schema.json": ReferenceIndexArtifactV1,
     "procedure-evidence-v1.schema.json": ProcedureEvidenceV1,
     "condition-evidence-v1.schema.json": ConditionEvidenceV1,
+    "counterfactual-record-v1.schema.json": CounterfactualRecordV1,
+    "counterfactual-dataset-v1.schema.json": CounterfactualDatasetV1,
+    "benchmark-splits-v1.schema.json": BenchmarkSplitManifestV1,
+    "counterfactual-benchmark-validation-v1.schema.json": (CounterfactualBenchmarkValidationV1),
 }
 
 

@@ -1,0 +1,202 @@
+{
+  "$defs": {
+    "DatasetPartition": {
+      "enum": [
+        "train",
+        "calibration",
+        "test"
+      ],
+      "title": "DatasetPartition",
+      "type": "string"
+    },
+    "EvaluationSlice": {
+      "enum": [
+        "high_novelty_test",
+        "ring_forming_test",
+        "stereo_sensitive_test"
+      ],
+      "title": "EvaluationSlice",
+      "type": "string"
+    },
+    "NoveltySliceDefinitionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "fingerprint_method": {
+          "minLength": 1,
+          "title": "Fingerprint Method",
+          "type": "string"
+        },
+        "metric": {
+          "const": "one_minus_maximum_training_product_morgan_tanimoto",
+          "default": "one_minus_maximum_training_product_morgan_tanimoto",
+          "title": "Metric",
+          "type": "string"
+        },
+        "threshold": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "training_reference_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Training Reference Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "threshold",
+        "training_reference_sha256",
+        "fingerprint_method"
+      ],
+      "title": "NoveltySliceDefinitionV1",
+      "type": "object"
+    },
+    "SplitAssignmentV1": {
+      "additionalProperties": false,
+      "properties": {
+        "evaluation_slices": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EvaluationSlice"
+          },
+          "title": "Evaluation Slices",
+          "type": "array"
+        },
+        "in_distribution": {
+          "$ref": "#/$defs/DatasetPartition"
+        },
+        "parent_reaction_group": {
+          "minLength": 1,
+          "title": "Parent Reaction Group",
+          "type": "string"
+        },
+        "product_novelty": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Novelty"
+        },
+        "product_scaffold_group": {
+          "minLength": 1,
+          "title": "Product Scaffold Group",
+          "type": "string"
+        },
+        "reaction_class_group": {
+          "minLength": 1,
+          "title": "Reaction Class Group",
+          "type": "string"
+        },
+        "reaction_class_holdout": {
+          "$ref": "#/$defs/DatasetPartition"
+        },
+        "record_id": {
+          "minLength": 1,
+          "title": "Record Id",
+          "type": "string"
+        },
+        "scaffold_holdout": {
+          "$ref": "#/$defs/DatasetPartition"
+        }
+      },
+      "required": [
+        "record_id",
+        "parent_reaction_group",
+        "product_scaffold_group",
+        "reaction_class_group",
+        "in_distribution",
+        "scaffold_holdout",
+        "reaction_class_holdout"
+      ],
+      "title": "SplitAssignmentV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "assignments": {
+      "items": {
+        "$ref": "#/$defs/SplitAssignmentV1"
+      },
+      "title": "Assignments",
+      "type": "array"
+    },
+    "dataset_id": {
+      "minLength": 1,
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "dataset_version": {
+      "minLength": 1,
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "grouping_strategies": {
+      "default": [
+        "parent_reaction",
+        "product_scaffold",
+        "reaction_class"
+      ],
+      "items": {
+        "enum": [
+          "parent_reaction",
+          "product_scaffold",
+          "reaction_class"
+        ],
+        "type": "string"
+      },
+      "title": "Grouping Strategies",
+      "type": "array"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "novelty_slice": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NoveltySliceDefinitionV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "records_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Records Sha256",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "synthaudit.benchmark-splits/1",
+      "default": "synthaudit.benchmark-splits/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "split_seed": {
+      "minimum": 0,
+      "title": "Split Seed",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "dataset_version",
+    "records_sha256",
+    "split_seed",
+    "assignments"
+  ],
+  "title": "BenchmarkSplitManifestV1",
+  "type": "object"
+}

@@ -10,6 +10,7 @@ import typer
 from rich.console import Console
 
 from synthaudit import SCIENTIFIC_NOTICE, __version__
+from synthaudit.counterfactuals import validate_benchmark_artifacts
 from synthaudit.evaluation import run_reactseq_conformance
 
 app = typer.Typer(
@@ -54,6 +55,27 @@ def benchmark_run(
         typer.echo(json.dumps(payload, sort_keys=True))
     else:
         console.print(payload)
+
+
+@benchmark_app.command("counterfactuals")
+def counterfactual_benchmark(
+    records: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    manifest: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    splits: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    human_review: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    json_output: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """Validate content hashes, label contracts, grouped splits, and review rows."""
+    result = validate_benchmark_artifacts(
+        records_path=records,
+        manifest_path=manifest,
+        splits_path=splits,
+        human_review_path=human_review,
+    )
+    if json_output:
+        typer.echo(result.model_dump_json())
+    else:
+        console.print(result.model_dump(mode="json"))
 
 
 @benchmark_app.command("reactseq-conformance")

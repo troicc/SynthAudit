@@ -1,0 +1,2561 @@
+{
+  "assignments": [
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "recorded-001",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "recorded-002",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "recorded-003",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "recorded-004",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-005",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-006",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-007",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-008",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-009",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-010",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-011",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-012",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "recorded-013",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "recorded-014",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "recorded-015",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "recorded-016",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-017",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-018",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-019",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "recorded-020",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-274af9bfd2e7c14c6903",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-06faaba430d3eddfe23c",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-2370c46fdcb8e3714b85",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-0c5b87df7b2f0a5a4d8c",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-a8d358fc8e480a0bf51c",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-dc8db0ab98c6d94b6a65",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-8f55c2db450a5227e235",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-42cf72f2caf056af11d1",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-substitution-1",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-68ab6e0baa42457eedc4",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-51149f7f115b0320a23f",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-73704db7e34851590894",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-3b04a1760bd8c7d57c42",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-ff32337c1e63ffc91891",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-0aa138440e4b8ae89978",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-5180f07791535ead77a0",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-6c8ed0f4abdb63fc3899",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-06288821776d49e3180d",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-substitution-2",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-6c55ffd56eb8151581f5",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-9d369e38e236ca88fb52",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-deef68878cda78343d9e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-5d11d211cd06af564f22",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-5380cd688c0e338604a6",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-ef6823d0264afaa9e289",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-757ff9d5ff31361f8caa",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-729b4f43cd64ee0e4ef0",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-d6417959d73eb4d3c44c",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-3",
+      "product_novelty": 0.4444444444444444,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-4cd8f75abe8942e515ea",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-41bfc60458f504bd87fa",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-67659c32ae71a70e4b77",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-3c5d505457feb63de3ea",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-4902d30f0f3c4295004b",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-22666c3b4a8acb07a664",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-61d612b4e636452cd0fc",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-e675802426ca7f4b3f1b",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-be8c81ca6c404c39a6b0",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-substitution-4",
+      "product_novelty": 0.7857142857142857,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "substitution",
+      "reaction_class_holdout": "calibration",
+      "record_id": "cf-50c672f0435ca3754535",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-9d1fa8c870162df619c7",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-31a80929cea9cfec5bd6",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-639f365fbaa919b51b77",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-1b77266cddc7f851ce8e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-a518cbe6274df68caaec",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-0a00dcede028c5e85c4f",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-53195f2f8f65889229f9",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-9e7a2b12335163273099",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-a18aace2822e9fe19ef3",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-a0ce2f87015e90f2595f",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-4b192b45943dc549d64a",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-1f55ce75a54a6d62cc52",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-b356b4e951159bcd4049",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-837c911c76d909e6a9e8",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-0a1799902e32b39141aa",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-af9aa56cc512a8d4e705",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-277d3872dd60820778cc",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-2bc885d26ff90e9ed4e5",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-34c486db50df782eb428",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-791d95a86966e231de21",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-f0e6e0be23dae0838535",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-ecdf52509742852a67ba",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-599f934e2e158e8bc9c0",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-f8ed4cdcb6697aca0c59",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-faae28395516bbd714b2",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-30ea109192ffc641cf29",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-ff98d776472d363f18d0",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-cd78dab98e70d3f2bde7",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-58c43532f9b5a54eef9e",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-aae8341394da5f336156",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-0f1f180ee651c317bbcf",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-bea34132d96eb8a15c8d",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-3597e318985f57a8074f",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-22f670055a3fb6678611",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-a466e5306724fda16b71",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "ring_forming_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-ring-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:C1CCCCC1",
+      "reaction_class_group": "ring-formation",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-6036bbd1208223b93d18",
+      "scaffold_holdout": "calibration"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-2d4ffe59a4fa72a966b8",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-d129d0a5af1f8e4e83eb",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-dd092768c8315ac09745",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-473fc6a8dabe4b43b9f3",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-b37972b238a0451274da",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-316b8b472f99488ce17d",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-4e67c1b4d8974cd7a363",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-90e3cbb398fbbc9eb3e4",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-tetrahedral-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-1475266a04c7e0eb1cc7",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-72b53b8ee7749d1a809e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-d5c4b9c952a892c06275",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-e1953975d660c1bca393",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-7b885502edec17b65a7c",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-8c452380875513adfd68",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-bdad8095447231b79580",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-738426f4e2f0fd05f8e8",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-c5bf16685057c5a4b1dc",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-23cea7bcd74b788fc167",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-822c11c47f6c235d75fe",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-0e93e8416efdcaf9b8eb",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-45905a7826607f131321",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-62ac1160274682001f8d",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-31a3dcb1ff65c6e59d84",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-bf727d3fe5e10be5f09b",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-5449cc47eda432605e8c",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-e9dd973ca88fa88a0985",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-d398ddd6c44118179a4e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-29a01292c7278942d002",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-65d62bc363d551c6f005",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-dd0089c06f558079bdde",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-04003bf1d590a28db0c9",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-4a7d195c819a69151ce7",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-80caaf832ef587e1077e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-a00f697ada654bbe9136",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-730aa154dcdbcf827801",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-tetrahedral-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "tetrahedral-stereo",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-a2fc0da60c2820927c24",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-63c1a2e17706c33bb782",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-b1948a74d312a6d47980",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-33a5bbf5fa229f01c4c0",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-0f1a013cd1e21ca0b108",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-5c8606872199b4771555",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-69d2cab152b51bbd041f",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-4cac8c4140ad906b81ef",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-40db33b098f457bddb70",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-1",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-a8f07bfa4423a961adcc",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-964eb1bf155c8d51bd65",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-75c1813276be943deb53",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-a062bd2d3d8ab7e193e5",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-68f6801f27646f54b78d",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-df8ea82bed78b10f726e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-3d94a092b17efb108daf",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-5b113c3f0e8774d43f57",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-b61f3c1810c27d6e7ded",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-071e637d79c9a333e739",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-9818feeaee506550ed19",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-d075ef1b81d109d6452d",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-6b4f911f460bb32ff985",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-05f1a0dada53360bebdb",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-d3166b2d44fae8aeac58",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-bb3d4c31aed37a6cf266",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-6007c2560cfee3c0cf08",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-e89d67a215b1eba0333f",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-alkene-3",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-93a46503bdfe3bd5eb79",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-4ccd03361c2321788970",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-ec52b2ca345a6c5eb07e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-14635ae9da30b277660b",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-9153b2ee80e2b72e7918",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-c5a0cdf727e8ef318aa2",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-a3420d28ac2f0b92f054",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-03d3e047b5f3f0f4dcc0",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-23edf200ba4abf50969b",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "stereo_sensitive_test"
+      ],
+      "in_distribution": "test",
+      "parent_reaction_group": "fixture-alkene-4",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "alkene-stereo",
+      "reaction_class_holdout": "test",
+      "record_id": "cf-895d909e0073584d1f98",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-00ee8f1e4db1c1589015",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-39f0b7bb2c2dd8340374",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-c28ed47a3036aea6c0dd",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-26bb30b4b86d4be7e9c2",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-33a6bf1f9975e3989aaa",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-0209a9eb1f5ad9b60d83",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-c699a81cd747c2195a09",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-fb3430a50accc5a70a0b",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-multi-attachment-1",
+      "product_novelty": 0.8571428571428572,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-9fd8fcde85411324cd65",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-b1b693b4fa3d5a46a309",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-7e6c0c9808e97d1a37c5",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-dff78d3525901bd31cf2",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-3e25bc0224917d8defdb",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-f60e59349212900c5556",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-eebb1c2aaf956c88f0c6",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-95c09c1e5db12ef4c408",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-249b69744fab7c84b092",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [],
+      "in_distribution": "calibration",
+      "parent_reaction_group": "fixture-multi-attachment-2",
+      "product_novelty": 0.0,
+      "product_scaffold_group": "murcko:<acyclic>",
+      "reaction_class_group": "multi-attachment",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-7a66e4ef16f02f43207a",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-bb04455b8c2bbe5910f2",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-9a5160ff210ae817fad6",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-c7463000369197d9c790",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-43e8176468d252a721cf",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-83181b9ee34e056891be",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-dfe24521cc546ad72c3d",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-8252e4f15dde2c4f7d7c",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-1c15df365afc7d8af10b",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-1-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1ccccc1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-3ab0d0be9a392d598c2d",
+      "scaffold_holdout": "test"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-0f1040f7a26c4b54295e",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-3c4e0988dd3683d0d50f",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-f434197618f6162e9696",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-8758420aa3e15d268a45",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-dbae17b0f436ec9c30f4",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-2ed652527e8aa3ded884",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-eb58f12ffb7d57db9dc4",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-4063f8c9bbb1f452a3ee",
+      "scaffold_holdout": "train"
+    },
+    {
+      "evaluation_slices": [
+        "high_novelty_test"
+      ],
+      "in_distribution": "train",
+      "parent_reaction_group": "fixture-route-2-reaction-3",
+      "product_novelty": 0.7777777777777778,
+      "product_scaffold_group": "murcko:c1cc[nH]c1",
+      "reaction_class_group": "route-sequence",
+      "reaction_class_holdout": "train",
+      "record_id": "cf-1fc39e99a65a6f60ce5d",
+      "scaffold_holdout": "train"
+    }
+  ],
+  "dataset_id": "synthaudit-authored-counterfactual-fixture",
+  "dataset_version": "1",
+  "grouping_strategies": [
+    "parent_reaction",
+    "product_scaffold",
+    "reaction_class"
+  ],
+  "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+  "novelty_slice": {
+    "fingerprint_method": "RDKit Morgan radius=2 bits=2048 includeChirality=true; one_minus_maximum_training_product_morgan_tanimoto",
+    "metric": "one_minus_maximum_training_product_morgan_tanimoto",
+    "threshold": 0.7,
+    "training_reference_sha256": "3860e557d5dc0d642b446e95a2617833ef669f851bc09173dac586db303f978e"
+  },
+  "records_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+  "schema_version": "synthaudit.benchmark-splits/1",
+  "split_seed": 20260831
+}

@@ -12,6 +12,13 @@ software verification. Labels such as `CC0-fixture` describe fixture-only terms 
 that any external chemistry dataset is CC0. They are not a population benchmark and must not be
 used to report scientific performance.
 
+The Phase 8 200-record counterfactual artifact is likewise authored and identifies itself as
+`software_verification_fixture`. Its source-license string explicitly says that it is not
+experimental reaction evidence. The required label `recorded_reaction` identifies an unmodified
+parent record inside the data contract; it does not assert a literature report, experimental
+success, yield, or feasibility. Its manifest and split files are content-addressed, and its
+scientific metrics remain `not_run`.
+
 The three ReactSeq golden examples are copied from public demo files at pinned commit
 `9838a3058e32e1c0ee04b2bab0448104dc293384` under the upstream repository's LGPL-2.1 code
 license context, with attribution recorded in their fixture manifest. Dataset and checkpoint

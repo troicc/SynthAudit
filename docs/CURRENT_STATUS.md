@@ -238,3 +238,55 @@ corpus-relative, precedent is support rather than experimental validation, and t
 
 Next: Phase 8 deterministic stage-aware counterfactual generation, grouped leakage-resistant
 splits, dataset card, and human-review sheet.
+
+## Phase 8 — stage-aware counterfactual benchmark
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/08-counterfactual-benchmark`
+
+Implemented versioned counterfactual record, dataset, split, structural-validity, and validation
+schemas. Generated records are restricted to the label `generated_counterfactual`; parents use
+`recorded_reaction`. The schema requires parent reaction ID, generation method, seed, category,
+difficulty, exact JSON Pointer before/after changes, and an observed structural-validity result.
+Malformed payloads retain raw input and validation errors rather than being repaired.
+
+`CounterfactualGenerator` implements all 29 specified methods across representation, reaction-
+centre, completion, stereo, and route categories. Every method is seed-deterministic and has a
+declared difficulty. Route validation combines per-step `ReactionExecutor` results with declared
+dependency order and produced/consumed node availability; later chemical route checks remain a
+separate Phase 10 responsibility.
+
+The committed `synthaudit-authored-counterfactual-fixture/1` contains exactly 200 records: 20
+authored unmutated parents and 180 generated counterfactuals. It is content-addressed at
+`932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99`, covers all methods and
+categories, and regenerates byte-for-byte. Its purpose is `software_verification_fixture`; it is
+not an external corpus or experimental evidence and its metrics status is `not_run`.
+
+Grouped split manifests keep descendants atomic by parent, product scaffold, and reaction class.
+The fixture materializes parent/in-distribution, scaffold-holdout, and reaction-class-holdout
+train/calibration/test partitions. High-novelty membership is computed as one minus maximum
+training-product Morgan Tanimoto using a declared 0.70 threshold and content digest; ring-forming
+and stereo-sensitive slices are separately tagged. A blank human-review sheet includes nine hard,
+structurally valid generated candidates and makes no reviewer-result claim.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed for 72 source files;
+- `make schemas`: generated four Phase 8 data/split/validation schemas and committed-schema
+  regression passed;
+- `make test`: 208 passed, total coverage 87%; dataset storage 96%, structural validity 97%,
+  counterfactual models 88%, generator 83%, grouped splits 82%, and artifact validation 73%;
+- 34 focused generator/data tests exercise all 29 methods, exact change traces, both label
+  contracts, raw malformed payloads, deterministic regeneration, digest tamper rejection, all
+  route mutations, group leakage rejection, and special-slice contracts;
+- `make benchmark-small` validated all 200 records, 29 methods, five categories, three grouped
+  split strategies, three non-empty special test slices, and nine eligible blank review rows;
+- `make smoke` and `make reactseq-conformance-small` passed offline.
+
+The research-scale local MVP targets of 10,000 recorded reactions, 20,000 counterfactuals, and
+5,000 hard structurally valid counterfactuals were not run because no licensed corpus is
+configured. No performance result or experimental outcome is inferred from the small fixture.
+
+Next: Phase 9 stage-specific logistic/HGB evidence baselines, held-out calibration, bootstrap and
+provider uncertainty, missing-evidence flags, and abstention.
