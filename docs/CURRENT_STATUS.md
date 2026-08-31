@@ -151,3 +151,49 @@ Official SynthEx ReactionJSON/RouteJSON remain unavailable at
 
 Next: Phase 6 structural, reaction-centre, synthon-completion, and stereo audits with
 stage-specific standalone HTML output.
+
+## Phase 6 — stage-specific reaction audit
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/06-stage-specific-audit`
+
+Implemented `StructuralAudit`, `ReactionCentreAudit`, `SynthonCompletionAudit`, `StereoAudit`,
+and `ReactionAuditor` on the shared `CheckResultV1` protocol. The full executor runs once and
+its core, completion, and stereo evidence remains separated. `StageAuditResultV1` and
+`ReactionAuditResultV1` enforce stage/category, blocking, and structural-validity invariants
+and have a committed JSON Schema.
+
+The structural stage covers map uniqueness and references, sanitation/valence, formal charge,
+aromatic/Kekule consistency, connectivity, empty/single-atom fragments, atom conservation,
+unexplained graph changes, no-ops, and transparent edit complexity. Centre audit checks
+sequential bond state, exact core diff, rings, symmetry, and expected-precursor reconstruction.
+Completion audit checks fragment parsing and identity, multi-attachment, atom attribution,
+retention, charge/valence, and precursor reconstruction. Stereo audit checks topology, CIP
+intent, E/Z neighbours, silent erasure, new centres, symmetry, and cyclic paths.
+
+The standalone report renderer embeds CSS and RDKit SVG, shows product → synthon → completion →
+stereo stages, displays every unavailable/indeterminate check, includes provenance and the
+mandatory scientific notice, and writes a versioned JSON sidecar.
+
+Verification:
+
+- `make quality`: ruff and strict mypy passed;
+- `make schemas`: generated `reaction-audit-result-v1.schema.json`; committed-schema regression
+  passed;
+- `make test`: 157 passed, total coverage 88%; structural audit 96%, completion audit 85%,
+  reaction-centre audit 82%, stereo audit 82%, and audit HTML renderer 94%;
+- 31 Phase 6 tests cover success, invalid maps/valence/fragments, dangling references,
+  disconnected graphs, excessive edits, no-ops, unexplained changes, add/change/detach/state
+  edits, multi-attachment, unusual fragments, centre mismatch, symmetry, rings, tetrahedral
+  inversion/R/S, E/Z neighbours, cyclic stereo, embedded SVG, and JSON sidecars;
+- `make smoke`, `make benchmark-small`, and `make reactseq-conformance-small` passed offline;
+- report smoke wrote `/private/tmp/synthaudit-phase6-report.html` (73,726 bytes) and its JSON
+  sidecar with `blocking=false` and `structurally_valid=true` for the declared example only.
+
+No audit result is experimental validation. Corpus-based leaving-group novelty remains
+unavailable until a versioned reference index exists, and advanced stereo/coordination cases
+remain explicit limitations.
+
+Next: Phase 7 multi-view novelty, versioned precedent index, optional ReactSeq MEO and taxonomy
+providers, and evidence-preserving retrieval.

@@ -197,3 +197,60 @@ class FullExecutionResult(ExecutionResultBase):
     core_result: CoreExecutionResult
     completion_result: CompletionExecutionResult | None = None
     stereo_result: StereoExecutionResult | None = None
+
+
+class StageAuditResultV1(StrictModel):
+    schema_version: Literal["synthaudit.stage-audit-result/1"] = "synthaudit.stage-audit-result/1"
+    stage: Literal["structural", "reaction_centre", "completion", "stereo"]
+    status: CheckStatus
+    checks: tuple[CheckResultV1, ...] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_stage_categories(self) -> StageAuditResultV1:
+        mismatched = [item.check_id for item in self.checks if item.category != self.stage]
+        if mismatched:
+            raise ValueError(f"checks do not match audit stage {self.stage!r}: {mismatched}")
+        return self
+
+
+class ReactionAuditResultV1(StrictModel):
+    schema_version: Literal["synthaudit.reaction-audit-result/1"] = (
+        "synthaudit.reaction-audit-result/1"
+    )
+    reaction_id: str = Field(min_length=1)
+    structural_audit: StageAuditResultV1
+    reaction_centre_audit: StageAuditResultV1
+    completion_audit: StageAuditResultV1
+    stereo_audit: StageAuditResultV1
+    execution: FullExecutionResult
+    blocking: bool
+    structurally_valid: bool
+    notice: Literal[
+        "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability."
+    ] = (
+        "SynthAudit estimates representation validity, corpus novelty and evidence-based "
+        "plausibility. It does not establish experimental feasibility, yield, selectivity, "
+        "safety or scalability."
+    )
+    provenance: tuple[ProvenanceRecord, ...] = ()
+
+    @model_validator(mode="after")
+    def validate_audit_contract(self) -> ReactionAuditResultV1:
+        stages = (
+            (self.structural_audit, "structural"),
+            (self.reaction_centre_audit, "reaction_centre"),
+            (self.completion_audit, "completion"),
+            (self.stereo_audit, "stereo"),
+        )
+        if any(result.stage != expected for result, expected in stages):
+            raise ValueError("reaction audit fields must contain their named audit stages")
+        all_checks = tuple(item for result, _ in stages for item in result.checks)
+        expected_blocking = any(
+            item.status == CheckStatus.FAIL and item.severity == Severity.BLOCKING
+            for item in all_checks
+        )
+        if self.blocking != expected_blocking:
+            raise ValueError("blocking must reflect blocking failed checks")
+        if self.structurally_valid and not self.execution.structurally_valid:
+            raise ValueError("structurally_valid cannot exceed execution validity")
+        return self

@@ -18,6 +18,7 @@ from synthaudit.schema.reaction_ir import ReactionIRV1
 from synthaudit.schema.results import (
     CheckResultV1,
     FullExecutionResult,
+    ReactionAuditResultV1,
     RepresentationConformanceV1,
     SemanticComparisonV1,
 )
@@ -30,6 +31,7 @@ SCHEMAS = {
     "check-result-v1.schema.json": CheckResultV1,
     "semantic-comparison-v1.schema.json": SemanticComparisonV1,
     "execution-result-v1.schema.json": FullExecutionResult,
+    "reaction-audit-result-v1.schema.json": ReactionAuditResultV1,
     "reactseq-adapter-result-v1.schema.json": ReactSeqAdapterResult,
     "reactseq-traversal-context-v1.schema.json": ReactSeqTraversalContext,
     "reactseq-bridge-request-v1.schema.json": ReactSeqBridgeRequest,

@@ -37,9 +37,11 @@ from synthaudit.schema.results import (
     ExecutionErrorV1,
     FullExecutionResult,
     GraphDiffV1,
+    ReactionAuditResultV1,
     RepresentationConformanceV1,
     SemanticComparisonV1,
     Severity,
+    StageAuditResultV1,
     StereoChangeV1,
     StereoExecutionResult,
 )
@@ -72,6 +74,7 @@ __all__ = [
     "MoleculeRecord",
     "MoleculeRole",
     "ProvenanceRecord",
+    "ReactionAuditResultV1",
     "ReactionConditions",
     "ReactionIRV1",
     "RepresentationConformanceV1",
@@ -84,6 +87,7 @@ __all__ = [
     "SetTetrahedralStereoEdit",
     "Severity",
     "SourcePayloadReference",
+    "StageAuditResultV1",
     "StereoChangeV1",
     "StereoExecutionResult",
 ]
