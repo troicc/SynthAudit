@@ -62,7 +62,7 @@ separately and never silently normalized.
 
 The prompt fixture derives from eight eligible `recorded_reaction` parents in the authored Phase 8
 software fixture. It contains 40 deterministic variants and is content-addressed at
-`568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5`. It carries no model output
+`d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c`. It carries no model output
 or experimental label and reports `metrics_status=not_run`. Provider-backed research outputs must
 add provider/model versions, prompt version, raw response, confidence semantics, calibration
 method when applicable, token/cost metadata where applicable, and artifact provenance.
@@ -79,3 +79,18 @@ destination, SHA-256, media type, license status, and provenance. Remote access 
 The reference-index preparation command accepts strict `ReferenceReactionV1` JSONL and preserves
 each caller-supplied source/license field; SynthAudit does not adjudicate whether the caller has
 redistribution permission.
+
+## Phase 12 release-evaluation provenance
+
+The v1.0 release evaluation introduces no external reactions, checkpoint, provider output, or
+experimental label. `reports/research-evaluation-v1/manifest.json` content-addresses the committed
+counterfactual records/manifest/splits/review sheet, prompt cases/manifest, pinned ReactSeq golden
+fixture, and evidence-model plan. `SHA256SUMS` covers every generated manifest/table/figure/README
+artifact except the checksum list itself, and regression tests require byte-exact regeneration.
+
+Numeric values in `required-metric-status.csv` are restricted by schema to
+`software_verification_fixture` observations and state their sample count. Research metrics that
+were not run cannot contain a value, numerator, denominator, sample count, or confidence interval.
+RQ1 and RQ6 have fixture-only evidence; RQ2-RQ5 and RQ7 remain `not_run`. Future uncertainty
+estimates must bootstrap parent reaction or route IDs and retain the new study's data, label,
+model, and provider provenance.

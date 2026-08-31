@@ -178,6 +178,15 @@ def _role_for_stage(stage: EvidenceStage) -> EvidenceModelRole:
     }[stage]
 
 
+def _ui_application_paths() -> tuple[Path, Path]:
+    source_root = Path(__file__).resolve().parents[3]
+    source_home = source_root / "app" / "Home.py"
+    if source_home.exists():
+        return source_root, source_home
+    package_root = Path(__file__).resolve().parents[1]
+    return package_root, package_root / "ui_app" / "Home.py"
+
+
 @app.command()
 def version(
     json_output: Annotated[
@@ -810,9 +819,8 @@ def ui(
     json_path: JsonPath = None,
 ) -> None:
     """Launch the five-page Streamlit workspace; use --check for an offline smoke test."""
-    root = Path(__file__).resolve().parents[3]
-    home = root / "app" / "Home.py"
-    pages = tuple(sorted((root / "app" / "pages").glob("*.py")))
+    root, home = _ui_application_paths()
+    pages = tuple(sorted((home.parent / "pages").glob("*.py")))
     payload = {
         "home": str(home),
         "page_count": 1 + len(pages),

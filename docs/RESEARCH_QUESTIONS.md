@@ -1,5 +1,7 @@
 # Research questions and evaluation contract
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 ## Questions
 
 - **RQ1:** Can ReactSeq strings generated from different valid product-SMILES traversals normalize to equivalent ReactionIR semantics?
@@ -9,6 +11,22 @@
 - **RQ5:** How robust are prompt-guided models to exact, partial, ambiguous, plausible-but-incorrect, and contradictory prompts?
 - **RQ6:** Can route auditing identify dependency and condition-order failures invisible to independent single-step auditing?
 - **RQ7:** When compatible data exist, how do SynthEx, Synthelite, and corpus-trained ReactSeq outputs differ in template recognition, edit novelty, ring formation, precedent support, structural failure, completion uncertainty, and stereo uncertainty?
+
+## v1.0 evaluation status
+
+| Question | Status | Release evidence boundary |
+|---|---|---|
+| RQ1 | `fixture_observation` | One authored alternate-traversal pair has equal semantic hashes; three pinned demos reconstruct exactly |
+| RQ2 | `not_run` | Designed counterfactual counts are not real error prevalence |
+| RQ3 | `not_run` | No licensed, checksum-pinned ReactSeq checkpoint or reproduced MEO extraction |
+| RQ4 | `not_run` | No licensed recorded-reaction test set, adjudicated labels, or selected calibrated model |
+| RQ5 | `not_run` | Prompt variants exist, but no prompt-capable provider was invoked |
+| RQ6 | `fixture_observation` | Five authored route perturbation classes are detected by the route contract |
+| RQ7 | `not_run` | Official SynthEx schemas and comparable licensed cross-system outputs are unavailable |
+
+The typed status and every required metric are in the
+[v1.0 release manifest](../reports/research-evaluation-v1/manifest.json); the interpretation is in
+the [technical report](TECHNICAL_REPORT.md). Fixture observations are not population answers.
 
 ## Outcomes and metrics
 

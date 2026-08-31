@@ -1,5 +1,7 @@
 # Offline product examples
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 These authored files exercise the public CLI, Streamlit workspace, and standalone report
 renderers without a network service, external corpus, paid provider, or model checkpoint.
 

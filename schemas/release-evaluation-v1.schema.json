@@ -1,0 +1,1163 @@
+{
+  "$defs": {
+    "BenchmarkLabel": {
+      "enum": [
+        "recorded_reaction",
+        "generated_counterfactual"
+      ],
+      "title": "BenchmarkLabel",
+      "type": "string"
+    },
+    "CalibrationMethod": {
+      "enum": [
+        "none",
+        "platt",
+        "isotonic"
+      ],
+      "title": "CalibrationMethod",
+      "type": "string"
+    },
+    "CounterfactualBenchmarkValidationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "category_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "$ref": "#/$defs/CounterfactualCategory"
+          },
+          "title": "Category Counts",
+          "type": "object"
+        },
+        "dataset_id": {
+          "minLength": 1,
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "dataset_version": {
+          "minLength": 1,
+          "title": "Dataset Version",
+          "type": "string"
+        },
+        "evaluation_slice_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "$ref": "#/$defs/EvaluationSlice"
+          },
+          "title": "Evaluation Slice Counts",
+          "type": "object"
+        },
+        "human_review_row_count": {
+          "minimum": 0,
+          "title": "Human Review Row Count",
+          "type": "integer"
+        },
+        "label_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "$ref": "#/$defs/BenchmarkLabel"
+          },
+          "title": "Label Counts",
+          "type": "object"
+        },
+        "leakage_checks": {
+          "const": "passed",
+          "default": "passed",
+          "title": "Leakage Checks",
+          "type": "string"
+        },
+        "method_count": {
+          "minimum": 0,
+          "title": "Method Count",
+          "type": "integer"
+        },
+        "metrics_status": {
+          "const": "not_run",
+          "default": "not_run",
+          "title": "Metrics Status",
+          "type": "string"
+        },
+        "notice": {
+          "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "title": "Notice",
+          "type": "string"
+        },
+        "record_count": {
+          "minimum": 0,
+          "title": "Record Count",
+          "type": "integer"
+        },
+        "records_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Records Sha256",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "synthaudit.counterfactual-benchmark-validation/1",
+          "default": "synthaudit.counterfactual-benchmark-validation/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "split_partition_counts": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "propertyNames": {
+              "$ref": "#/$defs/DatasetPartition"
+            },
+            "type": "object"
+          },
+          "title": "Split Partition Counts",
+          "type": "object"
+        },
+        "valid": {
+          "const": true,
+          "default": true,
+          "title": "Valid",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "dataset_version",
+        "record_count",
+        "records_sha256",
+        "label_counts",
+        "category_counts",
+        "method_count",
+        "split_partition_counts",
+        "evaluation_slice_counts",
+        "human_review_row_count"
+      ],
+      "title": "CounterfactualBenchmarkValidationV1",
+      "type": "object"
+    },
+    "CounterfactualCategory": {
+      "enum": [
+        "representation",
+        "reaction_centre",
+        "completion",
+        "stereo",
+        "route"
+      ],
+      "title": "CounterfactualCategory",
+      "type": "string"
+    },
+    "DatasetPartition": {
+      "enum": [
+        "train",
+        "calibration",
+        "test"
+      ],
+      "title": "DatasetPartition",
+      "type": "string"
+    },
+    "EstimatorFamily": {
+      "enum": [
+        "logistic_regression",
+        "hist_gradient_boosting_classifier"
+      ],
+      "title": "EstimatorFamily",
+      "type": "string"
+    },
+    "EvaluationAvailability": {
+      "enum": [
+        "fixture_observation",
+        "not_run"
+      ],
+      "title": "EvaluationAvailability",
+      "type": "string"
+    },
+    "EvaluationSlice": {
+      "enum": [
+        "high_novelty_test",
+        "ring_forming_test",
+        "stereo_sensitive_test"
+      ],
+      "title": "EvaluationSlice",
+      "type": "string"
+    },
+    "EvidenceModelContractSmokeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "ablation_contract_count": {
+          "minimum": 1,
+          "title": "Ablation Contract Count",
+          "type": "integer"
+        },
+        "abstention_exercised": {
+          "title": "Abstention Exercised",
+          "type": "boolean"
+        },
+        "bootstrap_member_count": {
+          "minimum": 2,
+          "title": "Bootstrap Member Count",
+          "type": "integer"
+        },
+        "calibrated_score_semantics": {
+          "const": "calibrated_evidence_support_score_not_experimental_probability",
+          "default": "calibrated_evidence_support_score_not_experimental_probability",
+          "title": "Calibrated Score Semantics",
+          "type": "string"
+        },
+        "calibration_methods_exercised": {
+          "items": {
+            "$ref": "#/$defs/CalibrationMethod"
+          },
+          "title": "Calibration Methods Exercised",
+          "type": "array"
+        },
+        "estimator_families_exercised": {
+          "items": {
+            "$ref": "#/$defs/EstimatorFamily"
+          },
+          "title": "Estimator Families Exercised",
+          "type": "array"
+        },
+        "metrics_status": {
+          "const": "not_reportable_software_fixture",
+          "default": "not_reportable_software_fixture",
+          "title": "Metrics Status",
+          "type": "string"
+        },
+        "missing_flags_exercised": {
+          "title": "Missing Flags Exercised",
+          "type": "boolean"
+        },
+        "notice": {
+          "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "title": "Notice",
+          "type": "string"
+        },
+        "ood_evaluation_contract_exercised": {
+          "title": "Ood Evaluation Contract Exercised",
+          "type": "boolean"
+        },
+        "provider_disagreement_exercised": {
+          "title": "Provider Disagreement Exercised",
+          "type": "boolean"
+        },
+        "raw_score_semantics": {
+          "const": "uncalibrated_model_score",
+          "default": "uncalibrated_model_score",
+          "title": "Raw Score Semantics",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "synthaudit.evidence-model-contract-smoke/1",
+          "default": "synthaudit.evidence-model-contract-smoke/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage_model_count": {
+          "const": 4,
+          "default": 4,
+          "title": "Stage Model Count",
+          "type": "integer"
+        },
+        "stages": {
+          "items": {
+            "$ref": "#/$defs/EvidenceStage"
+          },
+          "title": "Stages",
+          "type": "array"
+        }
+      },
+      "required": [
+        "stages",
+        "estimator_families_exercised",
+        "calibration_methods_exercised",
+        "bootstrap_member_count",
+        "missing_flags_exercised",
+        "provider_disagreement_exercised",
+        "abstention_exercised",
+        "ood_evaluation_contract_exercised",
+        "ablation_contract_count"
+      ],
+      "title": "EvidenceModelContractSmokeV1",
+      "type": "object"
+    },
+    "EvidenceStage": {
+      "enum": [
+        "reaction_centre_supported",
+        "completion_supported_given_reaction_centre",
+        "stereo_specification_supported",
+        "route_context_supported"
+      ],
+      "title": "EvidenceStage",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "PromptBenchmarkValidationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "case_count": {
+          "minimum": 1,
+          "title": "Case Count",
+          "type": "integer"
+        },
+        "cases_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Cases Sha256",
+          "type": "string"
+        },
+        "dataset_id": {
+          "minLength": 1,
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "dataset_version": {
+          "minLength": 1,
+          "title": "Dataset Version",
+          "type": "string"
+        },
+        "metrics_status": {
+          "const": "not_run",
+          "default": "not_run",
+          "title": "Metrics Status",
+          "type": "string"
+        },
+        "notice": {
+          "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "title": "Notice",
+          "type": "string"
+        },
+        "parent_group_atomicity": {
+          "const": "passed",
+          "default": "passed",
+          "title": "Parent Group Atomicity",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "synthaudit.prompt-benchmark-validation/1",
+          "default": "synthaudit.prompt-benchmark-validation/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "valid": {
+          "const": true,
+          "default": true,
+          "title": "Valid",
+          "type": "boolean"
+        },
+        "variant_count": {
+          "minimum": 5,
+          "title": "Variant Count",
+          "type": "integer"
+        },
+        "variant_kind_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "$ref": "#/$defs/PromptVariantKind"
+          },
+          "title": "Variant Kind Counts",
+          "type": "object"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "dataset_version",
+        "case_count",
+        "variant_count",
+        "variant_kind_counts",
+        "cases_sha256"
+      ],
+      "title": "PromptBenchmarkValidationV1",
+      "type": "object"
+    },
+    "PromptVariantKind": {
+      "enum": [
+        "exact",
+        "partial",
+        "ambiguous",
+        "incorrect_structurally_plausible",
+        "contradictory"
+      ],
+      "title": "PromptVariantKind",
+      "type": "string"
+    },
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "description": "Version and artifact information for one producing step.",
+      "properties": {
+        "adapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "adapter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter Version"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Sha256"
+        },
+        "generated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generated At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Commit"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "ReactSeqConformanceCaseResult": {
+      "additionalProperties": false,
+      "properties": {
+        "atom_map_preservation": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Atom Map Preservation"
+        },
+        "attachment_point_accuracy": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Attachment Point Accuracy"
+        },
+        "charge_consistency": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Charge Consistency"
+        },
+        "exact_precursor_reconstruction": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Exact Precursor Reconstruction"
+        },
+        "execution_success": {
+          "title": "Execution Success",
+          "type": "boolean"
+        },
+        "failure_category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failure Category"
+        },
+        "fixture_id": {
+          "title": "Fixture Id",
+          "type": "string"
+        },
+        "leaving_group_exact_match": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Leaving Group Exact Match"
+        },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message"
+        },
+        "parse_success": {
+          "title": "Parse Success",
+          "type": "boolean"
+        },
+        "reaction_centre_precision": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reaction Centre Precision"
+        },
+        "reaction_centre_recall": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reaction Centre Recall"
+        },
+        "ring_change_consistency": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ring Change Consistency"
+        },
+        "stereo_preservation": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Stereo Preservation"
+        }
+      },
+      "required": [
+        "fixture_id",
+        "parse_success",
+        "execution_success",
+        "exact_precursor_reconstruction",
+        "leaving_group_exact_match",
+        "charge_consistency",
+        "atom_map_preservation",
+        "stereo_preservation",
+        "ring_change_consistency"
+      ],
+      "title": "ReactSeqConformanceCaseResult",
+      "type": "object"
+    },
+    "ReactSeqConformanceSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "cases": {
+          "items": {
+            "$ref": "#/$defs/ReactSeqConformanceCaseResult"
+          },
+          "title": "Cases",
+          "type": "array"
+        },
+        "exact_reconstruction_count": {
+          "minimum": 0,
+          "title": "Exact Reconstruction Count",
+          "type": "integer"
+        },
+        "exact_reconstruction_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exact Reconstruction Rate"
+        },
+        "execution_success_count": {
+          "minimum": 0,
+          "title": "Execution Success Count",
+          "type": "integer"
+        },
+        "execution_success_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Execution Success Rate"
+        },
+        "fixture_count": {
+          "minimum": 0,
+          "title": "Fixture Count",
+          "type": "integer"
+        },
+        "interpretation": {
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "parse_success_count": {
+          "minimum": 0,
+          "title": "Parse Success Count",
+          "type": "integer"
+        },
+        "parse_success_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parse Success Rate"
+        },
+        "schema_version": {
+          "const": "synthaudit.reactseq-conformance/1",
+          "default": "synthaudit.reactseq-conformance/1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fixture_count",
+        "parse_success_count",
+        "execution_success_count",
+        "exact_reconstruction_count",
+        "cases",
+        "interpretation"
+      ],
+      "title": "ReactSeqConformanceSummary",
+      "type": "object"
+    },
+    "RequiredMetricStatusV1": {
+      "additionalProperties": false,
+      "properties": {
+        "bootstrap_status": {
+          "enum": [
+            "not_run_fixture_scope",
+            "not_run_missing_research_data"
+          ],
+          "title": "Bootstrap Status",
+          "type": "string"
+        },
+        "bootstrap_unit": {
+          "const": "parent_reaction_or_route_id",
+          "default": "parent_reaction_or_route_id",
+          "title": "Bootstrap Unit",
+          "type": "string"
+        },
+        "confidence_interval_95": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence Interval 95"
+        },
+        "denominator": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Denominator"
+        },
+        "metric_id": {
+          "enum": [
+            "parse_success",
+            "exact_precursor_reconstruction",
+            "reaction_centre_precision",
+            "reaction_centre_recall",
+            "reaction_centre_f1",
+            "completion_accuracy",
+            "leaving_group_accuracy",
+            "stereo_retention",
+            "auroc",
+            "auprc",
+            "brier_score",
+            "expected_calibration_error",
+            "false_rejection_rate",
+            "false_acceptance_rate",
+            "selective_risk",
+            "coverage",
+            "high_novelty_false_rejection_rate"
+          ],
+          "title": "Metric Id",
+          "type": "string"
+        },
+        "numerator": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Numerator"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "reproduction_command": {
+          "minLength": 1,
+          "title": "Reproduction Command",
+          "type": "string"
+        },
+        "sample_count": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sample Count"
+        },
+        "scope": {
+          "enum": [
+            "software_verification_fixture",
+            "research_evaluation"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationAvailability"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "metric_id",
+        "status",
+        "scope",
+        "bootstrap_status",
+        "reason",
+        "reproduction_command"
+      ],
+      "title": "RequiredMetricStatusV1",
+      "type": "object"
+    },
+    "ResearchQuestionStatusV1": {
+      "additionalProperties": false,
+      "properties": {
+        "blocking_requirements": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Blocking Requirements",
+          "type": "array"
+        },
+        "evidence_summary": {
+          "minLength": 1,
+          "title": "Evidence Summary",
+          "type": "string"
+        },
+        "question_id": {
+          "enum": [
+            "RQ1",
+            "RQ2",
+            "RQ3",
+            "RQ4",
+            "RQ5",
+            "RQ6",
+            "RQ7"
+          ],
+          "title": "Question Id",
+          "type": "string"
+        },
+        "reproduction_command": {
+          "minLength": 1,
+          "title": "Reproduction Command",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationAvailability"
+        }
+      },
+      "required": [
+        "question_id",
+        "status",
+        "evidence_summary",
+        "reproduction_command"
+      ],
+      "title": "ResearchQuestionStatusV1",
+      "type": "object"
+    },
+    "RoutePromptContractSmokeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "all_route_perturbations_detected": {
+          "title": "All Route Perturbations Detected",
+          "type": "boolean"
+        },
+        "default_prompt_provider_unavailable": {
+          "title": "Default Prompt Provider Unavailable",
+          "type": "boolean"
+        },
+        "expensive_provider_experiments_run": {
+          "const": false,
+          "default": false,
+          "title": "Expensive Provider Experiments Run",
+          "type": "boolean"
+        },
+        "metrics_status": {
+          "const": "not_run",
+          "default": "not_run",
+          "title": "Metrics Status",
+          "type": "string"
+        },
+        "notice": {
+          "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+          "title": "Notice",
+          "type": "string"
+        },
+        "prompt_variant_count": {
+          "const": 5,
+          "default": 5,
+          "title": "Prompt Variant Count",
+          "type": "integer"
+        },
+        "prompt_variant_kinds": {
+          "items": {
+            "$ref": "#/$defs/PromptVariantKind"
+          },
+          "title": "Prompt Variant Kinds",
+          "type": "array"
+        },
+        "required_route_outputs_present": {
+          "title": "Required Route Outputs Present",
+          "type": "boolean"
+        },
+        "route_check_count": {
+          "minimum": 15,
+          "title": "Route Check Count",
+          "type": "integer"
+        },
+        "route_perturbation_count": {
+          "const": 5,
+          "default": 5,
+          "title": "Route Perturbation Count",
+          "type": "integer"
+        },
+        "route_success_probability_reported": {
+          "const": false,
+          "default": false,
+          "title": "Route Success Probability Reported",
+          "type": "boolean"
+        },
+        "schema_version": {
+          "const": "synthaudit.route-prompt-contract-smoke/1",
+          "default": "synthaudit.route-prompt-contract-smoke/1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "route_check_count",
+        "required_route_outputs_present",
+        "all_route_perturbations_detected",
+        "prompt_variant_kinds",
+        "default_prompt_provider_unavailable"
+      ],
+      "title": "RoutePromptContractSmokeV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "counterfactual_validation": {
+      "$ref": "#/$defs/CounterfactualBenchmarkValidationV1"
+    },
+    "evaluation_date": {
+      "format": "date",
+      "title": "Evaluation Date",
+      "type": "string"
+    },
+    "evaluation_id": {
+      "const": "synthaudit-v1-offline-release-evaluation",
+      "default": "synthaudit-v1-offline-release-evaluation",
+      "title": "Evaluation Id",
+      "type": "string"
+    },
+    "evaluation_scope": {
+      "const": "offline_software_verification_fixtures",
+      "default": "offline_software_verification_fixtures",
+      "title": "Evaluation Scope",
+      "type": "string"
+    },
+    "evidence_model_contract": {
+      "$ref": "#/$defs/EvidenceModelContractSmokeV1"
+    },
+    "experimental_feasibility_established": {
+      "const": false,
+      "default": false,
+      "title": "Experimental Feasibility Established",
+      "type": "boolean"
+    },
+    "fixture_results_are_population_metrics": {
+      "const": false,
+      "default": false,
+      "title": "Fixture Results Are Population Metrics",
+      "type": "boolean"
+    },
+    "notice": {
+      "const": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "default": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "prompt_validation": {
+      "$ref": "#/$defs/PromptBenchmarkValidationV1"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    },
+    "reactseq_conformance": {
+      "$ref": "#/$defs/ReactSeqConformanceSummary"
+    },
+    "release_version": {
+      "const": "1.0.0",
+      "default": "1.0.0",
+      "title": "Release Version",
+      "type": "string"
+    },
+    "required_metrics": {
+      "items": {
+        "$ref": "#/$defs/RequiredMetricStatusV1"
+      },
+      "title": "Required Metrics",
+      "type": "array"
+    },
+    "research_metrics_status": {
+      "const": "not_run",
+      "default": "not_run",
+      "title": "Research Metrics Status",
+      "type": "string"
+    },
+    "research_questions": {
+      "items": {
+        "$ref": "#/$defs/ResearchQuestionStatusV1"
+      },
+      "title": "Research Questions",
+      "type": "array"
+    },
+    "route_prompt_contract": {
+      "$ref": "#/$defs/RoutePromptContractSmokeV1"
+    },
+    "schema_version": {
+      "const": "synthaudit.release-evaluation/1",
+      "default": "synthaudit.release-evaluation/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_artifact_sha256": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "minProperties": 1,
+      "title": "Source Artifact Sha256",
+      "type": "object"
+    },
+    "traversal_pair_semantically_equivalent": {
+      "title": "Traversal Pair Semantically Equivalent",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "evaluation_date",
+    "source_artifact_sha256",
+    "traversal_pair_semantically_equivalent",
+    "counterfactual_validation",
+    "prompt_validation",
+    "reactseq_conformance",
+    "route_prompt_contract",
+    "evidence_model_contract",
+    "research_questions",
+    "required_metrics",
+    "provenance"
+  ],
+  "title": "ReleaseEvaluationManifestV1",
+  "type": "object"
+}

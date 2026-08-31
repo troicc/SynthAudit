@@ -22,6 +22,7 @@ from synthaudit.counterfactuals.models import (
 from synthaudit.data.transfer import DataDownloadManifestV1, DataDownloadResultV1
 from synthaudit.evaluation.evidence_model_smoke import EvidenceModelContractSmokeV1
 from synthaudit.evaluation.reactseq_conformance import ReactSeqConformanceSummary
+from synthaudit.evaluation.release import ReleaseEvaluationManifestV1
 from synthaudit.evaluation.route_prompt_smoke import RoutePromptContractSmokeV1
 from synthaudit.models.artifacts import EvidenceModelArtifactV1
 from synthaudit.models.evidence import (
@@ -115,6 +116,7 @@ SCHEMAS = {
     "reaction-report-v1.schema.json": ReactionReportV1,
     "route-report-v1.schema.json": RouteReportV1,
     "benchmark-workspace-v1.schema.json": BenchmarkWorkspaceV1,
+    "release-evaluation-v1.schema.json": ReleaseEvaluationManifestV1,
 }
 
 

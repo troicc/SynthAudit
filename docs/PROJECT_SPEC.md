@@ -1,5 +1,7 @@
 # SynthAudit v2 project specification
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 ## Mission
 
 SynthAudit is a representation-agnostic audit layer for reaction-edit retrosynthesis. It normalizes mapped reaction SMILES, ReactSeq, the explicitly named `synthaudit.synthex-paper-draft/0.1` format, supported Synthelite route exports, and future adapters into versioned canonical models.

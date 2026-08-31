@@ -1,5 +1,7 @@
 # Synthelite export semantics
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 Compatibility target: `schwallergroup/synthelite@45168f8a5846c2fd15a833eddc88bac843b5bbee`.
 
 SynthAudit supports the inspected nested dictionary emitted by Synthelite's

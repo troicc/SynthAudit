@@ -107,7 +107,19 @@ pickle 只适用于来源可信且 SHA-256 匹配的本地模型；它不是跨�
 | 五页 Streamlit AppTest | 所有页面可在当前锁定环境启动，无需网络 | `pytest tests/integration/test_streamlit_pages.py` |
 | 完整质量门 | 格式、lint、strict mypy、测试覆盖与所有小型烟测 | `make reproduce-small` |
 
-研究尺度 AUROC、AUPRC、Brier、ECE、false rejection、selective risk、prompt robustness 等结果未预填；只有在 Phase 12 配置了合规数据与真实实验后才能发布。
+研究尺度 AUROC、AUPRC、Brier、ECE、false rejection、selective risk、prompt robustness 等结果仍未预填；只有在另行配置合规数据、冻结协议并实际运行实验后才能发布。
+
+## 生成 v1.0 研究状态包
+
+```bash
+make release-evaluation
+```
+
+该命令会重新运行当前可复现的离线夹具实验，并生成版本化 manifest、RQ1-RQ7 状态表、
+17 项必需指标状态表、软件夹具观察表、两张可访问 SVG 及 `SHA256SUMS`。只有明确标注为
+`software_verification_fixture` 的三案例 ReactSeq 观察可以携带数值；未具备数据、标签、
+checkpoint 或 provider 的研究指标保持空值和 `not_run`。完整解释见
+[`TECHNICAL_REPORT.md`](TECHNICAL_REPORT.md)。
 
 ## 排查常见失败
 

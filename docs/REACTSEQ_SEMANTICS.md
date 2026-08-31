@@ -1,5 +1,7 @@
 # ReactSeq semantics and integration boundary
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 Status: source-inspected at `jiachengxiong/ReactSeq@9838a3058e32e1c0ee04b2bab0448104dc293384`. This document describes the subset SynthAudit can defend from upstream source and fixtures; it is not a replacement specification for ReactSeq.
 
 ## Two-stage meaning

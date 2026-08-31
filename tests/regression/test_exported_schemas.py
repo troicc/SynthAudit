@@ -5,6 +5,7 @@ from pathlib import Path
 
 from synthaudit.application.models import CommandEnvelopeV1, NormalizedReactionV1
 from synthaudit.data.transfer import DataDownloadManifestV1, DataDownloadResultV1
+from synthaudit.evaluation.release import ReleaseEvaluationManifestV1
 from synthaudit.models.artifacts import EvidenceModelArtifactV1
 from synthaudit.reports.models import EvidenceReportItemV1, ReactionReportV1, RouteReportV1
 from synthaudit.schema.evidence import EvidenceValueV1
@@ -34,6 +35,7 @@ def test_committed_json_schemas_match_models() -> None:
         "reaction-report-v1.schema.json": ReactionReportV1,
         "route-report-v1.schema.json": RouteReportV1,
         "benchmark-workspace-v1.schema.json": BenchmarkWorkspaceV1,
+        "release-evaluation-v1.schema.json": ReleaseEvaluationManifestV1,
     }
     for filename, model in expected.items():
         assert json.loads((root / filename).read_text()) == model.model_json_schema()

@@ -9,7 +9,7 @@
 - Purpose: `software_verification_fixture`
 - Generator: `synthaudit.counterfactual-generator/1`
 - Global seed: `20260831`
-- Records SHA-256: `932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99`
+- Records SHA-256: `027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317`
 - Metrics status: `not_run`
 
 The committed artifact contains exactly 200 small examples: 20 unmutated parent records labelled

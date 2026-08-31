@@ -18,6 +18,8 @@ reports/*
 !reports/.gitkeep
 !reports/examples/
 !reports/examples/**
+!reports/research-evaluation-v1/
+!reports/research-evaluation-v1/**
 /data/
 .env
 *.key

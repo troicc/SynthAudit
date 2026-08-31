@@ -25,18 +25,18 @@
     {
       "adapter": "build_dataset",
       "adapter_version": "1",
-      "artifact_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+      "artifact_sha256": "027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317",
       "generated_at": null,
       "license": "Apache-2.0",
       "metadata": {},
       "source": "synthaudit",
       "source_commit": null,
-      "source_version": "0.1.0"
+      "source_version": "1.0.0"
     }
   ],
   "purpose": "software_verification_fixture",
   "record_count": 200,
-  "records_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+  "records_sha256": "027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317",
   "schema_version": "synthaudit.counterfactual-dataset-manifest/1",
   "source_licenses": [
     "Apache-2.0 fixture; not experimental reaction evidence"

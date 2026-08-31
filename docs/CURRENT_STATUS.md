@@ -1,5 +1,7 @@
 # Current status
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 ## Phase 0 — upstream and research specification
 
 Status: **accepted on 2026-08-31**.
@@ -259,7 +261,7 @@ separate Phase 10 responsibility.
 
 The committed `synthaudit-authored-counterfactual-fixture/1` contains exactly 200 records: 20
 authored unmutated parents and 180 generated counterfactuals. It is content-addressed at
-`932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99`, covers all methods and
+`027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317`, covers all methods and
 categories, and regenerates byte-for-byte. Its purpose is `software_verification_fixture`; it is
 not an external corpus or experimental evidence and its metrics status is `not_run`.
 
@@ -372,7 +374,7 @@ summaries without treating any provider or LLM as ground truth.
 
 The committed `synthaudit-authored-prompt-robustness-fixture/1` contains eight eligible authored
 Phase 8 parents and 40 prompt variants, eight of each kind. It regenerates byte-for-byte and is
-content-addressed at `568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5`.
+content-addressed at `d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c`.
 It contains no model outputs or experimental labels and reports `metrics_status=not_run`.
 
 Verification:
@@ -460,3 +462,72 @@ certification, experimental feasibility result, or reportable population metric 
 
 Next: Phase 12 reproducible research/evaluation package, technical report, cards, release
 materials, and PhD-application narrative without fabricating unavailable scientific results.
+
+## Phase 12 — research evaluation and v1.0 release package
+
+Status: **accepted on 2026-08-31**.
+
+Branch: `codex/12-research-evaluation-and-release`
+
+Released the software architecture as v1.0.0 while keeping research availability fail-closed.
+`ReleaseEvaluationManifestV1` records source SHA-256 digests, RQ1-RQ7 status, all 17 required
+metric statuses, nested offline contract observations, provenance, and the mandatory notice. Its
+validators permit numerical values only for explicitly scoped software-fixture observations;
+`not_run` research metrics cannot contain a value, count, sample size, or confidence interval.
+Future intervals are required to bootstrap parent reaction or route IDs.
+
+`scripts/build_release_evaluation.py` runs all justified offline experiments and deterministically
+generates a manifest, RQ table, metric table, fixture-observation table, two accessible SVG
+figures, README, and `SHA256SUMS`. RQ1 has one alternate-traversal pair with equal ReactionIR
+semantic hashes plus three pinned conformance cases; RQ6 has five authored route perturbation
+classes detected by the 18-check route contract. These are fixture-only observations. RQ2-RQ5 and
+RQ7 remain `not_run`. Completion accuracy, stereo retention, AUROC, AUPRC, Brier score, Expected
+Calibration Error, false rejection/acceptance, selective risk, coverage, and high-novelty false
+rejection have no release value.
+
+The v1.0 provenance migration regenerated the authored counterfactual and prompt fixtures without
+changing their labels, composition, or intended use. Their current content digests are
+`027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317` and
+`d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c` respectively; both still
+report research metrics as `not_run` and regenerate byte-for-byte.
+
+Added the complete technical report, release-level model and dataset cards, changelog, release
+notes/checklist, and the five required PhD application documents. All public Markdown reports,
+methodology documents, cards, ADRs, and examples now display the exact scientific boundary, with a
+regression test enforcing it. Placeholder repository URLs were removed because this checkout has
+no configured remote.
+
+Package, lock, runtime, and citation metadata now identify v1.0.0. The wheel force-includes the
+Streamlit theme and five UI pages; the CLI resolves the source application first and bundled wheel
+resources otherwise. Docker now includes app, benchmark, config, docs, examples, reports, schemas,
+and scripts rather than only the package.
+
+Verification:
+
+- `uv lock --check`: resolved the existing 72-package lock without changes;
+- `make quality`: ruff lint/format and strict mypy passed for 109 source files;
+- `make schemas`: generated `release-evaluation-v1.schema.json`, and committed-schema regression
+  passed;
+- `make test`: 277 passed, total branch coverage 86%; release evaluation 84%, core executor 96%,
+  completion executor 94%, stereo executor 93%, structural audit 96%, mapped-reaction adapter 92%,
+  route audit 91%, standalone reports 92%, and ReactSeq conformance 91%;
+- release tests reject pre-filled `not_run` metrics, enforce all RQ/metric entries and scientific
+  notices, verify metadata/UI packaging, validate all source/output hashes, and regenerate the
+  release package byte-for-byte;
+- `make reproduce-small` passed the full quality/test gate plus version, five-page UI, reaction and
+  route CLI, 200-record counterfactual validation, four-stage evidence-model contract, 40 prompt
+  variants, route/prompt contract, three ReactSeq demos, and release-evaluation generation;
+- `uv build` produced `synthaudit-1.0.0.tar.gz` and `synthaudit-1.0.0-py3-none-any.whl` in a
+  temporary directory; the archives exclude local caches, the wheel contains all five pages and
+  theme, and an isolated target installation reported v1.0.0 with `ui --check` page count five;
+- both Phase 12 SVGs passed the diagram rendering tool, byte comparison, PNG conversion, and
+  visual inspection; Compose and citation YAML parsed successfully.
+
+One environment warning remains: joblib cannot query physical core count in this restricted host
+and falls back to logical cores. Docker is not installed, so image build/runtime validation was
+unavailable; the release wheel and YAML were validated separately. No licensed external corpus,
+official SynthEx schema, ReactSeq checkpoint, prompt provider, GPU experiment, laboratory result,
+Git remote, push, or hosted release exists.
+
+Next: configure a verified Git remote and publish only when authorized; run the uncompleted
+research questions only under a separately licensed, preregistered, parent-grouped protocol.

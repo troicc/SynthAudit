@@ -6,6 +6,10 @@
 
 SynthAudit normalizes mapped reactions and reaction-edit languages into a stable `ReactionIR`, executes edits in explicit reaction-centre and synthon-completion stages, and reports structural consistency, corpus novelty, precedent support, evidence-based plausibility, and uncertainty as separate results.
 
+Current software release: **v1.0.0**. The architecture and offline verification package are
+complete; population research metrics remain explicitly `not_run` until licensed data, labels,
+checkpoints, and providers are configured.
+
 ## Why this exists
 
 ReactSeq, agent-authored graph edits, mapped reaction SMILES, and route-planner exports encode overlapping chemistry with different identifiers and failure modes. SynthAudit provides an independent, deterministic layer for asking whether they mean the same graph transformation and where a proposal requires expert review.
@@ -29,9 +33,14 @@ make install
 make quality
 make test
 make smoke
+make release-evaluation
 ```
 
 Core tests are offline and do not require model downloads, paid APIs, or large datasets.
+
+`make release-evaluation` regenerates the content-addressed v1.0 research-status manifest, tables,
+and figures. Its numerical observations are scoped to committed software fixtures and are not
+population chemistry results.
 
 ## Quick start
 
@@ -83,6 +92,11 @@ Start with:
 - [Current implementation status](docs/CURRENT_STATUS.md)
 - [Known limitations](docs/KNOWN_LIMITATIONS.md)
 - [CLI, UI, reports, and reproducible demos](docs/PRODUCT_GUIDE.md)
+- [v1.0 technical report](docs/TECHNICAL_REPORT.md)
+- [Model card](docs/MODEL_CARD.md)
+- [Dataset and fixture card](docs/DATASET_CARD.md)
+- [Release notes](docs/RELEASE_NOTES_V1.0.0.md)
+- [PhD application package](docs/phd/PROJECT_SUMMARY.md)
 
 At the 2026-08-31 pinned upstream revision, SynthEx has not released official ReactionJSON or RouteJSON schemas. SynthAudit therefore exposes a clearly named paper-draft adapter and makes no official-compatibility claim. ReactSeq's official converter is handled through an optional legacy-runtime boundary.
 

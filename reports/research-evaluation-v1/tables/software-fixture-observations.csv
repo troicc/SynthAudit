@@ -1,0 +1,8 @@
+observation,value,unit,scope,interpretation
+counterfactual_records_validated,200,authored_records,software_verification_fixture,Artifact/schema/split validation only; not observed chemistry errors.
+counterfactual_generation_methods_covered,29,declared_methods,software_verification_fixture,Designed method coverage; not measured error prevalence.
+prompt_variants_validated,40,authored_variants,software_verification_fixture,No prompt-capable model was invoked.
+reactseq_pinned_cases,3,pinned_demo_cases,software_verification_fixture,Descriptive results for committed pinned fixtures only; they are not a population benchmark or evidence of experimental feasibility.
+alternate_traversal_pairs_checked,1,authored_pair,software_verification_fixture,Semantic-hash invariance for one pair; not a population rate.
+route_perturbation_classes_detected,5,authored_classes,software_verification_fixture,Contract detection only; not route feasibility validation.
+evidence_stage_contracts_exercised,4,stage_contracts,software_verification_fixture,Authored numeric plumbing; no reportable model performance.

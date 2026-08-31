@@ -283,7 +283,7 @@
         "metadata": {},
         "source": "synthaudit",
         "source_commit": null,
-        "source_version": "0.1.0"
+        "source_version": "1.0.0"
       }
     ],
     "route_id": "synthaudit-demo-route",
@@ -525,7 +525,7 @@
                   "metadata": {},
                   "source": "synthaudit",
                   "source_commit": null,
-                  "source_version": "0.1.0"
+                  "source_version": "1.0.0"
                 }
               ],
               "schema_version": "synthaudit.completion-execution-result/1",
@@ -569,7 +569,7 @@
                   "metadata": {},
                   "source": "synthaudit",
                   "source_commit": null,
-                  "source_version": "0.1.0"
+                  "source_version": "1.0.0"
                 }
               ],
               "schema_version": "synthaudit.core-execution-result/1",
@@ -635,7 +635,7 @@
                 "metadata": {},
                 "source": "synthaudit",
                 "source_commit": null,
-                "source_version": "0.1.0"
+                "source_version": "1.0.0"
               }
             ],
             "schema_version": "synthaudit.full-execution-result/1",
@@ -675,7 +675,7 @@
                   "metadata": {},
                   "source": "synthaudit",
                   "source_commit": null,
-                  "source_version": "0.1.0"
+                  "source_version": "1.0.0"
                 }
               ],
               "schema_version": "synthaudit.stereo-execution-result/1",
@@ -699,7 +699,7 @@
               "metadata": {},
               "source": "synthaudit",
               "source_commit": null,
-              "source_version": "0.1.0"
+              "source_version": "1.0.0"
             }
           ],
           "reaction_centre_audit": {
@@ -1380,7 +1380,7 @@
                   "metadata": {},
                   "source": "synthaudit",
                   "source_commit": null,
-                  "source_version": "0.1.0"
+                  "source_version": "1.0.0"
                 }
               ],
               "schema_version": "synthaudit.completion-execution-result/1",
@@ -1434,7 +1434,7 @@
                   "metadata": {},
                   "source": "synthaudit",
                   "source_commit": null,
-                  "source_version": "0.1.0"
+                  "source_version": "1.0.0"
                 }
               ],
               "schema_version": "synthaudit.core-execution-result/1",
@@ -1508,7 +1508,7 @@
                 "metadata": {},
                 "source": "synthaudit",
                 "source_commit": null,
-                "source_version": "0.1.0"
+                "source_version": "1.0.0"
               }
             ],
             "schema_version": "synthaudit.full-execution-result/1",
@@ -1550,7 +1550,7 @@
                   "metadata": {},
                   "source": "synthaudit",
                   "source_commit": null,
-                  "source_version": "0.1.0"
+                  "source_version": "1.0.0"
                 }
               ],
               "schema_version": "synthaudit.stereo-execution-result/1",
@@ -1574,7 +1574,7 @@
               "metadata": {},
               "source": "synthaudit",
               "source_commit": null,
-              "source_version": "0.1.0"
+              "source_version": "1.0.0"
             }
           ],
           "reaction_centre_audit": {
@@ -2058,7 +2058,7 @@
       "metadata": {},
       "source": "synthaudit",
       "source_commit": null,
-      "source_version": "0.1.0"
+      "source_version": "1.0.0"
     }
   ],
   "route": {
@@ -2077,7 +2077,7 @@
     "provenance": [
       {
         "adapter": "demo_route",
-        "adapter_version": "0.1.0",
+        "adapter_version": "1.0.0",
         "artifact_sha256": null,
         "generated_at": null,
         "license": "Apache-2.0 fixture; not experimental reaction evidence",
@@ -2172,7 +2172,7 @@
           "provenance": [
             {
               "adapter": "synthaudit.mapped-reaction-smiles/1",
-              "adapter_version": "0.1.0",
+              "adapter_version": "1.0.0",
               "artifact_sha256": null,
               "generated_at": null,
               "license": "input-controlled",
@@ -2296,7 +2296,7 @@
           "provenance": [
             {
               "adapter": "synthaudit.mapped-reaction-smiles/1",
-              "adapter_version": "0.1.0",
+              "adapter_version": "1.0.0",
               "artifact_sha256": null,
               "generated_at": null,
               "license": "input-controlled",

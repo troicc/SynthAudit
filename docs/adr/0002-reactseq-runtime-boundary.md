@@ -1,5 +1,7 @@
 # ADR 0002: Isolate the official ReactSeq runtime
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 - Status: Accepted
 - Date: 2026-08-31
 

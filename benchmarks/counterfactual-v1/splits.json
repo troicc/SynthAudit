@@ -2555,7 +2555,7 @@
     "threshold": 0.7,
     "training_reference_sha256": "3860e557d5dc0d642b446e95a2617833ef669f851bc09173dac586db303f978e"
   },
-  "records_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+  "records_sha256": "027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317",
   "schema_version": "synthaudit.benchmark-splits/1",
   "split_seed": 20260831
 }

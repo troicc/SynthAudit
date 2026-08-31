@@ -8,14 +8,14 @@
 - Purpose: deterministic software verification of prompt generation, storage, and validation.
 - Cases: 8; variants: 40, with 8 exact, partial, ambiguous, incorrect-but-structurally-
   plausible, and contradictory variants each.
-- Cases SHA-256: `568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5`.
+- Cases SHA-256: `d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c`.
 - Metrics status: `not_run`.
 
 ## Source and selection
 
 Cases derive only from the authored
 `synthaudit-authored-counterfactual-fixture/1` software fixture at records SHA-256
-`932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99`. The source label
+`027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317`. The source label
 `recorded_reaction` means an unmutated reference representation, not guaranteed experimental
 success. No external corpus, procedure, yield, or experimental outcome is included.
 

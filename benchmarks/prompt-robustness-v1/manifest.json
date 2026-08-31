@@ -1,6 +1,6 @@
 {
   "case_count": 8,
-  "cases_sha256": "568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5",
+  "cases_sha256": "d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c",
   "dataset_id": "synthaudit-authored-prompt-robustness-fixture",
   "dataset_version": "1",
   "eligibility_rule": "at_least_one_centre_and_two_total_declared_edit_operations",
@@ -10,13 +10,13 @@
     {
       "adapter": "build_prompt_dataset",
       "adapter_version": "1",
-      "artifact_sha256": "568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5",
+      "artifact_sha256": "d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c",
       "generated_at": null,
       "license": "Apache-2.0",
       "metadata": {},
       "source": "synthaudit",
       "source_commit": null,
-      "source_version": "0.1.0"
+      "source_version": "1.0.0"
     }
   ],
   "purpose": "software_verification_fixture",
@@ -25,7 +25,7 @@
   "source_dataset_version": "1",
   "source_label_semantics": "recorded_reaction_is_a_reference_representation_not_guaranteed_experimental_success",
   "source_license_status": "Apache-2.0 fixture; not experimental reaction evidence",
-  "source_records_sha256": "932c04d282f3b72a9587c0247f2045c8b11df8c3b6a3034d4eaf0bb9ec9d0c99",
+  "source_records_sha256": "027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317",
   "variant_count": 40,
   "variant_kind_counts": {
     "ambiguous": 8,

@@ -10,6 +10,15 @@ WORKDIR /app
 COPY pyproject.toml uv.lock README.md ./
 COPY src ./src
 RUN uv sync --frozen --no-dev --extra ui
+COPY .streamlit ./.streamlit
+COPY app ./app
+COPY benchmarks ./benchmarks
+COPY configs ./configs
+COPY docs ./docs
+COPY examples ./examples
+COPY reports ./reports
+COPY schemas ./schemas
+COPY scripts ./scripts
 
 EXPOSE 8501
 ENTRYPOINT ["uv", "run"]

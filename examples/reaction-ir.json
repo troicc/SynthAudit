@@ -74,7 +74,7 @@
   "provenance": [
     {
       "adapter": "synthaudit.mapped-reaction-smiles/1",
-      "adapter_version": "0.1.0",
+      "adapter_version": "1.0.0",
       "artifact_sha256": null,
       "generated_at": null,
       "license": "input-controlled",

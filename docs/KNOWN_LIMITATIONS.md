@@ -1,5 +1,7 @@
 # Known limitations
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 Updated: 2026-08-31.
 
 - The official ReactSeq converter requires a legacy isolated runtime. Reproduction on this Apple Silicon host has not yet been established. Three committed golden cases are copied from pinned official repository demo input/output files, but the local adapter remains labelled a source-inspected safe subset rather than full official compatibility.
@@ -50,6 +52,10 @@ Updated: 2026-08-31.
 - The eight-case, 40-variant prompt artifact is an authored software fixture selected from the Phase 8 fixture. It has no model outputs or performance result and is too small and synthetic for scientific generalization.
 - Prompt “accuracy” is agreement with a declared ReactionIR reference. The reference can itself be incomplete or wrong and is never experimental ground truth. Prompt obedience is not synonymous with chemical correctness.
 - No prompt-capable ReactSeq, SynthEx, LLM, or other model was invoked in Phase 10. Provider confidence, calibration, robustness, recovery, and model comparisons remain unmeasured until explicit reproducible research runs are configured.
-- The five-page Streamlit app is an optional source-checkout demo. It has deterministic AppTest coverage but no claim of cross-browser, assistive-technology, or production hosting certification. It never moves chemistry algorithms into page files.
+- The five-page Streamlit app is bundled in the wheel and Docker context and has deterministic source AppTest plus isolated-wheel `ui --check` coverage. It has no claim of cross-browser, assistive-technology, or production hosting certification and never moves chemistry algorithms into page files.
 - Committed Phase 11 reaction/route reports and architecture SVGs are authored demo assets. Their pass/unavailable states verify product plumbing only and cannot be generalized as chemistry performance.
 - The manifest data downloader supports explicit local files and opt-in HTTP(S). It verifies SHA-256 before writing but does not provide authentication, resumable transfer, archive extraction, or license adjudication.
+- The v1.0 release-evaluation package reports only authored/pinned software-fixture observations. RQ1 and RQ6 are not population answers; RQ2-RQ5 and RQ7 remain `not_run`. Designed fixture composition must not be used to infer real model-error frequency.
+- Completion accuracy, stereo retention, AUROC, AUPRC, Brier score, Expected Calibration Error, false rejection/acceptance, selective risk, coverage, and high-novelty false rejection have no release value. Blank table cells mean unrun research, not zero. No bootstrap confidence interval is published for the tiny fixtures.
+- This checkout has no configured Git remote. The local v1.0.0 package, commit, evaluation bundle, and release documentation can be verified, but push, hosted release creation, and publication URL validation require separate authorization and repository configuration.
+- Docker is not installed on the verification host, so an image build/runtime smoke was unavailable. The Dockerfile was reviewed, the release wheel was built and exercised separately, and `docker-compose.yml` parsed as YAML; a real Docker build remains a publication-environment check.

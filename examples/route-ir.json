@@ -14,7 +14,7 @@
   "provenance": [
     {
       "adapter": "demo_route",
-      "adapter_version": "0.1.0",
+      "adapter_version": "1.0.0",
       "artifact_sha256": null,
       "generated_at": null,
       "license": "Apache-2.0 fixture; not experimental reaction evidence",
@@ -109,7 +109,7 @@
         "provenance": [
           {
             "adapter": "synthaudit.mapped-reaction-smiles/1",
-            "adapter_version": "0.1.0",
+            "adapter_version": "1.0.0",
             "artifact_sha256": null,
             "generated_at": null,
             "license": "input-controlled",
@@ -233,7 +233,7 @@
         "provenance": [
           {
             "adapter": "synthaudit.mapped-reaction-smiles/1",
-            "adapter_version": "0.1.0",
+            "adapter_version": "1.0.0",
             "artifact_sha256": null,
             "generated_at": null,
             "license": "input-controlled",

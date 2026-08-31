@@ -1,5 +1,7 @@
 # Upstream status
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 Checked: **2026-08-31**. HEAD values were resolved with `git ls-remote`; ReactSeq was also shallow-cloned to a temporary directory and its actual source/demo files inspected at the listed SHA. Compatibility tests must pin these full SHAs. A later HEAD is not implicitly compatible.
 
 ## Status matrix
@@ -103,3 +105,12 @@ Streamlit workspace, standalone reports, diagrams, and authored examples consume
 canonical APIs and committed fixtures. They do not call a live ReactSeq model, SynthEx service,
 Synthelite planner, external corpus, or LLM. Optional data transfer is user-invoked, manifest-
 declared, checksum-verified, and network-disabled unless explicitly enabled.
+
+## Phase 12 release boundary
+
+Phase 12 performs no upstream refresh and changes no pinned SHA, license, schema, or compatibility
+status. The v1.0 evaluation consumes only already reviewed committed fixtures. No ReactSeq
+checkpoint, official SynthEx schema/output, live Synthelite planner, external reaction corpus,
+ReactionClassifier, forward model, or LLM provider was downloaded or invoked. Accordingly,
+ReactSeq_MEO complementarity, prompt-model robustness, and SynthEx/Synthelite/ReactSeq comparisons
+remain `not_run`; the release version does not upgrade their availability.

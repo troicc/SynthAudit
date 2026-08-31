@@ -102,7 +102,7 @@ Multiple providers can be compared, but no provider or LLM becomes the truth lab
 
 The content-addressed prompt fixture contains eight eligible authored Phase 8 parent
 representations and 40 prompt variants, eight of each kind. Its cases SHA-256 is
-`568bda2e9e90559200b74e2955fafe5b3c9e33c9cc79f52871fe78c642cacfa5`. These counts and the
+`d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c`. These counts and the
 digest are artifact facts, not model results. `metrics_status` is `not_run`.
 
 Run `make prompt-fixture` to regenerate it, `make prompt-benchmark-small` to verify the digest and

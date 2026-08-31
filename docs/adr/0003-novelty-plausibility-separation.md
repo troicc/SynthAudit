@@ -1,5 +1,7 @@
 # ADR 0003: Keep novelty separate from plausibility evidence
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 - Status: Accepted
 - Date: 2026-08-31
 

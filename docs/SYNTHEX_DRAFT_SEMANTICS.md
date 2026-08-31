@@ -1,5 +1,7 @@
 # SynthEx paper-draft semantics
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
 Adapter identity: **`synthaudit.synthex-paper-draft/0.1`**.
 
 At `schwallergroup/synthex@5f41a6b21e3906fde93e84c88bb91f9dc4d37e6f`, the official repository contains a README and figures but no code, license file, ReactionJSON schema, RouteJSON schema, reference implementation, or fixtures. The README names ten primitives and shows:

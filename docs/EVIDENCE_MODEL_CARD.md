@@ -100,7 +100,10 @@ an explicit assertion that the critic is independent of the generation provider.
 as the sole plausibility source.
 
 The in-memory registry resolves only models explicitly fitted and registered in the current
-process. Unknown IDs fail closed and cannot trigger a network or artifact download.
+process. Unknown IDs fail closed and cannot trigger a network or artifact download. The CLI can
+also persist a trusted local model as an environment-sensitive pickle plus a SHA-256 descriptor;
+loading requires explicit trust, digest equality, type validation, and model-manifest equality.
+No serialized research model is bundled or loaded automatically.
 
 ## Reproduction boundary
 

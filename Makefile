@@ -2,7 +2,7 @@ UV_CACHE_DIR ?= .uv-cache
 export UV_CACHE_DIR
 UV_RUN ?= uv run --no-sync
 
-.PHONY: install quality format test smoke ui ui-smoke cli-smoke product-examples benchmark-small counterfactual-fixture prompt-fixture evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small reproduce-small schemas
+.PHONY: install quality format test smoke ui ui-smoke cli-smoke product-examples release-evaluation benchmark-small counterfactual-fixture prompt-fixture evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small reproduce-small schemas
 
 install:
 	uv sync --all-extras --dev
@@ -35,6 +35,9 @@ cli-smoke:
 product-examples:
 	$(UV_RUN) python scripts/build_product_examples.py
 
+release-evaluation:
+	$(UV_RUN) python scripts/build_release_evaluation.py
+
 benchmark-small:
 	$(UV_RUN) synthaudit benchmark counterfactuals --records benchmarks/counterfactual-v1/records.jsonl --manifest benchmarks/counterfactual-v1/manifest.json --splits benchmarks/counterfactual-v1/splits.json --human-review benchmarks/counterfactual-v1/human-review.csv --json
 
@@ -56,7 +59,7 @@ route-prompt-small:
 reactseq-conformance-small:
 	$(UV_RUN) synthaudit benchmark reactseq-conformance --fixture tests/fixtures/reactseq/golden.json --json
 
-reproduce-small: quality test smoke ui-smoke cli-smoke benchmark-small evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small
+reproduce-small: quality test smoke ui-smoke cli-smoke benchmark-small evidence-model-small prompt-benchmark-small route-prompt-small reactseq-conformance-small release-evaluation
 
 schemas:
 	$(UV_RUN) python scripts/export_schemas.py

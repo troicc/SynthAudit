@@ -1,0 +1,540 @@
+{
+  "counterfactual_validation": {
+    "category_counts": {
+      "completion": 21,
+      "reaction_centre": 28,
+      "representation": 69,
+      "route": 18,
+      "stereo": 44
+    },
+    "dataset_id": "synthaudit-authored-counterfactual-fixture",
+    "dataset_version": "1",
+    "evaluation_slice_counts": {
+      "high_novelty_test": 50,
+      "ring_forming_test": 40,
+      "stereo_sensitive_test": 80
+    },
+    "human_review_row_count": 9,
+    "label_counts": {
+      "generated_counterfactual": 180,
+      "recorded_reaction": 20
+    },
+    "leakage_checks": "passed",
+    "method_count": 29,
+    "metrics_status": "not_run",
+    "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+    "record_count": 200,
+    "records_sha256": "027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317",
+    "schema_version": "synthaudit.counterfactual-benchmark-validation/1",
+    "split_partition_counts": {
+      "in_distribution": {
+        "calibration": 30,
+        "test": 30,
+        "train": 140
+      },
+      "reaction_class_holdout": {
+        "calibration": 40,
+        "test": 40,
+        "train": 120
+      },
+      "scaffold_holdout": {
+        "calibration": 10,
+        "test": 20,
+        "train": 170
+      }
+    },
+    "valid": true
+  },
+  "evaluation_date": "2026-08-31",
+  "evaluation_id": "synthaudit-v1-offline-release-evaluation",
+  "evaluation_scope": "offline_software_verification_fixtures",
+  "evidence_model_contract": {
+    "ablation_contract_count": 2,
+    "abstention_exercised": true,
+    "bootstrap_member_count": 3,
+    "calibrated_score_semantics": "calibrated_evidence_support_score_not_experimental_probability",
+    "calibration_methods_exercised": [
+      "platt",
+      "isotonic"
+    ],
+    "estimator_families_exercised": [
+      "logistic_regression",
+      "hist_gradient_boosting_classifier"
+    ],
+    "metrics_status": "not_reportable_software_fixture",
+    "missing_flags_exercised": true,
+    "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+    "ood_evaluation_contract_exercised": true,
+    "provider_disagreement_exercised": true,
+    "raw_score_semantics": "uncalibrated_model_score",
+    "schema_version": "synthaudit.evidence-model-contract-smoke/1",
+    "stage_model_count": 4,
+    "stages": [
+      "reaction_centre_supported",
+      "completion_supported_given_reaction_centre",
+      "stereo_specification_supported",
+      "route_context_supported"
+    ]
+  },
+  "experimental_feasibility_established": false,
+  "fixture_results_are_population_metrics": false,
+  "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+  "prompt_validation": {
+    "case_count": 8,
+    "cases_sha256": "d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c",
+    "dataset_id": "synthaudit-authored-prompt-robustness-fixture",
+    "dataset_version": "1",
+    "metrics_status": "not_run",
+    "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+    "parent_group_atomicity": "passed",
+    "schema_version": "synthaudit.prompt-benchmark-validation/1",
+    "valid": true,
+    "variant_count": 40,
+    "variant_kind_counts": {
+      "ambiguous": 8,
+      "contradictory": 8,
+      "exact": 8,
+      "incorrect_structurally_plausible": 8,
+      "partial": 8
+    }
+  },
+  "provenance": [
+    {
+      "adapter": "run_release_evaluation",
+      "adapter_version": "1",
+      "artifact_sha256": null,
+      "generated_at": null,
+      "license": "Apache-2.0",
+      "metadata": {
+        "research_metrics_status": "not_run",
+        "scope": "offline_software_verification_fixtures"
+      },
+      "source": "synthaudit",
+      "source_commit": null,
+      "source_version": "1.0.0"
+    }
+  ],
+  "reactseq_conformance": {
+    "cases": [
+      {
+        "atom_map_preservation": true,
+        "attachment_point_accuracy": 1.0,
+        "charge_consistency": null,
+        "exact_precursor_reconstruction": true,
+        "execution_success": true,
+        "failure_category": null,
+        "fixture_id": "reactseq-demo-beam-1-direct-h",
+        "leaving_group_exact_match": true,
+        "message": null,
+        "parse_success": true,
+        "reaction_centre_precision": 1.0,
+        "reaction_centre_recall": 1.0,
+        "ring_change_consistency": true,
+        "stereo_preservation": null
+      },
+      {
+        "atom_map_preservation": true,
+        "attachment_point_accuracy": 1.0,
+        "charge_consistency": null,
+        "exact_precursor_reconstruction": true,
+        "execution_success": true,
+        "failure_category": null,
+        "fixture_id": "reactseq-demo-beam-2-acyl-chloride",
+        "leaving_group_exact_match": true,
+        "message": null,
+        "parse_success": true,
+        "reaction_centre_precision": 1.0,
+        "reaction_centre_recall": 1.0,
+        "ring_change_consistency": true,
+        "stereo_preservation": null
+      },
+      {
+        "atom_map_preservation": true,
+        "attachment_point_accuracy": 1.0,
+        "charge_consistency": null,
+        "exact_precursor_reconstruction": true,
+        "execution_success": true,
+        "failure_category": null,
+        "fixture_id": "reactseq-demo-beam-3-carboxylic-acid",
+        "leaving_group_exact_match": true,
+        "message": null,
+        "parse_success": true,
+        "reaction_centre_precision": 1.0,
+        "reaction_centre_recall": 1.0,
+        "ring_change_consistency": true,
+        "stereo_preservation": null
+      }
+    ],
+    "exact_reconstruction_count": 3,
+    "exact_reconstruction_rate": 1.0,
+    "execution_success_count": 3,
+    "execution_success_rate": 1.0,
+    "fixture_count": 3,
+    "interpretation": "Descriptive results for committed pinned fixtures only; they are not a population benchmark or evidence of experimental feasibility.",
+    "parse_success_count": 3,
+    "parse_success_rate": 1.0,
+    "schema_version": "synthaudit.reactseq-conformance/1"
+  },
+  "release_version": "1.0.0",
+  "required_metrics": [
+    {
+      "bootstrap_status": "not_run_fixture_scope",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": 3,
+      "metric_id": "parse_success",
+      "numerator": 3,
+      "reason": "Observed only on three committed, pinned ReactSeq demo fixtures; not a population estimate or experimental result.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": 3,
+      "scope": "software_verification_fixture",
+      "status": "fixture_observation",
+      "unit": "fixture_rate",
+      "value": 1.0
+    },
+    {
+      "bootstrap_status": "not_run_fixture_scope",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": 3,
+      "metric_id": "exact_precursor_reconstruction",
+      "numerator": 3,
+      "reason": "Observed only on three committed, pinned ReactSeq demo fixtures; not a population estimate or experimental result.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": 3,
+      "scope": "software_verification_fixture",
+      "status": "fixture_observation",
+      "unit": "fixture_rate",
+      "value": 1.0
+    },
+    {
+      "bootstrap_status": "not_run_fixture_scope",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "reaction_centre_precision",
+      "numerator": null,
+      "reason": "Observed only on three committed, pinned ReactSeq demo fixtures; not a population estimate or experimental result.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": 3,
+      "scope": "software_verification_fixture",
+      "status": "fixture_observation",
+      "unit": "mean_fixture_case_score",
+      "value": 1.0
+    },
+    {
+      "bootstrap_status": "not_run_fixture_scope",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "reaction_centre_recall",
+      "numerator": null,
+      "reason": "Observed only on three committed, pinned ReactSeq demo fixtures; not a population estimate or experimental result.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": 3,
+      "scope": "software_verification_fixture",
+      "status": "fixture_observation",
+      "unit": "mean_fixture_case_score",
+      "value": 1.0
+    },
+    {
+      "bootstrap_status": "not_run_fixture_scope",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "reaction_centre_f1",
+      "numerator": null,
+      "reason": "Observed only on three committed, pinned ReactSeq demo fixtures; not a population estimate or experimental result.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": 3,
+      "scope": "software_verification_fixture",
+      "status": "fixture_observation",
+      "unit": "mean_fixture_case_score",
+      "value": 1.0
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "completion_accuracy",
+      "numerator": null,
+      "reason": "No licensed completion-support evaluation set with a frozen target definition is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_fixture_scope",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": 3,
+      "metric_id": "leaving_group_accuracy",
+      "numerator": 3,
+      "reason": "Observed only on three committed, pinned ReactSeq demo fixtures; not a population estimate or experimental result.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": 3,
+      "scope": "software_verification_fixture",
+      "status": "fixture_observation",
+      "unit": "fixture_exact_match_rate",
+      "value": 1.0
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "stereo_retention",
+      "numerator": null,
+      "reason": "The three pinned ReactSeq fixtures contain no evaluable stereo-retention target.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "auroc",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "auprc",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "brier_score",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "expected_calibration_error",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "false_rejection_rate",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "false_acceptance_rate",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "selective_risk",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "coverage",
+      "numerator": null,
+      "reason": "No licensed, adjudicated evidence-support evaluation set or selected calibrated research model is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    },
+    {
+      "bootstrap_status": "not_run_missing_research_data",
+      "bootstrap_unit": "parent_reaction_or_route_id",
+      "confidence_interval_95": null,
+      "denominator": null,
+      "metric_id": "high_novelty_false_rejection_rate",
+      "numerator": null,
+      "reason": "No licensed recorded-reaction test set with frozen novelty strata and adjudicated support labels is configured.",
+      "reproduction_command": "make release-evaluation",
+      "sample_count": null,
+      "scope": "research_evaluation",
+      "status": "not_run",
+      "unit": null,
+      "value": null
+    }
+  ],
+  "research_metrics_status": "not_run",
+  "research_questions": [
+    {
+      "blocking_requirements": [],
+      "evidence_summary": "One authored pair of alternate product traversals normalizes to an equal ReactionIR semantic hash; three pinned upstream demo fixtures also parse, execute, and reconstruct exactly. This is fixture-only evidence.",
+      "question_id": "RQ1",
+      "reproduction_command": "make release-evaluation reactseq-conformance-small",
+      "status": "fixture_observation"
+    },
+    {
+      "blocking_requirements": [
+        "licensed representative reaction sample",
+        "frozen stage-error annotation protocol",
+        "parent-group bootstrap"
+      ],
+      "evidence_summary": "Error prevalence is not estimated from designed counterfactual counts.",
+      "question_id": "RQ2",
+      "reproduction_command": "make release-evaluation",
+      "status": "not_run"
+    },
+    {
+      "blocking_requirements": [
+        "licensed downloadable ReactSeq checkpoint",
+        "reproduced embedding extraction environment",
+        "frozen novelty corpus and comparison protocol"
+      ],
+      "evidence_summary": "ReactSeq_MEO complementarity has not been measured.",
+      "question_id": "RQ3",
+      "reproduction_command": "make release-evaluation",
+      "status": "not_run"
+    },
+    {
+      "blocking_requirements": [
+        "licensed recorded-reaction test set",
+        "adjudicated support labels",
+        "selected and calibrated evidence models"
+      ],
+      "evidence_summary": "High-novelty false rejection has not been measured.",
+      "question_id": "RQ4",
+      "reproduction_command": "make release-evaluation",
+      "status": "not_run"
+    },
+    {
+      "blocking_requirements": [
+        "versioned prompt-capable model providers",
+        "provider/checkpoint licenses and digests",
+        "frozen grouped evaluation cases"
+      ],
+      "evidence_summary": "Forty deterministic prompt variants exist, but no prompt-capable provider was run.",
+      "question_id": "RQ5",
+      "reproduction_command": "make release-evaluation prompt-benchmark-small",
+      "status": "not_run"
+    },
+    {
+      "blocking_requirements": [],
+      "evidence_summary": "The route contract detects all five authored dependency, protection, condition, and precursor-continuity perturbation classes; this is not a population estimate.",
+      "question_id": "RQ6",
+      "reproduction_command": "make release-evaluation route-prompt-small",
+      "status": "fixture_observation"
+    },
+    {
+      "blocking_requirements": [
+        "official versioned SynthEx ReactionJSON/RouteJSON or export specification",
+        "licensed comparable SynthEx, Synthelite, and ReactSeq outputs",
+        "frozen cross-system sampling and mapping protocol"
+      ],
+      "evidence_summary": "No cross-system output comparison has been run.",
+      "question_id": "RQ7",
+      "reproduction_command": "make release-evaluation",
+      "status": "not_run"
+    }
+  ],
+  "route_prompt_contract": {
+    "all_route_perturbations_detected": true,
+    "default_prompt_provider_unavailable": true,
+    "expensive_provider_experiments_run": false,
+    "metrics_status": "not_run",
+    "notice": "SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.",
+    "prompt_variant_count": 5,
+    "prompt_variant_kinds": [
+      "exact",
+      "partial",
+      "ambiguous",
+      "incorrect_structurally_plausible",
+      "contradictory"
+    ],
+    "required_route_outputs_present": true,
+    "route_check_count": 18,
+    "route_perturbation_count": 5,
+    "route_success_probability_reported": false,
+    "schema_version": "synthaudit.route-prompt-contract-smoke/1"
+  },
+  "schema_version": "synthaudit.release-evaluation/1",
+  "source_artifact_sha256": {
+    "counterfactual_human_review": "30b437844315fc41744d272c597a34609065ac3daecc7cb986a63031c0218f2f",
+    "counterfactual_manifest": "60ed3784d72d914525d649cf9e270285347ecd418c12e70fedbeecbbab8ee36d",
+    "counterfactual_records": "027dcf9b59210b5c1452890072c8eb0da69eafd980857e25475afb03ab200317",
+    "counterfactual_splits": "acfc84d5f1a3c8219f2ca7d46c32271d2b7995278de567c6967af94a993de254",
+    "evidence_model_plan": "198e7f2ea2326912989cd0ebd9c458c8ed9b75a321d829ee157c7bfb4af3fa07",
+    "prompt_cases": "d643a37597efc39105be2507a6c587b2f9fd120db8577062990899e43a48274c",
+    "prompt_manifest": "3c8de3adfc700e18fb778aa90f98df32f6c4e2e06564a616093ed1d05fdf3e96",
+    "reactseq_golden": "f2992f05efa03785c8627fc4c270b4740ca51197bbc2408e45056880a8f6556f"
+  },
+  "traversal_pair_semantically_equivalent": true
+}

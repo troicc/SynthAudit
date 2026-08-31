@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="630" height="430" viewBox="0 0 630 430" role="img" aria-labelledby="title desc">
+<title id="title">Scope of committed SynthAudit software-verification fixtures</title>
+<desc id="desc">The release validates 200 counterfactual records, 40 prompt variants, three pinned ReactSeq cases, and five authored route perturbation classes. Counts describe software fixtures, not chemistry performance.</desc>
+<style>text{font-family:system-ui,-apple-system,sans-serif;fill:#e2e8f0}.title{font-size:21px;font-weight:700}.sub,.unit{font-size:13px;fill:#cbd5e1}.label{font-size:14px;font-weight:650;fill:#93c5fd}.value{font-size:34px;font-weight:750;fill:#f8fafc}.unit{font-weight:600}</style>
+<rect width="630" height="430" rx="16" fill="#0b1220"/>
+<text x="30" y="40" class="title">Committed offline fixture scope</text>
+<text x="30" y="66" class="sub">Observed artifact counts — not population metrics or experimental outcomes</text>
+<g><rect x="30" y="105" width="270" height="112" rx="12" fill="#111827" stroke="#334155"/><text x="48" y="135" class="label">Counterfactual contract</text><text x="48" y="177" class="value">200</text><text x="120" y="177" class="unit">records</text></g><g><rect x="330" y="105" width="270" height="112" rx="12" fill="#111827" stroke="#334155"/><text x="348" y="135" class="label">Prompt contract</text><text x="348" y="177" class="value">40</text><text x="420" y="177" class="unit">variants</text></g><g><rect x="30" y="250" width="270" height="112" rx="12" fill="#111827" stroke="#334155"/><text x="48" y="280" class="label">ReactSeq conformance</text><text x="48" y="322" class="value">3</text><text x="120" y="322" class="unit">pinned cases</text></g><g><rect x="330" y="250" width="270" height="112" rx="12" fill="#111827" stroke="#334155"/><text x="348" y="280" class="label">Route perturbations</text><text x="348" y="322" class="value">5</text><text x="420" y="322" class="unit">authored classes</text></g>
+<text x="30" y="408" class="sub">All inputs are authored or pinned, content-addressed, and reproducible without a provider.</text>
+</svg>
