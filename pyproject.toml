@@ -53,6 +53,7 @@ all = ["httpx>=0.28,<1", "streamlit>=1.41,<2"]
 
 [project.scripts]
 synthaudit = "synthaudit.cli.app:main"
+synthaudit-easy = "synthaudit.easy:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/synthaudit"]
@@ -104,5 +105,5 @@ plugins = ["pydantic.mypy"]
 warn_unreachable = true
 
 [[tool.mypy.overrides]]
-module = ["rdkit.*", "sklearn.*", "streamlit.*"]
+module = ["rdkit.*", "sklearn.*", "streamlit.*", "rxnmapper.*", "reactionclassifier.*"]
 ignore_missing_imports = true

@@ -1,0 +1,2 @@
+reaction_id,reaction_smiles
+hydrogenation-1,"[CH2:1]=[CH2:2]>>[CH3:1][CH3:2]"

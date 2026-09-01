@@ -5,11 +5,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy
 
-RUN pip install --no-cache-dir uv==0.8.14
+RUN pip install --no-cache-dir uv==0.12.7
 WORKDIR /app
 COPY pyproject.toml uv.lock README.md ./
 COPY src ./src
-RUN uv sync --frozen --no-dev --extra ui
+RUN uv sync --frozen --no-dev --extra ui --extra llm
 COPY .streamlit ./.streamlit
 COPY app ./app
 COPY benchmarks ./benchmarks

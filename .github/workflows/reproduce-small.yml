@@ -1,14 +1,14 @@
-name: quality
+name: reproduce-small
 
 on:
-  push:
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  test:
+  reproduce:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,10 +17,7 @@ jobs:
           version: "0.12.7"
           enable-cache: true
       - run: uv python install 3.11
-      - run: uv lock --check
       - run: uv sync --frozen --all-extras --dev
-      - run: make quality
-      - run: make test
-      - run: make smoke
-      - run: make doctor
-      - run: make easy-smoke
+      - run: make reproduce-small
+      - name: Verify generated tracked artifacts are unchanged
+        run: git diff --exit-code

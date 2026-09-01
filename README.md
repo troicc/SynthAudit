@@ -6,9 +6,28 @@
 
 SynthAudit normalizes mapped reactions and reaction-edit languages into a stable `ReactionIR`, executes edits in explicit reaction-centre and synthon-completion stages, and reports structural consistency, corpus novelty, precedent support, evidence-based plausibility, and uncertainty as separate results.
 
-Current software release: **v1.0.0**. The architecture and offline verification package are
-complete; population research metrics remain explicitly `not_run` until licensed data, labels,
-checkpoints, and providers are configured.
+Current software release: **v1.0.0**. The architecture and offline verification package are complete; population research metrics remain explicitly `not_run` until licensed data, labels, checkpoints, and providers are configured.
+
+## Direct use in three minutes
+
+No model training, external corpus, paid API, checkpoint, or GPU is required for deterministic auditing of a mapped reaction:
+
+```bash
+git clone https://github.com/troicc/SynthAudit.git
+cd SynthAudit
+uv sync --frozen --all-extras --dev
+uv run synthaudit-easy doctor
+uv run synthaudit-easy audit \
+  --input examples/mapped-reaction.smi \
+  --output-dir synthaudit-output
+```
+
+Open `synthaudit-output/audit.html`. The same entry point supports CSV/TSV/JSONL batches. Unmapped input can be atom-mapped only after the user explicitly installs RXNMapper and adds `--map-if-needed`; reaction classification is likewise an explicit optional integration.
+
+- [Direct-use command guide](docs/DIRECT_USE.md)
+- [中文小白级原理与操作手册](docs/BEGINNER_GUIDE_ZH.md)
+
+The original `synthaudit` CLI remains available for canonical ReactionIR/RouteIR, ReactSeq, SynthEx paper-draft input, local novelty and precedent indexes, model research, and route reports.
 
 ## Why this exists
 
@@ -38,11 +57,9 @@ make release-evaluation
 
 Core tests are offline and do not require model downloads, paid APIs, or large datasets.
 
-`make release-evaluation` regenerates the content-addressed v1.0 research-status manifest, tables,
-and figures. Its numerical observations are scoped to committed software fixtures and are not
-population chemistry results.
+`make release-evaluation` regenerates the content-addressed v1.0 research-status manifest, tables, and figures. Its numerical observations are scoped to committed software fixtures and are not population chemistry results.
 
-## Quick start
+## Quick start with canonical files
 
 ```bash
 make product-examples
@@ -54,14 +71,14 @@ uv run synthaudit audit-route --input examples/route-ir.json \
   --html /tmp/route-audit.html --json /tmp/route-audit.json
 ```
 
-Launch the five-page local workspace with `make ui`, or verify it without starting a server with
-`make ui-smoke`. Optional integrations are explicit extras and providers; no model or corpus is
-downloaded at import time.
+Launch the five-page local workspace with `make ui`, or verify it without starting a server with `make ui-smoke`. Optional integrations are explicit providers; no model or corpus is downloaded at import time.
 
-## Run common workflows
+## Run common advanced workflows
 
 | Task | Command |
 |---|---|
+| Audit mapped reaction SMILES directly | `synthaudit-easy audit --input examples/mapped-reaction.smi --output-dir synthaudit-output` |
+| Audit a CSV/TSV/JSONL batch | `synthaudit-easy batch --input examples/reactions.csv --output-dir synthaudit-batch-output` |
 | Parse the pinned ReactSeq subset | `synthaudit parse-reactseq --input example.reactseq --product product.smi --json reaction-ir.json` |
 | Normalize mapped reaction SMILES | `synthaudit normalize-reaction --input reaction.smi --representation mapped_reaction_smiles --json reaction-ir.json` |
 | Compare representations semantically | `synthaudit compare-representations --reactseq example.reactseq --reactionjson reaction-ir.json --product product.smi --json comparison.json` |
@@ -69,18 +86,13 @@ downloaded at import time.
 | Score separate novelty views | `synthaudit novelty score --input reaction-ir.json --index index.json --json novelty.json` |
 | Generate an offline report | `synthaudit report --reaction reaction-ir.json --output report.html --json report-result.json` |
 
-Every product command returns non-zero on execution/validation failure. Remote data transfer is
-disabled unless the user invokes `data download` with an explicit checksum-pinned manifest and
-`--allow-network`. Loading a local pickle model also requires `--trust-model-artifact` after its
-SHA-256 descriptor is reviewed.
+Every product command returns non-zero on execution/validation failure. Remote data transfer is disabled unless the user invokes `data download` with an explicit checksum-pinned manifest and `--allow-network`. Loading a local pickle model also requires `--trust-model-artifact` after its SHA-256 descriptor is reviewed.
 
 ## Inspect the architecture
 
 ![SynthAudit system architecture](docs/diagrams/system-architecture.svg)
 
-The editable audit pipeline is in
-[`docs/diagrams/audit-pipeline.mmd`](docs/diagrams/audit-pipeline.mmd). Core algorithms live under
-`src/synthaudit`; Streamlit files only collect inputs and present package results.
+The editable audit pipeline is in [`docs/diagrams/audit-pipeline.mmd`](docs/diagrams/audit-pipeline.mmd). Core algorithms live under `src/synthaudit`; Streamlit files only collect inputs and present package results.
 
 ## Scientific and interoperability status
 
