@@ -50,7 +50,7 @@ def map_reaction_smiles(reaction_smiles: str) -> AtomMappingSummary:
     """Map one reaction through RXNMapper after an explicit user request."""
 
     try:
-        from rxnmapper import RXNMapper  # type: ignore[import-not-found]
+        from rxnmapper import RXNMapper
     except ImportError as exc:
         raise MapperUnavailableError(
             "RXNMapper is not installed. In the active environment run "
