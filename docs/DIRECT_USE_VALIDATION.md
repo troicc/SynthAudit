@@ -29,7 +29,9 @@ The repository's maintained GitHub Actions workflows are the authoritative softw
 - Docker image construction and startup.
 
 Temporary self-modifying publication workflows have been removed from `main`; they are not part of
-the maintained validation surface.
+the maintained validation surface. After the merged direct-use files were formatted and the wheel
+workflow was pinned to Python 3.11, this documentation commit intentionally triggered the normal
+`quality` and `package` workflows against the resulting default-branch tree.
 
 This document verifies that the files are published on the default branch and identifies the
 software checks that must pass. It does **not** establish experimental feasibility, yield,
