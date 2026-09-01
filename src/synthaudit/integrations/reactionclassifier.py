@@ -66,7 +66,7 @@ def classify_reaction_ir(reaction: ReactionIRV1) -> ReactionClassificationSummar
     """Classify one reaction only after the optional dependency is requested."""
 
     try:
-        from reactionclassifier import ReactionClassifier  # type: ignore[import-not-found]
+        from reactionclassifier import ReactionClassifier
     except ImportError as exc:
         raise ReactionClassifierUnavailableError(
             "ReactionClassifier is not installed. In the active environment run "
