@@ -42,15 +42,15 @@ def test_csv_and_jsonl_batch_readers(tmp_path: Path) -> None:
         writer = csv.DictWriter(handle, fieldnames=["reaction_id", "reaction_smiles"])
         writer.writeheader()
         writer.writerow({"reaction_id": "a", "reaction_smiles": _example_reaction()})
-    assert list(
+    assert next(
         _record_iterator(csv_path, reaction_column="reaction_smiles", id_column="reaction_id")
-    )[0][0] == "a"
+    )[0] == "a"
 
     jsonl_path = tmp_path / "records.jsonl"
     jsonl_path.write_text(
         json.dumps({"reaction_id": "b", "reaction_smiles": _example_reaction()}) + "\n",
         encoding="utf-8",
     )
-    assert list(
+    assert next(
         _record_iterator(jsonl_path, reaction_column="reaction_smiles", id_column="reaction_id")
-    )[0][0] == "b"
+    )[0] == "b"
