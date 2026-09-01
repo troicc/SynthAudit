@@ -2,7 +2,6 @@
 
 > SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
 
-
 Updated: 2026-09-01.
 
 ## Default-branch publication
@@ -19,6 +18,19 @@ Verified default-branch documents:
 The direct-use code includes the `synthaudit-easy` entry point, single-reaction auditing, CSV/TSV/
 JSONL batch auditing, and explicit optional RXNMapper and ReactionClassifier integrations.
 
+## What the red crosses in the pull-request commit list mean
+
+The red crosses attached to earlier individual commits are historical check results for those exact
+intermediate commit snapshots. They are not proof that the final merged tree has the same defect.
+During development, several commits were intentionally small and were checked before all dependent
+files, formatting fixes, documentation notices, and packaging fixes had landed. GitHub preserves
+those historical results permanently beside the old commits.
+
+The only reliable release question is whether the maintained workflows pass on the final
+`main`-branch commit. This file is updated through a normal repository write specifically to
+trigger a fresh, non-self-modifying run of the maintained `quality`, `package`, `reproduce-small`,
+and `docker` workflows against the current default-branch tree.
+
 ## Verification boundary
 
 The repository's maintained GitHub Actions workflows are the authoritative software checks for:
@@ -32,9 +44,7 @@ The repository's maintained GitHub Actions workflows are the authoritative softw
 - Docker image construction and startup.
 
 Temporary self-modifying publication workflows have been removed from `main`; they are not part of
-the maintained validation surface. After the merged direct-use files were formatted and the wheel
-workflow was pinned to Python 3.11, this documentation commit intentionally triggered the normal
-`quality` and `package` workflows against the resulting default-branch tree.
+the maintained validation surface.
 
 This document verifies that the files are published on the default branch and identifies the
 software checks that must pass. It does **not** establish experimental feasibility, yield,
