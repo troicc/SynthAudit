@@ -1,5 +1,8 @@
 # Codespaces and older macOS
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
+
 SynthAudit's reference runtime is Python 3.11 with a recent RDKit build. On an older macOS release,
 local wheels or Docker Desktop may be unavailable even when the source code is correct. Do not
 weaken the package requirements or downgrade RDKit solely to force an unsupported local install.

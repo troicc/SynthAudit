@@ -1,5 +1,8 @@
 # Optional model integrations
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
+
 The deterministic SynthAudit core does not install or import heavyweight mapping and
 classification models. Add them only in an environment where they are needed.
 

@@ -1,5 +1,8 @@
 # Direct-use guide
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
+
 SynthAudit can be used immediately for deterministic auditing of **mapped reaction SMILES**. No
 training corpus, paid API, checkpoint, or GPU is required for this mode.
 

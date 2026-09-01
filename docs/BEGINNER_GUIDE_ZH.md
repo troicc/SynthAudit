@@ -1,5 +1,8 @@
 # SynthAudit 小白级原理与操作手册
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
+
 > 适用范围：SynthAudit v1.x direct-use 工作流  
 > 重要边界：SynthAudit 检查反应表示、图编辑、语料新颖性和证据支持度；它不证明实验一定成功，也不预测真实产率、安全性或放大结果。
 

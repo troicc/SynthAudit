@@ -1,5 +1,8 @@
 # Direct-use hardening changelog
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
+
 This document records the practical-use layer added after the original v1.0 research-software
 release.
 

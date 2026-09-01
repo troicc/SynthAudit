@@ -1,5 +1,8 @@
 # Direct-use publication and validation record
 
+> SynthAudit estimates representation validity, corpus novelty and evidence-based plausibility. It does not establish experimental feasibility, yield, selectivity, safety or scalability.
+
+
 Updated: 2026-09-01.
 
 ## Default-branch publication
