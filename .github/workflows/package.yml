@@ -20,10 +20,11 @@ jobs:
       - run: uv python install 3.11
       - run: uv lock --check
       - run: uv build
-      - name: Verify the built wheel in a clean environment
+      - name: Verify the built wheel in a clean Python 3.11 environment
         run: |
-          python3 -m venv /tmp/synthaudit-wheel
-          /tmp/synthaudit-wheel/bin/pip install dist/*.whl
+          rm -rf /tmp/synthaudit-wheel
+          uv venv --python 3.11 /tmp/synthaudit-wheel
+          uv pip install --python /tmp/synthaudit-wheel/bin/python dist/*.whl
           /tmp/synthaudit-wheel/bin/synthaudit version --json
           /tmp/synthaudit-wheel/bin/synthaudit-easy doctor --json
       - uses: actions/upload-artifact@v4
