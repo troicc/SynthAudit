@@ -205,9 +205,7 @@ def _record_iterator(
                 continue
             payload = json.loads(line)
             if not isinstance(payload, dict) or reaction_column not in payload:
-                raise ValueError(
-                    f"JSONL line {line_number} lacks object field {reaction_column!r}"
-                )
+                raise ValueError(f"JSONL line {line_number} lacks object field {reaction_column!r}")
             identifier = str(payload.get(id_column) or f"row-{line_number}")
             yield identifier, str(payload[reaction_column])
         return
@@ -245,9 +243,7 @@ def doctor(
 @app.command("map")
 def map_command(
     reaction: Annotated[str | None, typer.Option("--reaction")] = None,
-    input_path: Annotated[
-        Path | None, typer.Option("--input", exists=True, dir_okay=False)
-    ] = None,
+    input_path: Annotated[Path | None, typer.Option("--input", exists=True, dir_okay=False)] = None,
     output: Annotated[Path | None, typer.Option("--output", dir_okay=False)] = None,
     json_output: Annotated[bool, typer.Option("--json")] = False,
 ) -> None:
@@ -289,9 +285,7 @@ def classify_command(
 @app.command("audit")
 def audit_command(
     reaction: Annotated[str | None, typer.Option("--reaction")] = None,
-    input_path: Annotated[
-        Path | None, typer.Option("--input", exists=True, dir_okay=False)
-    ] = None,
+    input_path: Annotated[Path | None, typer.Option("--input", exists=True, dir_okay=False)] = None,
     reaction_id: Annotated[str | None, typer.Option("--reaction-id")] = None,
     map_if_needed: Annotated[
         bool,
@@ -300,9 +294,9 @@ def audit_command(
             help="Explicitly use optional RXNMapper when the input is unmapped.",
         ),
     ] = False,
-    output_dir: Annotated[
-        Path, typer.Option("--output-dir", file_okay=False)
-    ] = Path("synthaudit-output"),
+    output_dir: Annotated[Path, typer.Option("--output-dir", file_okay=False)] = Path(
+        "synthaudit-output"
+    ),
     no_html: Annotated[bool, typer.Option("--no-html")] = False,
     with_classifier: Annotated[bool, typer.Option("--with-classifier")] = False,
 ) -> None:
@@ -367,9 +361,9 @@ def audit_command(
 @app.command("batch")
 def batch_command(
     input_path: Annotated[Path, typer.Option("--input", exists=True, dir_okay=False)],
-    output_dir: Annotated[
-        Path, typer.Option("--output-dir", file_okay=False)
-    ] = Path("synthaudit-batch-output"),
+    output_dir: Annotated[Path, typer.Option("--output-dir", file_okay=False)] = Path(
+        "synthaudit-batch-output"
+    ),
     reaction_column: Annotated[str, typer.Option("--reaction-column")] = "reaction_smiles",
     id_column: Annotated[str, typer.Option("--id-column")] = "reaction_id",
     map_if_needed: Annotated[bool, typer.Option("--map-if-needed")] = False,
@@ -392,9 +386,7 @@ def batch_command(
             record_dir.mkdir(parents=True, exist_ok=True)
             _write_json(record_dir / "reaction-ir.json", ir)
             _write_json(record_dir / "audit.json", audit)
-            (record_dir / "mapped-reaction.smi").write_text(
-                mapped_text + "\n", encoding="utf-8"
-            )
+            (record_dir / "mapped-reaction.smi").write_text(mapped_text + "\n", encoding="utf-8")
             if mapping is not None:
                 _write_json(record_dir / "mapping.json", mapping)
             if reports:

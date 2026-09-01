@@ -87,9 +87,7 @@ def classify_reaction_ir(reaction: ReactionIRV1) -> ReactionClassificationSummar
         confirmed_name=getattr(result, "reaction_name", None),
         neural_code=getattr(result, "neural_code", None),
         neural_name=getattr(result, "neural_name", None),
-        neural_raw_confidence=(
-            float(confidence_raw) if confidence_raw is not None else None
-        ),
+        neural_raw_confidence=(float(confidence_raw) if confidence_raw is not None else None),
         confirmed_by_template=confirmed_code is not None,
         provider="reactionclassifier",
         provider_version=version,
